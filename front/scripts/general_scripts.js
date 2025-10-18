@@ -1,3 +1,4 @@
+// 132 строчка финкция для вставки изборажений(диаграм)
 // Навигация между разделами
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
@@ -149,8 +150,35 @@ class PeriodFilter {
         
         // Для демонстрации - показываем уведомление
 				// для вставки изображения использовать function insertImages(images)
+				// для вставки значений в блоки бюджет, экспорт и т.д. используется function updateStats(newStats)
         this.showNotification(`Поиск данных за период ${searchData.periodFrom}-${searchData.periodTo}`);
     }
+
+		updateStats(newStats) {
+    // Обновляем бюджет
+    if (newStats.budget !== undefined) {
+        const budgetElement = document.querySelector('.stat-item:nth-child(1) .stat-value');
+        if (budgetElement) budgetElement.textContent = newStats.budget;
+    }
+    
+    // Обновляем прибыль
+    if (newStats.profit !== undefined) {
+        const profitElement = document.querySelector('.stat-item:nth-child(2) .stat-value');
+        if (profitElement) profitElement.textContent = newStats.profit;
+    }
+    
+    // Обновляем занятость
+    if (newStats.employment !== undefined) {
+        const employmentElement = document.querySelector('.stat-item:nth-child(3) .stat-value');
+        if (employmentElement) employmentElement.textContent = newStats.employment;
+    }
+    
+    // Обновляем экспорт
+    if (newStats.export !== undefined) {
+        const exportElement = document.querySelector('.stat-item:nth-child(4) .stat-value');
+        if (exportElement) exportElement.textContent = newStats.export;
+    }
+}
     
     showNotification(message) {
         // Создаем уведомление
