@@ -6,33 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
 
     // Переключение активной вкладки
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Удаляем активный класс у всех ссылок
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Добавляем активный класс текущей ссылке
-            this.classList.add('active');
-            
-            // Скрываем все разделы
-            pageSections.forEach(section => section.classList.remove('active'));
-            
-            // Показываем целевой раздел
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-            
-            // Закрываем мобильное меню после клика
-            if (window.innerWidth <= 768) {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            }
-        });
-    });
-
+    
     // Мобильное меню
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');

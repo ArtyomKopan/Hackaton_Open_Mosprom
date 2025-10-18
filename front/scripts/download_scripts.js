@@ -34,7 +34,7 @@ class FileUploader {
         });
 
 				this.button2.addEventListener('click', () => {
-					window.location.href = "/front/general_info_page/general_page.html"
+					window.location.href = "/front/pages/general_page.html"
 				})
     }
 

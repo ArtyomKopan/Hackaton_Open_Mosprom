@@ -99,7 +99,7 @@
 }
 
 .period-filter {
-	width: 500px;
+	  width: 500px;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -109,6 +109,8 @@
 
 .period-container {
     display: flex;
+		flex-direction: row;
+		justify-content: center;
     align-items: flex-end;
     gap: 20px;
     flex-wrap: wrap;
@@ -167,7 +169,6 @@
     align-items: center;
     gap: 8px;
     min-width: 120px;
-    justify-content: center;
 }
 
 .search-btn:hover {
