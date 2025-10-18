@@ -15,10 +15,11 @@
             
           
             <div class="upload-content">
-								<input type="file" id="fileInput" accept=".csv,.xls,.xlsx" hidden>
-                <button class="mButton" id="button1">Выбрать файл</button>
-                <p class="upload-hint">или перетащите файл сюда</p>
-            </div>
+    					<input type="file" id="fileInput" accept=".csv,.xls,.xlsx" hidden>
+    					<button class="mButton" id="button1">Выбрать файл</button>
+   						<p class="upload-hint">или перетащите файл сюда</p>
+    					<div id="fileInfo" class="file-info" style="display: none;"></div>
+						</div>
           
   					<input type="text" id="apiInput" placeholder="Введите API" class="api-input" /> 
 
@@ -27,6 +28,6 @@
 	</div>
 
     
-    <script src="script.ts"></script>
+    <script src="script.js"></script>
 </body>
 </html>
