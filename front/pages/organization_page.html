@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель навигации</title>
+    <link rel="stylesheet" href="/front/styles/industry_styles.css">
+		<link rel="stylesheet" href="/front/styles/styles.css">
+</head>
+<body>
+    <!-- Панель навигации -->
+    <nav class="navbar">
+        <div class="nav-container">
+        	<ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/front/pages/general_page.html" class="nav-link">Общая информация</a>
+            </li>
+            <li class="nav-item">
+                <a href="/front/pages/industry_page.html" class="nav-link">Отрасль</a>
+            </li>
+            <li class="nav-item">
+                <a href="organization_page.html" class="nav-link active">Производство</a>
+            </li>
+        	</ul>
+				</div>
+    </nav>
+
+		
+
+			<div class="industry-filter">
+    		<div class="period-container">
+      		<div class="period-inputs">
+        		<div class="input-group">
+          		<label for="periodFrom">Период с:</label>
+            	<input type="number" id="periodFrom" class="period-input" value="2017" min="2000" max="2030">
+          	</div>
+        		<div class="input-group">
+        			<label for="periodTo">Период до:</label>
+            	<input type="number" id="periodTo" class="period-input" value="2024" min="2000" max="2030">
+          	</div>
+						<div class="input-group">
+    					<label for="industry-select">Организация:</label>
+    					<select id="industry-select" class="industry-select">
+        				<option value="">Загрузка организация...</option>
+    					</select>
+						</div>
+        	</div>
+        	<button id="searchBtn" class="search-btn">
+          	  <span class="search-icon">Поиск</span>     
+        	</button>
+      	</div>
+    	</div>
+
+			<div class="images-grid" id="imagesGrid">
+        	<!-- Изображения будут добавляться сюда -->
+      	  <div class="image-placeholder">
+          	  <span>Данные не найдены</span>
+        	</div>
+    	</div>
+    
+    	<div class="images-loading" id="imagesLoading" style="display: none;">
+        	<div class="loading-spinner"></div>
+        	<span>Загрузка изображений...</span>
+    	</div>
+    
+		<script src="/front/scripts/scripts.js"></script>
+		<script src="/front/scripts/organization_scripts.js"></script>
+</body>
+</html>

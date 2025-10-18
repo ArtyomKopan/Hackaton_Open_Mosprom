@@ -1,16 +1,17 @@
 class FileUploader {
     constructor() {
         this.fileInput = document.getElementById('fileInput');
-        this.button = document.getElementById('button1');
+        this.button1 = document.getElementById('button1');
         this.uploadContent = document.querySelector('.upload-content');
         this.fileInfo = document.getElementById('fileInfo');
+				this.button2 = document.getElementById('button2')
 
         this.initEventListeners();
     }
 
     initEventListeners() {
         // Клик по кнопке
-        this.button.addEventListener('click', () => {
+        this.button1.addEventListener('click', () => {
             this.fileInput.click();
         });
 
@@ -31,6 +32,10 @@ class FileUploader {
         this.uploadContent.addEventListener('drop', (e) => {
             this.handleDrop(e);
         });
+
+				this.button2.addEventListener('click', () => {
+					window.location.href = "/front/pages/general_page.html"
+				})
     }
 
     handleFileSelection(event) {
