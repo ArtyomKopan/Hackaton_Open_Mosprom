@@ -74,7 +74,7 @@ def extract_comprehensive_data(fns_response: Dict, inn: str) -> Dict:
                     data['Юридический адрес'] = full_address
                     data['Адрес производства'] = full_address
                     data['Адрес дополнительной площадки'] = full_address
-                    
+
                 if 'Индекс' in address_data:
                     data['Индекс'] = address_data['Индекс']
 
@@ -92,11 +92,11 @@ def extract_comprehensive_data(fns_response: Dict, inn: str) -> Dict:
             if isinstance(contacts, dict):
                 if 'Телефон' in contacts and contacts['Телефон']:
                     data['Номер телефона'] = ', '.join(contacts['Телефон'][:3])
-                
+
                 if 'e-mail' in contacts and contacts['e-mail']:
                     data['Электронная почта'] = contacts['e-mail'][0]
                     data['Почта руководства'] = contacts['e-mail'][0]
-                
+
                 if 'Сайт' in contacts and contacts['Сайт']:
                     data['Сайт'] = contacts['Сайт'][0]
 
@@ -107,7 +107,7 @@ def extract_comprehensive_data(fns_response: Dict, inn: str) -> Dict:
                 if 'Код' in activity:
                     data['Основной ОКВЭД (СПАРК)'] = activity['Код']
                     data['Производственный ОКВЭД'] = activity['Код']
-                    
+
                 if 'Текст' in activity:
                     activity_text = activity['Текст']
                     data['Вид деятельности по основному ОКВЭД (СПАРК)'] = activity_text
@@ -127,12 +127,12 @@ def extract_comprehensive_data(fns_response: Dict, inn: str) -> Dict:
                     activities.append(activity['Текст'])
                 if isinstance(activity, dict) and 'Код' in activity:
                     okved_codes.append(activity['Код'])
-            
+
             if activities:
                 data['Отраслевые презентации'] = '; '.join(activities[:5])
                 data['Дополнительная отрасль'] = '; '.join(activities[:2])
                 data['Подотрасль (Дополнительная)'] = '; '.join(activities[:3])
-            
+
             if okved_codes:
                 data['Перечень производимой продукции по кодам ОКПД 2'] = '; '.join(okved_codes[:5])
 
@@ -168,7 +168,7 @@ def extract_comprehensive_data(fns_response: Dict, inn: str) -> Dict:
                         participations.append(part['НаимСокрЮЛ'])
                     if 'ИНН' in part:
                         inns.append(part['ИНН'])
-            
+
             if participations:
                 data['Головная организация'] = '; '.join(participations[:2])
             if inns:
@@ -224,32 +224,32 @@ def determine_detailed_industries(activity: str) -> Dict:
 
 def get_companies_data(api_key: str, companies_list: List[Dict]) -> List[Tuple[str, str]]:
     """Получает данные по переданным компаниям"""
-    
+
     client = FNSAPIClient(api_key, base_url="https://api-fns.ru/api")
-    
-    print(f"🔍 Получение данных для {len(companies_list)} компаний...", file=sys.stderr)
-    
+
+    print(f"Получение данных для {len(companies_list)} компаний...", file=sys.stderr)
+
     company_results = []
-    
+
     for company in companies_list:
         inn = company.get('inn')
         if not inn:
             continue
-            
+
         # Получаем название компании если есть в словаре
         name = company.get('name', f'Организация {inn}')
-        
+
         org_data = client.get_organization_info(inn)
-        
+
         if org_data:
             company_results.append((inn, name))
             print(f"✅ {name} (ИНН: {inn}) - данные получены", file=sys.stderr)
         else:
             company_results.append((inn, name))
             print(f"❌ {name} (ИНН: {inn}) - данные не получены", file=sys.stderr)
-        
+
         time.sleep(0.3)  # Пауза между запросами
-    
+
     return company_results
 
 
@@ -412,7 +412,7 @@ def create_complete_template(api_key: str, companies_list: List[Dict]) -> pd.Dat
         org_data = client.get_organization_info(inn)
         if org_data:
             detailed_data = extract_comprehensive_data(org_data, inn)
-            
+
             # Заполняем только те поля, для которых есть реальные данные
             for key, value in detailed_data.items():
                 if key in record and value:  # Заполняем только если есть значение
@@ -462,7 +462,7 @@ def main():
         # Сохраняем в CSV с правильной кодировкой
         csv_filename = f"{filename}.csv"
         df.to_csv(csv_filename, index=False, encoding='utf-8-sig')
-        
+
         print(f"\n💾 Данные сохранены в CSV файл:", file=sys.stderr)
         print(f"   - {csv_filename}", file=sys.stderr)
 
