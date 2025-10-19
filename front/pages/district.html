@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель навигации</title>
     <link rel="stylesheet" href="/front/styles/styles.css">
+		<link rel="stylesheet" href="/front/styles/district_styles.css">
 </head>
 <body>
     <!-- Панель навигации -->
@@ -12,7 +13,7 @@
         <div class="nav-container">
         	<ul class="nav-menu">
             <li class="nav-item">
-                <a href="general_page.html" class="nav-link active">Общая информация</a>
+                <a href="/front/pages/general_page.html" class="nav-link">Общая информация</a>
             </li>
             <li class="nav-item">
                 <a href="/front/pages/industry_page.html" class="nav-link">Отрасль</a>
@@ -20,34 +21,36 @@
             <li class="nav-item">
                 <a href="/front/pages/organization_page.html" class="nav-link">Производство</a>
             </li>
-						
-						<!-- новая часть -->
 						<li class="nav-item">
-                <a href="/front/pages/district.html" class="nav-link">Район</a>
+                <a href="district.html" class="nav-link active">Район</a>
             </li>
-						<!-- новая часть -->
-
         	</ul>
 				</div>
     </nav>
 
-		<div class="period-filter">
-    	<div class="period-container">
-      	<div class="period-inputs">
-        	<div class="input-group">
-          	<label for="periodFrom">Период с:</label>
-            <input type="number" id="periodFrom" class="period-input" value="2017" min="2000" max="2030">
-          </div>
-        	<div class="input-group">
-        		<label for="periodTo">Период до:</label>
-            <input type="number" id="periodTo" class="period-input" value="2024" min="2000" max="2030">
-          </div>
-        </div>
-        <button id="searchBtn" class="search-btn">
-            <span class="search-icon">Поиск</span>     
-        </button>
-      </div>
-    </div>
+		<div class="industry-filter">
+    		<div class="period-container">
+      		<div class="period-inputs">
+        		<div class="input-group">
+          		<label for="periodFrom">Период с:</label>
+            	<input type="number" id="periodFrom" class="period-input" value="2017" min="2000" max="2030">
+          	</div>
+        		<div class="input-group">
+        			<label for="periodTo">Период до:</label>
+            	<input type="number" id="periodTo" class="period-input" value="2024" min="2000" max="2030">
+          	</div>
+						<div class="input-group">
+    					<label for="industry-select">Район:</label>
+    					<select id="industry-select" class="industry-select">
+        				<option value="">Загрузка районов...</option>
+    					</select>
+						</div>
+        	</div>
+        	<button id="searchBtn" class="search-btn">
+          	  <span class="search-icon">Поиск</span>     
+        	</button>
+      	</div>
+    	</div>
 
 		<div class="stats-grid">
         <div class="stat-item">
@@ -80,6 +83,6 @@
         <span>Загрузка изображений...</span>
     </div>
 
-    <script src="/front/scripts/general_scripts.js"></script>
+    <script src="/front/scripts/district_scripts.js"></script>
 </body>
 </html>
