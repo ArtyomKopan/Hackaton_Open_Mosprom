@@ -37,6 +37,7 @@ def extract_year(column_name):
 def filter_values(df: pd.DataFrame, filter_column: str, filter_value: str) -> pd.DataFrame:
     return df[df[filter_column] == filter_value]
 
+
 def build_plot(data: pd.DataFrame, min_year: int = 2017, max_year: int = 2025):
     # Заполняем пропуски в числовых колонках средним значением соседних
     for column in data.select_dtypes(include='number').columns:
@@ -82,18 +83,21 @@ def build_plot(data: pd.DataFrame, min_year: int = 2017, max_year: int = 2025):
                     y_points.append(value)
 
         # Фильтруем x_points и y_points по годам
-        min_year = max(min_year, x_points[0])
-        max_year = min(max_year, x_points[-1])
-        min_year_idx, max_year_idx = x_points.index(min_year), x_points.index(max_year)
-        x_points = x_points[min_year_idx:max_year_idx + 1]
-        y_points = y_points[min_year_idx:max_year_idx + 1]
+        try:
+            min_year = max(min_year, x_points[0])
+            max_year = min(max_year, x_points[-1])
+            min_year_idx, max_year_idx = x_points.index(min_year), x_points.index(max_year)
+            x_points = x_points[min_year_idx:max_year_idx + 1]
+            y_points = y_points[min_year_idx:max_year_idx + 1]
 
-        # Строим линию, соединяющую все точки этой категории
-        fig.add_trace(go.Scatter(
-            x=x_points,
-            y=y_points,
-            mode='lines+markers',
-            name=key
-        ))
+            # Строим линию, соединяющую все точки этой категории
+            fig.add_trace(go.Scatter(
+                x=x_points,
+                y=y_points,
+                mode='lines+markers',
+                name=key
+            ))
+        except:
+            continue
 
     fig.write_image('plot.png')
