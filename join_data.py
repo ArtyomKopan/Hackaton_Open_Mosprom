@@ -1,6 +1,5 @@
 import pandas as pd
 from typing import Optional
-import pytest
 
 
 def join_csv_and_api_data(
@@ -37,5 +36,3 @@ def join_csv_and_api_data(
         df_merged.drop(columns=[f'{col}_left', f'{col}_right'], inplace=True)
 
     return df_merged
-
-
