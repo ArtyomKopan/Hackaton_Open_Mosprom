@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ промышленного сектора</title>
+    <link rel="stylesheet" href="/static/css/download_styles.css">
+</head>
+<body>
+	<div class="upload-area" id="uploadArea">
+
+            <h1 class="title">Анализ промышленного сектора</h1>
+            <p class="subtitle1">Загрузите файл в одном из поддерживаемых</p>
+						<p class="subtitle2">форматов: CSV, XLS или XLSX</p>
+            
+          
+            <div class="upload-content">
+    					<input type="file" id="fileInput" accept=".csv,.xls,.xlsx" hidden>
+    					<button class="mButton" id="button1">Выбрать файл</button>
+   						<p class="upload-hint">или перетащите файл сюда</p>
+    					<div id="fileInfo" class="file-info" style="display: none;"></div>
+						</div>
+          
+						<!-- новая часть -->
+  					<div id="api-content">
+							<input type="text" id="apiInput" placeholder="Введите API" class="api-input" /> 
+							<div class="upload-content">
+    						<input type="file" id="fileInput2" accept=".csv,.xls,.xlsx" hidden>
+    						<button class="mButton" id="button3">ИНН(файл)</button>
+    					<div id="fileInfo" class="file-info" style="display: none;"></div>
+							</div>
+						</div>
+						<!-- новая часть -->	
+
+						<button class="mButton" id="button2">Анализ</button>
+         
+	</div>
+
+    
+    <script src="/static/js/download_scripts.js"></script>
+</body>
+</html>

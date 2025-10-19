@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b6ff9d61eb17334a64c907749e56d583 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+                 <h3 align="center" style="font-size:20px"><b>Тепловая карта: Численность персонала</b></h3>
+                 <p align="center">Численность персонала (чел.)</p>
+                 
+    
+            <div class="folium-map" id="map_b6ff9d61eb17334a64c907749e56d583" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b6ff9d61eb17334a64c907749e56d583 = L.map(
+                "map_b6ff9d61eb17334a64c907749e56d583",
+                {
+                    center: [55.7558, 37.6173],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_bcf24b9deb67e14bb95ed28d15385ef5 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_bcf24b9deb67e14bb95ed28d15385ef5.addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+            var heat_map_a828286d553b05373804b4222f674656 = L.heatLayer(
+                [[55.775792, 37.609714, 0.42011834319526625], [55.769562, 37.700922, 0.34023668639053256], [55.693989, 37.594371, 0.9289940828402367], [55.75049, 37.565334, 0.6035502958579881], [55.682291, 37.741703, 0.16272189349112426], [55.77356, 37.518676, 0.08579881656804733], [55.748951, 37.498605, 0.8609467455621301], [55.743162, 37.638468, 0.23372781065088757], [55.85414, 37.577453, 0.04437869822485207], [55.779239, 37.690141, 0.4970414201183432], [55.749129, 37.535697, 0.44970414201183434], [55.761767, 37.545516, 0.05621301775147929], [55.792706, 37.609964, 0.257396449704142], [55.623705, 37.665682, 0.34023668639053256], [55.807507, 37.469197, 0.39644970414201186], [55.787, 37.69321, 0.026627218934911243], [55.754669, 37.660756, 0.6686390532544378], [55.716995, 37.569969, 0.9644970414201184], [55.662525, 37.607713, 0.6035502958579881], [55.683143, 37.521558, 0.16863905325443787], [55.779644, 37.395771, 0.07988165680473373], [55.751013, 37.675693, 0.46449704142011833], [55.805731, 37.585375, 0.23964497041420119], [55.734617, 37.658044, 0.6420118343195266], [55.746734, 37.570911, 0.11242603550295859], [55.739323, 37.546894, 0.3165680473372781], [55.765047, 37.655927, 0.46153846153846156], [55.74958, 37.708942, 0.1390532544378698], [55.68765, 37.672604, 0.08579881656804733], [55.712701, 37.574619, 0.3757396449704142], [55.687772, 37.67507, 0.4940828402366864], [55.743349, 37.678662, 0.011834319526627219], [55.73995, 37.6911, 0.27218934911242604], [55.74633, 37.639886, 0.4940828402366864], [55.722767, 37.551008, 0.5591715976331361], [55.729787, 37.675428, 0.07988165680473373], [55.750202, 37.685532, 0.3520710059171598], [55.736202, 37.684708, 0.25443786982248523], [55.814951, 37.704589, 0.46745562130177515], [55.810224, 37.627371, 0.31952662721893493], [55.756291, 37.439214, 0.6597633136094675], [55.796536, 37.539856, 0.05621301775147929], [55.796412, 37.748624, 0.21301775147928995], [55.685297, 37.744687, 0.6331360946745562], [55.767925, 37.627326, 0.7041420118343196], [55.725568, 37.632636, 0.7958579881656804], [55.730475, 37.664894, 0.4408284023668639], [55.675589, 37.518716, 0.5059171597633136], [55.777569, 37.593942, 0.33136094674556216], [55.799534, 37.710625, 0.23668639053254437], [55.711295, 37.655008, 0.621301775147929], [55.787758, 37.639116, 0.7988165680473372], [55.738671, 37.547929, 0.28402366863905326], [55.788518, 37.603303, 0.3136094674556213], [55.739893, 37.518098, 0.7248520710059172], [55.701797, 37.74061, 0.5207100591715976], [55.727708, 37.698193, 0.6834319526627219], [55.709923, 37.491052, 0.2485207100591716], [55.728737, 37.63934, 0.21597633136094674], [55.795818, 37.64205, 0.5502958579881657], [55.745263, 37.562219, 0.1390532544378698], [55.703027, 37.672246, 0.4881656804733728], [55.694161, 37.613096, 0.14201183431952663], [55.814564, 37.604283, 0.5650887573964497], [55.789951, 37.523657, 0.6390532544378699], [55.759811, 37.649197, 0.21597633136094674], [55.769742, 37.779002, 0.7840236686390533], [55.759413, 37.560817, 0.13609467455621302], [55.734931, 37.709161, 0.5532544378698225], [55.705542, 37.565408, 0.6538461538461539], [55.809586, 37.642972, 0.12130177514792899], [55.788637, 37.588535, 0.7100591715976331], [55.733457, 37.581755, 0.3254437869822485], [55.827316, 37.64053, 0.07100591715976332], [55.795983, 37.525188, 0.4940828402366864], [55.712791, 37.722661, 1.0], [55.737441, 37.575311, 0.38461538461538464], [55.714395, 37.639672, 0.4970414201183432], [55.790401, 37.711574, 0.5443786982248521], [55.690336, 37.679124, 0.4408284023668639], [55.663726, 37.690377, 0.650887573964497], [55.713257, 37.710065, 0.6153846153846154], [55.716326, 37.622895, 0.6686390532544378], [55.716042, 37.567458, 0.6094674556213018], [55.741145, 37.63364, 0.606508875739645], [55.796985, 37.700749, 0.4289940828402367], [55.668512, 37.5462, 0.0621301775147929], [55.715702, 37.431694, 0.2781065088757396], [55.792313, 37.613065, 0.3875739644970414], [55.697227, 37.707451, 0.11538461538461539], [55.690602, 37.709015, 0.07988165680473373], [55.796279, 37.658838, 0.7071005917159763], [55.80327, 37.565156, 0.257396449704142], [55.724491, 37.671859, 0.04142011834319527], [55.743527, 37.481594, 0.08875739644970414], [55.722463, 37.4359, 0.378698224852071], [55.734662, 37.481492, 0.44970414201183434], [55.789804, 37.648611, 0.038461538461538464], [55.778797, 37.517879, 0.07100591715976332], [55.737703, 37.637586, 0.34023668639053256]],
+                {
+  "minOpacity": 0.2,
+  "maxZoom": 18,
+  "radius": 15,
+  "blur": 10,
+  "gradient": {
+  0.2: "blue",
+  0.4: "cyan",
+  0.6: "lime",
+  0.8: "yellow",
+  1.0: "red",
+},
+  "maxOpacity": 0.8,
+}
+            );
+        
+    
+            heat_map_a828286d553b05373804b4222f674656.addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+            var circle_marker_776b8cc87e95c94c956d273506883bc8 = L.circleMarker(
+                [55.775792, 37.609714],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_2a7a20b7fc7d94c3dc41be32be694b37 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9a98991b8e15779d48619b2cdadf8cab = $(`<div id="html_9a98991b8e15779d48619b2cdadf8cab" style="width: 100.0%; height: 100.0%;"><b>ООО «ТоропливыйПром»</b><br>Численность персонала (чел.): 142<br>Адрес: ст. Азов (Рост.), бул. Челюскинцев, д. 5, 351161</div>`)[0];
+                popup_2a7a20b7fc7d94c3dc41be32be694b37.setContent(html_9a98991b8e15779d48619b2cdadf8cab);
+            
+        
+
+        circle_marker_776b8cc87e95c94c956d273506883bc8.bindPopup(popup_2a7a20b7fc7d94c3dc41be32be694b37)
+        ;
+
+        
+    
+    
+            var circle_marker_86b88b539ca5e83478b11277b99ad6e8 = L.circleMarker(
+                [55.769562, 37.700922],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_f6fe636d2e1b5bf7482127f1fb09c333 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4c344345d661a4615278514f05954c87 = $(`<div id="html_4c344345d661a4615278514f05954c87" style="width: 100.0%; height: 100.0%;"><b>ООО «ПохороныПром»</b><br>Численность персонала (чел.): 115<br>Адрес: к. Дзержинск, бул. Механический, д. 7/6, 287101</div>`)[0];
+                popup_f6fe636d2e1b5bf7482127f1fb09c333.setContent(html_4c344345d661a4615278514f05954c87);
+            
+        
+
+        circle_marker_86b88b539ca5e83478b11277b99ad6e8.bindPopup(popup_f6fe636d2e1b5bf7482127f1fb09c333)
+        ;
+
+        
+    
+    
+            var circle_marker_7833751cc3b81bed8fd502ba060ad4b9 = L.circleMarker(
+                [55.693989, 37.594371],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_8868793c94d21282ef886fc2d5b31125 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dc85020e892bbcd77d4d90a5b536c8bc = $(`<div id="html_dc85020e892bbcd77d4d90a5b536c8bc" style="width: 100.0%; height: 100.0%;"><b>ООО «СовещаниеПром»</b><br>Численность персонала (чел.): 314<br>Адрес: к. Тулун, пр. Ульяновский, д. 74 стр. 8, 133150</div>`)[0];
+                popup_8868793c94d21282ef886fc2d5b31125.setContent(html_dc85020e892bbcd77d4d90a5b536c8bc);
+            
+        
+
+        circle_marker_7833751cc3b81bed8fd502ba060ad4b9.bindPopup(popup_8868793c94d21282ef886fc2d5b31125)
+        ;
+
+        
+    
+    
+            var circle_marker_eee929d0e7f894d2bbc5214c5d385e7f = L.circleMarker(
+                [55.75049, 37.565334],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_a1d1370b5c7e1c9b827ca80295ff89c2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_34adf0f201a544f1de9de5ee679518c4 = $(`<div id="html_34adf0f201a544f1de9de5ee679518c4" style="width: 100.0%; height: 100.0%;"><b>ООО «ВторойПром»</b><br>Численность персонала (чел.): 204<br>Адрес: г. Ковров, пр. Вахитова, д. 4/7, 260647</div>`)[0];
+                popup_a1d1370b5c7e1c9b827ca80295ff89c2.setContent(html_34adf0f201a544f1de9de5ee679518c4);
+            
+        
+
+        circle_marker_eee929d0e7f894d2bbc5214c5d385e7f.bindPopup(popup_a1d1370b5c7e1c9b827ca80295ff89c2)
+        ;
+
+        
+    
+    
+            var circle_marker_5435fad5072e549ff75bf8eb4d044f7d = L.circleMarker(
+                [55.682291, 37.741703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_3235bb7eba6df8036dde2b1c59a3d5a6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1805b415658f0005d78dc7cbee30eaa6 = $(`<div id="html_1805b415658f0005d78dc7cbee30eaa6" style="width: 100.0%; height: 100.0%;"><b>ООО «ПривлекатьПром»</b><br>Численность персонала (чел.): 55<br>Адрес: г. Костомукша, наб. Авиационная, д. 9/5 к. 284, 411824</div>`)[0];
+                popup_3235bb7eba6df8036dde2b1c59a3d5a6.setContent(html_1805b415658f0005d78dc7cbee30eaa6);
+            
+        
+
+        circle_marker_5435fad5072e549ff75bf8eb4d044f7d.bindPopup(popup_3235bb7eba6df8036dde2b1c59a3d5a6)
+        ;
+
+        
+    
+    
+            var circle_marker_b26238633358955af8ac4b2bc78b0903 = L.circleMarker(
+                [55.77356, 37.518676],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_98e73b278b540d21125bf4ce7d0d0f0c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6f516c0965d5664b63baebd032b13de9 = $(`<div id="html_6f516c0965d5664b63baebd032b13de9" style="width: 100.0%; height: 100.0%;"><b>ООО «ПадальПром»</b><br>Численность персонала (чел.): 29<br>Адрес: ст. Всеволожск, ш. Партизанское, д. 4/4 к. 6/5, 303654</div>`)[0];
+                popup_98e73b278b540d21125bf4ce7d0d0f0c.setContent(html_6f516c0965d5664b63baebd032b13de9);
+            
+        
+
+        circle_marker_b26238633358955af8ac4b2bc78b0903.bindPopup(popup_98e73b278b540d21125bf4ce7d0d0f0c)
+        ;
+
+        
+    
+    
+            var circle_marker_08f59c9901abe7236a356196032dd02f = L.circleMarker(
+                [55.748951, 37.498605],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_52c36608514951719ff4d1de458af4b3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a606608381035fe60627d1022fce19b1 = $(`<div id="html_a606608381035fe60627d1022fce19b1" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧеткоПром»</b><br>Численность персонала (чел.): 291<br>Адрес: д. Хатанга, пр. Советский, д. 5 к. 66, 773872</div>`)[0];
+                popup_52c36608514951719ff4d1de458af4b3.setContent(html_a606608381035fe60627d1022fce19b1);
+            
+        
+
+        circle_marker_08f59c9901abe7236a356196032dd02f.bindPopup(popup_52c36608514951719ff4d1de458af4b3)
+        ;
+
+        
+    
+    
+            var circle_marker_8a78a0c90fc2b0b922503b9f28546ba9 = L.circleMarker(
+                [55.743162, 37.638468],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_d2df1eca9761504c40805a108e6af30f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_026717d7e51add9888b9e53bc3562b2f = $(`<div id="html_026717d7e51add9888b9e53bc3562b2f" style="width: 100.0%; height: 100.0%;"><b>ООО «ВстатьПром»</b><br>Численность персонала (чел.): 79<br>Адрес: с. Кропоткин (Краснод.), ш. Энергетическое, д. 4/5, 143455</div>`)[0];
+                popup_d2df1eca9761504c40805a108e6af30f.setContent(html_026717d7e51add9888b9e53bc3562b2f);
+            
+        
+
+        circle_marker_8a78a0c90fc2b0b922503b9f28546ba9.bindPopup(popup_d2df1eca9761504c40805a108e6af30f)
+        ;
+
+        
+    
+    
+            var circle_marker_e9231f00d27f8f713abe1b02fd39fb0b = L.circleMarker(
+                [55.85414, 37.577453],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_70cda5f8bfe941bde77d35ae88c0c541 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b27b5d65bcc539b2015912040fb38e7 = $(`<div id="html_2b27b5d65bcc539b2015912040fb38e7" style="width: 100.0%; height: 100.0%;"><b>ООО «СпособПром»</b><br>Численность персонала (чел.): 15<br>Адрес: п. Славгород, ул. Троицкая, д. 6/4, 556464</div>`)[0];
+                popup_70cda5f8bfe941bde77d35ae88c0c541.setContent(html_2b27b5d65bcc539b2015912040fb38e7);
+            
+        
+
+        circle_marker_e9231f00d27f8f713abe1b02fd39fb0b.bindPopup(popup_70cda5f8bfe941bde77d35ae88c0c541)
+        ;
+
+        
+    
+    
+            var circle_marker_5c9499a8c406c1cda4c0aab6b4e34d52 = L.circleMarker(
+                [55.779239, 37.690141],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_19e490639e46159c0620870ac1a81f4f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ca63c2d2d77b47d7bbb4b6994f08ec3 = $(`<div id="html_6ca63c2d2d77b47d7bbb4b6994f08ec3" style="width: 100.0%; height: 100.0%;"><b>ООО «ХозяйкаПром»</b><br>Численность персонала (чел.): 168<br>Адрес: г. Радужный, ул. Седова, д. 8 к. 36, 987769</div>`)[0];
+                popup_19e490639e46159c0620870ac1a81f4f.setContent(html_6ca63c2d2d77b47d7bbb4b6994f08ec3);
+            
+        
+
+        circle_marker_5c9499a8c406c1cda4c0aab6b4e34d52.bindPopup(popup_19e490639e46159c0620870ac1a81f4f)
+        ;
+
+        
+    
+    
+            var circle_marker_6c0f092aaa80320f0cbf6408ad0b280a = L.circleMarker(
+                [55.749129, 37.535697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_4df0e827691fe277dd5140ac2b22c93b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_571094d54bc74f5c4322209bd6d60e6c = $(`<div id="html_571094d54bc74f5c4322209bd6d60e6c" style="width: 100.0%; height: 100.0%;"><b>ООО «ТысячаПром»</b><br>Численность персонала (чел.): 152<br>Адрес: клх Калуга, ул. Брянская, д. 83 к. 9, 134352</div>`)[0];
+                popup_4df0e827691fe277dd5140ac2b22c93b.setContent(html_571094d54bc74f5c4322209bd6d60e6c);
+            
+        
+
+        circle_marker_6c0f092aaa80320f0cbf6408ad0b280a.bindPopup(popup_4df0e827691fe277dd5140ac2b22c93b)
+        ;
+
+        
+    
+    
+            var circle_marker_32ed8c14071b816f6661d97a354725d4 = L.circleMarker(
+                [55.761767, 37.545516],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_b71d60b3adb97d2e6d378252a4106fb1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_02db5998068de2642ec5adeb0b8d001e = $(`<div id="html_02db5998068de2642ec5adeb0b8d001e" style="width: 100.0%; height: 100.0%;"><b>ООО «ГолубчикПром»</b><br>Численность персонала (чел.): 19<br>Адрес: г. Поронайск, бул. Чайкиной, д. 1 к. 54, 134936</div>`)[0];
+                popup_b71d60b3adb97d2e6d378252a4106fb1.setContent(html_02db5998068de2642ec5adeb0b8d001e);
+            
+        
+
+        circle_marker_32ed8c14071b816f6661d97a354725d4.bindPopup(popup_b71d60b3adb97d2e6d378252a4106fb1)
+        ;
+
+        
+    
+    
+            var circle_marker_72b21d0d039c02ef80f5743f9d50aa28 = L.circleMarker(
+                [55.792706, 37.609964],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_f47afa0889eae5d77d56e74f94acc620 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c3abc8751d3d6434c9224c3d6a34ded1 = $(`<div id="html_c3abc8751d3d6434c9224c3d6a34ded1" style="width: 100.0%; height: 100.0%;"><b>ООО «ДоставатьПром»</b><br>Численность персонала (чел.): 87<br>Адрес: клх Таганрог, бул. Юности, д. 671 к. 6, 680876</div>`)[0];
+                popup_f47afa0889eae5d77d56e74f94acc620.setContent(html_c3abc8751d3d6434c9224c3d6a34ded1);
+            
+        
+
+        circle_marker_72b21d0d039c02ef80f5743f9d50aa28.bindPopup(popup_f47afa0889eae5d77d56e74f94acc620)
+        ;
+
+        
+    
+    
+            var circle_marker_6a2edb26a7d6e8426b9470ce11b7dfd9 = L.circleMarker(
+                [55.623705, 37.665682],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_081927a3a3f5a31d9462ea537b58528a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8b6406357c5a49b6d4411ae1a8b7c99a = $(`<div id="html_8b6406357c5a49b6d4411ae1a8b7c99a" style="width: 100.0%; height: 100.0%;"><b>ООО «ВажныйПром»</b><br>Численность персонала (чел.): 115<br>Адрес: д. Стерлитамак, наб. Репина, д. 6/4 к. 79, 605766</div>`)[0];
+                popup_081927a3a3f5a31d9462ea537b58528a.setContent(html_8b6406357c5a49b6d4411ae1a8b7c99a);
+            
+        
+
+        circle_marker_6a2edb26a7d6e8426b9470ce11b7dfd9.bindPopup(popup_081927a3a3f5a31d9462ea537b58528a)
+        ;
+
+        
+    
+    
+            var circle_marker_8a9e14c73a762383d182ed3974f1917f = L.circleMarker(
+                [55.807507, 37.469197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_13c77b135de2cd2a8171ff87c18ffa5b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f80bc4cfd89515fff20189d5bcd7c2ae = $(`<div id="html_f80bc4cfd89515fff20189d5bcd7c2ae" style="width: 100.0%; height: 100.0%;"><b>ООО «СохранятьПром»</b><br>Численность персонала (чел.): 134<br>Адрес: д. Приозерск, бул. Осенний, д. 22 стр. 4/8, 374740</div>`)[0];
+                popup_13c77b135de2cd2a8171ff87c18ffa5b.setContent(html_f80bc4cfd89515fff20189d5bcd7c2ae);
+            
+        
+
+        circle_marker_8a9e14c73a762383d182ed3974f1917f.bindPopup(popup_13c77b135de2cd2a8171ff87c18ffa5b)
+        ;
+
+        
+    
+    
+            var circle_marker_20a917f51e3cc844dc094b8b778e3771 = L.circleMarker(
+                [55.787, 37.69321],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_053b9f44ad3ba5df71fd908b976f7313 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1c33ae6dfce76939e5ff9d13f60fed1c = $(`<div id="html_1c33ae6dfce76939e5ff9d13f60fed1c" style="width: 100.0%; height: 100.0%;"><b>ООО «ЭкзаменПром»</b><br>Численность персонала (чел.): 9<br>Адрес: к. Пушкин, алл. Шахтерская, д. 9, 247451</div>`)[0];
+                popup_053b9f44ad3ba5df71fd908b976f7313.setContent(html_1c33ae6dfce76939e5ff9d13f60fed1c);
+            
+        
+
+        circle_marker_20a917f51e3cc844dc094b8b778e3771.bindPopup(popup_053b9f44ad3ba5df71fd908b976f7313)
+        ;
+
+        
+    
+    
+            var circle_marker_9e048531d88a1297fad25bab24dca082 = L.circleMarker(
+                [55.754669, 37.660756],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_f298df124692de98a67a33f1154ecee8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_10d5c6a322ff9fb8d429c98dc7d22d81 = $(`<div id="html_10d5c6a322ff9fb8d429c98dc7d22d81" style="width: 100.0%; height: 100.0%;"><b>ООО «ВолкПром»</b><br>Численность персонала (чел.): 226<br>Адрес: с. Саянск, ш. Гастелло, д. 658, 643171</div>`)[0];
+                popup_f298df124692de98a67a33f1154ecee8.setContent(html_10d5c6a322ff9fb8d429c98dc7d22d81);
+            
+        
+
+        circle_marker_9e048531d88a1297fad25bab24dca082.bindPopup(popup_f298df124692de98a67a33f1154ecee8)
+        ;
+
+        
+    
+    
+            var circle_marker_2911aaa79109de9e5eea4480d834f274 = L.circleMarker(
+                [55.716995, 37.569969],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_36a9bc93174b994b693d5d82c5c3f446 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c2c0da6e5a7a7b08122159953d4862bf = $(`<div id="html_c2c0da6e5a7a7b08122159953d4862bf" style="width: 100.0%; height: 100.0%;"><b>ООО «ВздрагиватьПром»</b><br>Численность персонала (чел.): 326<br>Адрес: клх Сасово, ул. Космонавтов, д. 31, 998569</div>`)[0];
+                popup_36a9bc93174b994b693d5d82c5c3f446.setContent(html_c2c0da6e5a7a7b08122159953d4862bf);
+            
+        
+
+        circle_marker_2911aaa79109de9e5eea4480d834f274.bindPopup(popup_36a9bc93174b994b693d5d82c5c3f446)
+        ;
+
+        
+    
+    
+            var circle_marker_3b286ade755a2cfe888e36c87cf38aee = L.circleMarker(
+                [55.662525, 37.607713],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_dca9d9881fe4d8f867b45fb5db6174cd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2ae2bce929badee349d80b0fd75bab7e = $(`<div id="html_2ae2bce929badee349d80b0fd75bab7e" style="width: 100.0%; height: 100.0%;"><b>ООО «ЛенинградПром»</b><br>Численность персонала (чел.): 204<br>Адрес: к. Усть-Кулом, ул. Медицинская, д. 96 к. 194, 445502</div>`)[0];
+                popup_dca9d9881fe4d8f867b45fb5db6174cd.setContent(html_2ae2bce929badee349d80b0fd75bab7e);
+            
+        
+
+        circle_marker_3b286ade755a2cfe888e36c87cf38aee.bindPopup(popup_dca9d9881fe4d8f867b45fb5db6174cd)
+        ;
+
+        
+    
+    
+            var circle_marker_89740b118188ebc3e9173332ac75cf22 = L.circleMarker(
+                [55.683143, 37.521558],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_4244e4116bf60d10bc73113934af3a43 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6e092ea2e07bf4d8f569e406c95c32f8 = $(`<div id="html_6e092ea2e07bf4d8f569e406c95c32f8" style="width: 100.0%; height: 100.0%;"><b>ООО «КаютаПром»</b><br>Численность персонала (чел.): 57<br>Адрес: клх Руза, алл. Максима Горького, д. 98, 160607</div>`)[0];
+                popup_4244e4116bf60d10bc73113934af3a43.setContent(html_6e092ea2e07bf4d8f569e406c95c32f8);
+            
+        
+
+        circle_marker_89740b118188ebc3e9173332ac75cf22.bindPopup(popup_4244e4116bf60d10bc73113934af3a43)
+        ;
+
+        
+    
+    
+            var circle_marker_05c5805c073453150013d7e59c016030 = L.circleMarker(
+                [55.779644, 37.395771],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_3013fc85d6f062a212892bc8531f1312 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f0561f3b41d25346ca87ec678e057a1d = $(`<div id="html_f0561f3b41d25346ca87ec678e057a1d" style="width: 100.0%; height: 100.0%;"><b>ООО «ИсследованиеПром»</b><br>Численность персонала (чел.): 27<br>Адрес: г. Соболево, бул. Лермонтова, д. 1 к. 9, 477005</div>`)[0];
+                popup_3013fc85d6f062a212892bc8531f1312.setContent(html_f0561f3b41d25346ca87ec678e057a1d);
+            
+        
+
+        circle_marker_05c5805c073453150013d7e59c016030.bindPopup(popup_3013fc85d6f062a212892bc8531f1312)
+        ;
+
+        
+    
+    
+            var circle_marker_23b71006be05061f88f7501adb7b631c = L.circleMarker(
+                [55.751013, 37.675693],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_3ecd960fdbf7064384525a6a70d0e3af = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e17035aea94446437f19e389cea5871e = $(`<div id="html_e17035aea94446437f19e389cea5871e" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Численность персонала (чел.): 157<br>Адрес: клх Мыс Шмидта, бул. Студенческий, д. 9/6, 542357</div>`)[0];
+                popup_3ecd960fdbf7064384525a6a70d0e3af.setContent(html_e17035aea94446437f19e389cea5871e);
+            
+        
+
+        circle_marker_23b71006be05061f88f7501adb7b631c.bindPopup(popup_3ecd960fdbf7064384525a6a70d0e3af)
+        ;
+
+        
+    
+    
+            var circle_marker_7622c2825b5756672927b86a5052dc03 = L.circleMarker(
+                [55.805731, 37.585375],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_b542e55d7e0229655909e7ecdb59d246 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_68133069df3b9edd955e8826770dcdc3 = $(`<div id="html_68133069df3b9edd955e8826770dcdc3" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрелестьПром»</b><br>Численность персонала (чел.): 81<br>Адрес: к. Североморск, алл. Николаева, д. 637 стр. 760, 361530</div>`)[0];
+                popup_b542e55d7e0229655909e7ecdb59d246.setContent(html_68133069df3b9edd955e8826770dcdc3);
+            
+        
+
+        circle_marker_7622c2825b5756672927b86a5052dc03.bindPopup(popup_b542e55d7e0229655909e7ecdb59d246)
+        ;
+
+        
+    
+    
+            var circle_marker_4af54f2937eb4e23031cc74f399e59f4 = L.circleMarker(
+                [55.734617, 37.658044],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_c800f28ff367b875080452e7690fc38c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c6847fbc7c4619567af6494001074265 = $(`<div id="html_c6847fbc7c4619567af6494001074265" style="width: 100.0%; height: 100.0%;"><b>ООО «ПривлекатьПром»</b><br>Численность персонала (чел.): 217<br>Адрес: д. Урюпинск, ш. 9 мая, д. 167 стр. 6/5, 515319</div>`)[0];
+                popup_c800f28ff367b875080452e7690fc38c.setContent(html_c6847fbc7c4619567af6494001074265);
+            
+        
+
+        circle_marker_4af54f2937eb4e23031cc74f399e59f4.bindPopup(popup_c800f28ff367b875080452e7690fc38c)
+        ;
+
+        
+    
+    
+            var circle_marker_24703a3b09a1a6c8942c027007115dba = L.circleMarker(
+                [55.746734, 37.570911],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_bee90c40a212cf1f0978cbb08cfd4548 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5f9bbcc02ce79a2fbc2874d4d9bc73e1 = $(`<div id="html_5f9bbcc02ce79a2fbc2874d4d9bc73e1" style="width: 100.0%; height: 100.0%;"><b>ООО «ЯркоПром»</b><br>Численность персонала (чел.): 38<br>Адрес: с. Шелагонцы, пр. Ольховый, д. 6/8 стр. 759, 016582</div>`)[0];
+                popup_bee90c40a212cf1f0978cbb08cfd4548.setContent(html_5f9bbcc02ce79a2fbc2874d4d9bc73e1);
+            
+        
+
+        circle_marker_24703a3b09a1a6c8942c027007115dba.bindPopup(popup_bee90c40a212cf1f0978cbb08cfd4548)
+        ;
+
+        
+    
+    
+            var circle_marker_dc31b32b4d1a3375cef65ee4a3059e52 = L.circleMarker(
+                [55.739323, 37.546894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_91e235272c320b1eae0fb68a7e365a8b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_85c115cf046c1049b9775e7d50197258 = $(`<div id="html_85c115cf046c1049b9775e7d50197258" style="width: 100.0%; height: 100.0%;"><b>ООО «ВздрогнутьПром»</b><br>Численность персонала (чел.): 107<br>Адрес: ст. Ербогачен, бул. Локомотивный, д. 9 стр. 41, 370589</div>`)[0];
+                popup_91e235272c320b1eae0fb68a7e365a8b.setContent(html_85c115cf046c1049b9775e7d50197258);
+            
+        
+
+        circle_marker_dc31b32b4d1a3375cef65ee4a3059e52.bindPopup(popup_91e235272c320b1eae0fb68a7e365a8b)
+        ;
+
+        
+    
+    
+            var circle_marker_9e49914577cbd3bf3ffa580be5543665 = L.circleMarker(
+                [55.765047, 37.655927],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_b99af557086e7d37660c79b162110f63 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d8ada4a963e71ca70908e1d286159a52 = $(`<div id="html_d8ada4a963e71ca70908e1d286159a52" style="width: 100.0%; height: 100.0%;"><b>ООО «ИзредкаПром»</b><br>Численность персонала (чел.): 156<br>Адрес: п. Якутск, пер. Энтузиастов, д. 101 стр. 4, 907844</div>`)[0];
+                popup_b99af557086e7d37660c79b162110f63.setContent(html_d8ada4a963e71ca70908e1d286159a52);
+            
+        
+
+        circle_marker_9e49914577cbd3bf3ffa580be5543665.bindPopup(popup_b99af557086e7d37660c79b162110f63)
+        ;
+
+        
+    
+    
+            var circle_marker_bbfd71cba66486aecd59525de06d1be2 = L.circleMarker(
+                [55.74958, 37.708942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_f96a77eacede31a095c13f40b0129804 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_43340bce812a975ccce44e0eaaa264d8 = $(`<div id="html_43340bce812a975ccce44e0eaaa264d8" style="width: 100.0%; height: 100.0%;"><b>ООО «СравнениеПром»</b><br>Численность персонала (чел.): 47<br>Адрес: с. Териберка, алл. Рыбацкая, д. 1 к. 847, 801624</div>`)[0];
+                popup_f96a77eacede31a095c13f40b0129804.setContent(html_43340bce812a975ccce44e0eaaa264d8);
+            
+        
+
+        circle_marker_bbfd71cba66486aecd59525de06d1be2.bindPopup(popup_f96a77eacede31a095c13f40b0129804)
+        ;
+
+        
+    
+    
+            var circle_marker_e397f57fefefb56ffdae8947f221c6c3 = L.circleMarker(
+                [55.68765, 37.672604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_bd2c8e4f055e7a3b1d52d9b46faceda9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_34a906ca31fbb4100a9912b2b76cab65 = $(`<div id="html_34a906ca31fbb4100a9912b2b76cab65" style="width: 100.0%; height: 100.0%;"><b>ООО «ОбидаПром»</b><br>Численность персонала (чел.): 29<br>Адрес: с. Анадырь, наб. Рябиновая, д. 5/1 к. 5/4, 972896</div>`)[0];
+                popup_bd2c8e4f055e7a3b1d52d9b46faceda9.setContent(html_34a906ca31fbb4100a9912b2b76cab65);
+            
+        
+
+        circle_marker_e397f57fefefb56ffdae8947f221c6c3.bindPopup(popup_bd2c8e4f055e7a3b1d52d9b46faceda9)
+        ;
+
+        
+    
+    
+            var circle_marker_4c151839c25242ff377fbe481d726f13 = L.circleMarker(
+                [55.712701, 37.574619],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_1383b9fb8b2b442fb41c6b03296ec0be = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e3a024c674289a008582cf935157600e = $(`<div id="html_e3a024c674289a008582cf935157600e" style="width: 100.0%; height: 100.0%;"><b>ООО «ПосвятитьПром»</b><br>Численность персонала (чел.): 127<br>Адрес: ст. Нефтегорск (Самар.), наб. Западная, д. 2, 747338</div>`)[0];
+                popup_1383b9fb8b2b442fb41c6b03296ec0be.setContent(html_e3a024c674289a008582cf935157600e);
+            
+        
+
+        circle_marker_4c151839c25242ff377fbe481d726f13.bindPopup(popup_1383b9fb8b2b442fb41c6b03296ec0be)
+        ;
+
+        
+    
+    
+            var circle_marker_fdf0616e4b7dff9dc1f59998ce5589d7 = L.circleMarker(
+                [55.687772, 37.67507],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_41a83f784471fe119c93e649a64c1aae = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_649ac45a8388dfc869d5217cc46854a3 = $(`<div id="html_649ac45a8388dfc869d5217cc46854a3" style="width: 100.0%; height: 100.0%;"><b>ООО «СкрытыйПром»</b><br>Численность персонала (чел.): 167<br>Адрес: с. Урус-Мартан, пр. Элеваторный, д. 5/4 стр. 852, 205493</div>`)[0];
+                popup_41a83f784471fe119c93e649a64c1aae.setContent(html_649ac45a8388dfc869d5217cc46854a3);
+            
+        
+
+        circle_marker_fdf0616e4b7dff9dc1f59998ce5589d7.bindPopup(popup_41a83f784471fe119c93e649a64c1aae)
+        ;
+
+        
+    
+    
+            var circle_marker_088652c17ce2156d2883a8fc480b4f0c = L.circleMarker(
+                [55.743349, 37.678662],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_3e3b23060aa7450fd918f5dec74a4686 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2bdca2df830a15adf1181a467f32e784 = $(`<div id="html_2bdca2df830a15adf1181a467f32e784" style="width: 100.0%; height: 100.0%;"><b>ООО «ЛегкоПром»</b><br>Численность персонала (чел.): 4<br>Адрес: г. Фатеж, ул. З.Космодемьянской, д. 99, 258713</div>`)[0];
+                popup_3e3b23060aa7450fd918f5dec74a4686.setContent(html_2bdca2df830a15adf1181a467f32e784);
+            
+        
+
+        circle_marker_088652c17ce2156d2883a8fc480b4f0c.bindPopup(popup_3e3b23060aa7450fd918f5dec74a4686)
+        ;
+
+        
+    
+    
+            var circle_marker_459dc070223d6d49f53ffe6391daf25d = L.circleMarker(
+                [55.73995, 37.6911],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_3c9a8f6e607e98a3437600fd0ef0fa56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3d973d24bea4d27bac5713e2751dec63 = $(`<div id="html_3d973d24bea4d27bac5713e2751dec63" style="width: 100.0%; height: 100.0%;"><b>ООО «ГоловнойПром»</b><br>Численность персонала (чел.): 92<br>Адрес: клх Урюпинск, пер. Воровского, д. 83 к. 3, 310690</div>`)[0];
+                popup_3c9a8f6e607e98a3437600fd0ef0fa56.setContent(html_3d973d24bea4d27bac5713e2751dec63);
+            
+        
+
+        circle_marker_459dc070223d6d49f53ffe6391daf25d.bindPopup(popup_3c9a8f6e607e98a3437600fd0ef0fa56)
+        ;
+
+        
+    
+    
+            var circle_marker_ce78bb1525c2ddd4f82445c998776fb6 = L.circleMarker(
+                [55.74633, 37.639886],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_260ffec26d74f7ecbae7b28be8b73c3b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0d3b684ae5e46fb4733d5d04bc822047 = $(`<div id="html_0d3b684ae5e46fb4733d5d04bc822047" style="width: 100.0%; height: 100.0%;"><b>ООО «СброситьПром»</b><br>Численность персонала (чел.): 167<br>Адрес: ст. Кимры, ш. Среднее, д. 1/9 к. 7/9, 634351</div>`)[0];
+                popup_260ffec26d74f7ecbae7b28be8b73c3b.setContent(html_0d3b684ae5e46fb4733d5d04bc822047);
+            
+        
+
+        circle_marker_ce78bb1525c2ddd4f82445c998776fb6.bindPopup(popup_260ffec26d74f7ecbae7b28be8b73c3b)
+        ;
+
+        
+    
+    
+            var circle_marker_044ea0ee723f10a6c07bf72b373dec24 = L.circleMarker(
+                [55.722767, 37.551008],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_286f9472b88df922a4ecb4db2ae3e8a6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0d3009a26ec4002132bdd0115541d614 = $(`<div id="html_0d3009a26ec4002132bdd0115541d614" style="width: 100.0%; height: 100.0%;"><b>ООО «ГрудьПром»</b><br>Численность персонала (чел.): 189<br>Адрес: п. Каменск-Уральский, алл. Воровского, д. 97 к. 5, 772522</div>`)[0];
+                popup_286f9472b88df922a4ecb4db2ae3e8a6.setContent(html_0d3009a26ec4002132bdd0115541d614);
+            
+        
+
+        circle_marker_044ea0ee723f10a6c07bf72b373dec24.bindPopup(popup_286f9472b88df922a4ecb4db2ae3e8a6)
+        ;
+
+        
+    
+    
+            var circle_marker_3999f9e42fb236a187155f3759d540e1 = L.circleMarker(
+                [55.729787, 37.675428],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_103363ea336ea294c00b26fff976139c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d14709e5b1d18c8de24b3ee86a9ac0ac = $(`<div id="html_d14709e5b1d18c8de24b3ee86a9ac0ac" style="width: 100.0%; height: 100.0%;"><b>ООО «ТрястиПром»</b><br>Численность персонала (чел.): 27<br>Адрес: к. Валдай, ш. Речное, д. 766 стр. 1/1, 176591</div>`)[0];
+                popup_103363ea336ea294c00b26fff976139c.setContent(html_d14709e5b1d18c8de24b3ee86a9ac0ac);
+            
+        
+
+        circle_marker_3999f9e42fb236a187155f3759d540e1.bindPopup(popup_103363ea336ea294c00b26fff976139c)
+        ;
+
+        
+    
+    
+            var circle_marker_4641edaef535c7ebd3baa6ee84b815e7 = L.circleMarker(
+                [55.750202, 37.685532],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_70689337a83bd44d2e694945f780a133 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1758e388229f294798872240a7891e73 = $(`<div id="html_1758e388229f294798872240a7891e73" style="width: 100.0%; height: 100.0%;"><b>ООО «МягкийПром»</b><br>Численность персонала (чел.): 119<br>Адрес: ст. Котельнич, ул. Нижняя, д. 3 стр. 3/7, 511047</div>`)[0];
+                popup_70689337a83bd44d2e694945f780a133.setContent(html_1758e388229f294798872240a7891e73);
+            
+        
+
+        circle_marker_4641edaef535c7ebd3baa6ee84b815e7.bindPopup(popup_70689337a83bd44d2e694945f780a133)
+        ;
+
+        
+    
+    
+            var circle_marker_9c2f354ec36e1a39504cee942aab4c3a = L.circleMarker(
+                [55.736202, 37.684708],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_5b60a9813aa7215970927ce6a0bd08b2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_78fa33a9ec99896f49c528b0df6f3f2a = $(`<div id="html_78fa33a9ec99896f49c528b0df6f3f2a" style="width: 100.0%; height: 100.0%;"><b>ООО «МгновениеПром»</b><br>Численность персонала (чел.): 86<br>Адрес: к. Руза, пер. Геологический, д. 6 стр. 67, 654793</div>`)[0];
+                popup_5b60a9813aa7215970927ce6a0bd08b2.setContent(html_78fa33a9ec99896f49c528b0df6f3f2a);
+            
+        
+
+        circle_marker_9c2f354ec36e1a39504cee942aab4c3a.bindPopup(popup_5b60a9813aa7215970927ce6a0bd08b2)
+        ;
+
+        
+    
+    
+            var circle_marker_307a4228edd7f007ac4e6bf1b1c4bdad = L.circleMarker(
+                [55.814951, 37.704589],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_603cb21ab316db7c78563ccc6485ced1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a7d367c60701c9e5df43eb51b8618b51 = $(`<div id="html_a7d367c60701c9e5df43eb51b8618b51" style="width: 100.0%; height: 100.0%;"><b>ООО «ИнвалидПром»</b><br>Численность персонала (чел.): 158<br>Адрес: с. Озеры, пр. Громова, д. 15 к. 2/5, 112545</div>`)[0];
+                popup_603cb21ab316db7c78563ccc6485ced1.setContent(html_a7d367c60701c9e5df43eb51b8618b51);
+            
+        
+
+        circle_marker_307a4228edd7f007ac4e6bf1b1c4bdad.bindPopup(popup_603cb21ab316db7c78563ccc6485ced1)
+        ;
+
+        
+    
+    
+            var circle_marker_f172e78c1e8448eb91c9adc251e16d7d = L.circleMarker(
+                [55.810224, 37.627371],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_6cc0139c4d177e47c17f13fbe2c6a9ed = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_80105bf92248de866facbe9a45a10d48 = $(`<div id="html_80105bf92248de866facbe9a45a10d48" style="width: 100.0%; height: 100.0%;"><b>ООО «ВоенныйПром»</b><br>Численность персонала (чел.): 108<br>Адрес: к. Сургут (Хант.), бул. Комарова, д. 7/2 стр. 6, 924991</div>`)[0];
+                popup_6cc0139c4d177e47c17f13fbe2c6a9ed.setContent(html_80105bf92248de866facbe9a45a10d48);
+            
+        
+
+        circle_marker_f172e78c1e8448eb91c9adc251e16d7d.bindPopup(popup_6cc0139c4d177e47c17f13fbe2c6a9ed)
+        ;
+
+        
+    
+    
+            var circle_marker_c13405abd34872e0fe1ecb76443568a7 = L.circleMarker(
+                [55.756291, 37.439214],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_98edac8f872596323c356772d0177398 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0c8b3eb745cab98a9f84c18f73830299 = $(`<div id="html_0c8b3eb745cab98a9f84c18f73830299" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыбиратьПром»</b><br>Численность персонала (чел.): 223<br>Адрес: к. Урус-Мартан, пер. Дачный, д. 9/4 к. 2/4, 074517</div>`)[0];
+                popup_98edac8f872596323c356772d0177398.setContent(html_0c8b3eb745cab98a9f84c18f73830299);
+            
+        
+
+        circle_marker_c13405abd34872e0fe1ecb76443568a7.bindPopup(popup_98edac8f872596323c356772d0177398)
+        ;
+
+        
+    
+    
+            var circle_marker_7a6cb6ce5d9c6f765d4bb0c17946dcb7 = L.circleMarker(
+                [55.796536, 37.539856],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_0f5a2ebb71d903ceec51c788e51a1a02 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_548c7aba10952d9c66934b5987a25336 = $(`<div id="html_548c7aba10952d9c66934b5987a25336" style="width: 100.0%; height: 100.0%;"><b>ООО «ИсполнятьПром»</b><br>Численность персонала (чел.): 19<br>Адрес: с. Мценск, ул. Студенческая, д. 6/2 стр. 4/7, 745458</div>`)[0];
+                popup_0f5a2ebb71d903ceec51c788e51a1a02.setContent(html_548c7aba10952d9c66934b5987a25336);
+            
+        
+
+        circle_marker_7a6cb6ce5d9c6f765d4bb0c17946dcb7.bindPopup(popup_0f5a2ebb71d903ceec51c788e51a1a02)
+        ;
+
+        
+    
+    
+            var circle_marker_9a4dacd304a6e307a77616be4a214661 = L.circleMarker(
+                [55.796412, 37.748624],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_893194515fb30c5f32f48df3e4184e26 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f81e8aa9caf4a6ab4449399e404330b5 = $(`<div id="html_f81e8aa9caf4a6ab4449399e404330b5" style="width: 100.0%; height: 100.0%;"><b>ООО «УпорПром»</b><br>Численность персонала (чел.): 72<br>Адрес: к. Джейрах, ш. Запрудное, д. 91 к. 892, 326973</div>`)[0];
+                popup_893194515fb30c5f32f48df3e4184e26.setContent(html_f81e8aa9caf4a6ab4449399e404330b5);
+            
+        
+
+        circle_marker_9a4dacd304a6e307a77616be4a214661.bindPopup(popup_893194515fb30c5f32f48df3e4184e26)
+        ;
+
+        
+    
+    
+            var circle_marker_11ce051ac2e28005824db759d9c28d7f = L.circleMarker(
+                [55.685297, 37.744687],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_0661621a9a79a9e7bae7f1a1361ee235 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_714832b90c336632a30bd0ae22367947 = $(`<div id="html_714832b90c336632a30bd0ae22367947" style="width: 100.0%; height: 100.0%;"><b>ООО «ТристаПром»</b><br>Численность персонала (чел.): 214<br>Адрес: к. Кашира, ул. Розы Люксембург, д. 9, 661889</div>`)[0];
+                popup_0661621a9a79a9e7bae7f1a1361ee235.setContent(html_714832b90c336632a30bd0ae22367947);
+            
+        
+
+        circle_marker_11ce051ac2e28005824db759d9c28d7f.bindPopup(popup_0661621a9a79a9e7bae7f1a1361ee235)
+        ;
+
+        
+    
+    
+            var circle_marker_cfa3470e9b6026672a061be495820109 = L.circleMarker(
+                [55.767925, 37.627326],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_b9bf16347ec9f86ca1b39b092e452f3d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f2fa65b8f500629457a805ef585bf6e9 = $(`<div id="html_f2fa65b8f500629457a805ef585bf6e9" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыдержатьПром»</b><br>Численность персонала (чел.): 238<br>Адрес: с. Хасавюрт, наб. Авиационная, д. 2, 380003</div>`)[0];
+                popup_b9bf16347ec9f86ca1b39b092e452f3d.setContent(html_f2fa65b8f500629457a805ef585bf6e9);
+            
+        
+
+        circle_marker_cfa3470e9b6026672a061be495820109.bindPopup(popup_b9bf16347ec9f86ca1b39b092e452f3d)
+        ;
+
+        
+    
+    
+            var circle_marker_ecea9eb8133790b11e409759d8e81b8c = L.circleMarker(
+                [55.725568, 37.632636],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_4d01138ab70852f74b4b5b7410a02c4d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_16ee4087eacab6437ff07dd9e9f03982 = $(`<div id="html_16ee4087eacab6437ff07dd9e9f03982" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрошептатьПром»</b><br>Численность персонала (чел.): 269<br>Адрес: д. Нефтекамск, ш. Зеленое, д. 1 стр. 5/2, 836702</div>`)[0];
+                popup_4d01138ab70852f74b4b5b7410a02c4d.setContent(html_16ee4087eacab6437ff07dd9e9f03982);
+            
+        
+
+        circle_marker_ecea9eb8133790b11e409759d8e81b8c.bindPopup(popup_4d01138ab70852f74b4b5b7410a02c4d)
+        ;
+
+        
+    
+    
+            var circle_marker_82e8c8d591a37b3066047340bdb1bb73 = L.circleMarker(
+                [55.730475, 37.664894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_70a823e7d7f4847f74c1768d5906bfff = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fe07f6cbd7dcaf78ac293a80611f9f8b = $(`<div id="html_fe07f6cbd7dcaf78ac293a80611f9f8b" style="width: 100.0%; height: 100.0%;"><b>ООО «ИдеяПром»</b><br>Численность персонала (чел.): 149<br>Адрес: ст. Ивдель, пр. Докучаева, д. 81, 210032</div>`)[0];
+                popup_70a823e7d7f4847f74c1768d5906bfff.setContent(html_fe07f6cbd7dcaf78ac293a80611f9f8b);
+            
+        
+
+        circle_marker_82e8c8d591a37b3066047340bdb1bb73.bindPopup(popup_70a823e7d7f4847f74c1768d5906bfff)
+        ;
+
+        
+    
+    
+            var circle_marker_f4755cda84e4db55c0e4f9e83482c105 = L.circleMarker(
+                [55.675589, 37.518716],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_500fe9bf8c637e48853a330a54c02e26 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_00c90c1059b4672a2f7b0d37dd18b2c6 = $(`<div id="html_00c90c1059b4672a2f7b0d37dd18b2c6" style="width: 100.0%; height: 100.0%;"><b>ООО «НервноПром»</b><br>Численность персонала (чел.): 171<br>Адрес: к. Ирбит, наб. Новосельская, д. 840, 932133</div>`)[0];
+                popup_500fe9bf8c637e48853a330a54c02e26.setContent(html_00c90c1059b4672a2f7b0d37dd18b2c6);
+            
+        
+
+        circle_marker_f4755cda84e4db55c0e4f9e83482c105.bindPopup(popup_500fe9bf8c637e48853a330a54c02e26)
+        ;
+
+        
+    
+    
+            var circle_marker_90cdc55807762d7ca31c9f3e9af24d5b = L.circleMarker(
+                [55.777569, 37.593942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_a4cadfe4a2aa40d3f92df1a0d3c020d0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d878925443ab6cd15f8a3f5ef73ca19b = $(`<div id="html_d878925443ab6cd15f8a3f5ef73ca19b" style="width: 100.0%; height: 100.0%;"><b>ООО «ОстановитьПром»</b><br>Численность персонала (чел.): 112<br>Адрес: ст. Суздаль, наб. Локомотивная, д. 4 стр. 56, 220969</div>`)[0];
+                popup_a4cadfe4a2aa40d3f92df1a0d3c020d0.setContent(html_d878925443ab6cd15f8a3f5ef73ca19b);
+            
+        
+
+        circle_marker_90cdc55807762d7ca31c9f3e9af24d5b.bindPopup(popup_a4cadfe4a2aa40d3f92df1a0d3c020d0)
+        ;
+
+        
+    
+    
+            var circle_marker_3f1ca707558361a991cc17c449f993d6 = L.circleMarker(
+                [55.799534, 37.710625],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_997b615ea036a65487fc818c4787260a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffcf58574c548ecc341dda2fffee165f = $(`<div id="html_ffcf58574c548ecc341dda2fffee165f" style="width: 100.0%; height: 100.0%;"><b>ООО «ДыханиеПром»</b><br>Численность персонала (чел.): 80<br>Адрес: д. Вилюйск, пер. Клары Цеткин, д. 762 к. 20, 336884</div>`)[0];
+                popup_997b615ea036a65487fc818c4787260a.setContent(html_ffcf58574c548ecc341dda2fffee165f);
+            
+        
+
+        circle_marker_3f1ca707558361a991cc17c449f993d6.bindPopup(popup_997b615ea036a65487fc818c4787260a)
+        ;
+
+        
+    
+    
+            var circle_marker_a328e0256075a9ed63bd9ba87fa3d825 = L.circleMarker(
+                [55.711295, 37.655008],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_b56aa51dd17bdef12bdaef079a74cf22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffff14a7d8a8274625333140a7bc750e = $(`<div id="html_ffff14a7d8a8274625333140a7bc750e" style="width: 100.0%; height: 100.0%;"><b>ООО «ОчереднойПром»</b><br>Численность персонала (чел.): 210<br>Адрес: д. Биробиджан, ш. Правды, д. 4/8 к. 2, 089899</div>`)[0];
+                popup_b56aa51dd17bdef12bdaef079a74cf22.setContent(html_ffff14a7d8a8274625333140a7bc750e);
+            
+        
+
+        circle_marker_a328e0256075a9ed63bd9ba87fa3d825.bindPopup(popup_b56aa51dd17bdef12bdaef079a74cf22)
+        ;
+
+        
+    
+    
+            var circle_marker_33dee141925d53fdb494a24017cfd64e = L.circleMarker(
+                [55.787758, 37.639116],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_78907dc1d27822731730d24068e89527 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bbd915112f09e5741bbf3131572b158a = $(`<div id="html_bbd915112f09e5741bbf3131572b158a" style="width: 100.0%; height: 100.0%;"><b>ООО «ДрогнутьПром»</b><br>Численность персонала (чел.): 270<br>Адрес: к. Печенга, пер. Короленко, д. 465, 745054</div>`)[0];
+                popup_78907dc1d27822731730d24068e89527.setContent(html_bbd915112f09e5741bbf3131572b158a);
+            
+        
+
+        circle_marker_33dee141925d53fdb494a24017cfd64e.bindPopup(popup_78907dc1d27822731730d24068e89527)
+        ;
+
+        
+    
+    
+            var circle_marker_277fec16c2cf585a5286070b5c9d671a = L.circleMarker(
+                [55.738671, 37.547929],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_ce1bf642128c43ddca9df59ca79060a2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_740093cb15f0a65a6f6fba317db6cbca = $(`<div id="html_740093cb15f0a65a6f6fba317db6cbca" style="width: 100.0%; height: 100.0%;"><b>ООО «ИнвалидПром»</b><br>Численность персонала (чел.): 96<br>Адрес: п. Соль-Илецк, пер. Котовского, д. 3 стр. 2, 060293</div>`)[0];
+                popup_ce1bf642128c43ddca9df59ca79060a2.setContent(html_740093cb15f0a65a6f6fba317db6cbca);
+            
+        
+
+        circle_marker_277fec16c2cf585a5286070b5c9d671a.bindPopup(popup_ce1bf642128c43ddca9df59ca79060a2)
+        ;
+
+        
+    
+    
+            var circle_marker_6135de5bfacd841f4597e97901f96460 = L.circleMarker(
+                [55.788518, 37.603303],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_9336b1f8cd0a7ad1ee81cc5ce98273aa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_41ad7bb2203eb872316f4c132f896b30 = $(`<div id="html_41ad7bb2203eb872316f4c132f896b30" style="width: 100.0%; height: 100.0%;"><b>ООО «ПламяПром»</b><br>Численность персонала (чел.): 106<br>Адрес: с. Пинега, бул. Парковый, д. 45 к. 6/9, 282417</div>`)[0];
+                popup_9336b1f8cd0a7ad1ee81cc5ce98273aa.setContent(html_41ad7bb2203eb872316f4c132f896b30);
+            
+        
+
+        circle_marker_6135de5bfacd841f4597e97901f96460.bindPopup(popup_9336b1f8cd0a7ad1ee81cc5ce98273aa)
+        ;
+
+        
+    
+    
+            var circle_marker_770ad21214636a54ecec972970a51782 = L.circleMarker(
+                [55.739893, 37.518098],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_c7e03f1903588f2bec1d22a0c67d3588 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2304c7c08924ecdf4272090c5a75f640 = $(`<div id="html_2304c7c08924ecdf4272090c5a75f640" style="width: 100.0%; height: 100.0%;"><b>ООО «МеталлПром»</b><br>Численность персонала (чел.): 245<br>Адрес: с. Верхний Тагил, пер. Блюхера, д. 7/7, 600835</div>`)[0];
+                popup_c7e03f1903588f2bec1d22a0c67d3588.setContent(html_2304c7c08924ecdf4272090c5a75f640);
+            
+        
+
+        circle_marker_770ad21214636a54ecec972970a51782.bindPopup(popup_c7e03f1903588f2bec1d22a0c67d3588)
+        ;
+
+        
+    
+    
+            var circle_marker_9522bbb3eacb861a5dd74ee01553d3e4 = L.circleMarker(
+                [55.701797, 37.74061],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_9ed1cd52c17d044c2b0096b1b0a6aca0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bde9384186ba257e6a77862c2a7d97d9 = $(`<div id="html_bde9384186ba257e6a77862c2a7d97d9" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗатянутьсяПром»</b><br>Численность персонала (чел.): 176<br>Адрес: с. Горячинск, наб. Монтажников, д. 13 стр. 7, 849926</div>`)[0];
+                popup_9ed1cd52c17d044c2b0096b1b0a6aca0.setContent(html_bde9384186ba257e6a77862c2a7d97d9);
+            
+        
+
+        circle_marker_9522bbb3eacb861a5dd74ee01553d3e4.bindPopup(popup_9ed1cd52c17d044c2b0096b1b0a6aca0)
+        ;
+
+        
+    
+    
+            var circle_marker_bd221b0b1085dd270878cfafed35b841 = L.circleMarker(
+                [55.727708, 37.698193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_bca47dd1294442b108995afeb7052446 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e771a047f7d871eb478ad2a9e34412c8 = $(`<div id="html_e771a047f7d871eb478ad2a9e34412c8" style="width: 100.0%; height: 100.0%;"><b>ООО «ВозмутитьсяПром»</b><br>Численность персонала (чел.): 231<br>Адрес: к. Неплюевка, ул. Юности, д. 8/5, 762120</div>`)[0];
+                popup_bca47dd1294442b108995afeb7052446.setContent(html_e771a047f7d871eb478ad2a9e34412c8);
+            
+        
+
+        circle_marker_bd221b0b1085dd270878cfafed35b841.bindPopup(popup_bca47dd1294442b108995afeb7052446)
+        ;
+
+        
+    
+    
+            var circle_marker_6703cac7adc1037e24f2bc9b5e8d0f7b = L.circleMarker(
+                [55.709923, 37.491052],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_e6c51c36984d8e2908952bb3bb6613e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_542d1b7461999bd70e234a175180d70d = $(`<div id="html_542d1b7461999bd70e234a175180d70d" style="width: 100.0%; height: 100.0%;"><b>ООО «ПредоставитьПром»</b><br>Численность персонала (чел.): 84<br>Адрес: с. Кисловодск, пр. Сурикова, д. 2/8, 517016</div>`)[0];
+                popup_e6c51c36984d8e2908952bb3bb6613e3.setContent(html_542d1b7461999bd70e234a175180d70d);
+            
+        
+
+        circle_marker_6703cac7adc1037e24f2bc9b5e8d0f7b.bindPopup(popup_e6c51c36984d8e2908952bb3bb6613e3)
+        ;
+
+        
+    
+    
+            var circle_marker_b189b51ec46330210242bd2ae2ff61ec = L.circleMarker(
+                [55.728737, 37.63934],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_4073bb03d170e5dddfdfb0b7d6d02fdb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c416e8e297169c104069d4d57e12a00e = $(`<div id="html_c416e8e297169c104069d4d57e12a00e" style="width: 100.0%; height: 100.0%;"><b>ООО «СходитьПром»</b><br>Численность персонала (чел.): 73<br>Адрес: г. Тутаев, ул. Седова, д. 9/3 стр. 22, 995866</div>`)[0];
+                popup_4073bb03d170e5dddfdfb0b7d6d02fdb.setContent(html_c416e8e297169c104069d4d57e12a00e);
+            
+        
+
+        circle_marker_b189b51ec46330210242bd2ae2ff61ec.bindPopup(popup_4073bb03d170e5dddfdfb0b7d6d02fdb)
+        ;
+
+        
+    
+    
+            var circle_marker_b4fae023b56bcce04355de2afbf58112 = L.circleMarker(
+                [55.795818, 37.64205],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_3f8d11d50014fa4443957eb398114290 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_44a825a7b4ecf2948cee385b4cdd3367 = $(`<div id="html_44a825a7b4ecf2948cee385b4cdd3367" style="width: 100.0%; height: 100.0%;"><b>ООО «УголПром»</b><br>Численность персонала (чел.): 186<br>Адрес: ст. Бирск, ш. Калинина, д. 18 стр. 8, 983863</div>`)[0];
+                popup_3f8d11d50014fa4443957eb398114290.setContent(html_44a825a7b4ecf2948cee385b4cdd3367);
+            
+        
+
+        circle_marker_b4fae023b56bcce04355de2afbf58112.bindPopup(popup_3f8d11d50014fa4443957eb398114290)
+        ;
+
+        
+    
+    
+            var circle_marker_6cabebb37ed5fe424d754c19d4ebc843 = L.circleMarker(
+                [55.745263, 37.562219],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_b052cd2092d98af88961d5ce722f7271 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_830c17cc40a5b559f056892af398ab22 = $(`<div id="html_830c17cc40a5b559f056892af398ab22" style="width: 100.0%; height: 100.0%;"><b>ООО «ДеловойПром»</b><br>Численность персонала (чел.): 47<br>Адрес: г. Нижнекамск, алл. Толстого, д. 6, 398780</div>`)[0];
+                popup_b052cd2092d98af88961d5ce722f7271.setContent(html_830c17cc40a5b559f056892af398ab22);
+            
+        
+
+        circle_marker_6cabebb37ed5fe424d754c19d4ebc843.bindPopup(popup_b052cd2092d98af88961d5ce722f7271)
+        ;
+
+        
+    
+    
+            var circle_marker_953666f9be4c5c4edeb8ec39014fe194 = L.circleMarker(
+                [55.703027, 37.672246],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_a4f97af3456539431cd717f77e3c3373 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ef88a554ceb2279b39f6bddb1e4802bf = $(`<div id="html_ef88a554ceb2279b39f6bddb1e4802bf" style="width: 100.0%; height: 100.0%;"><b>ООО «ЖестокийПром»</b><br>Численность персонала (чел.): 165<br>Адрес: к. Подольск, пр. Черемушки, д. 6/1 к. 2/9, 919015</div>`)[0];
+                popup_a4f97af3456539431cd717f77e3c3373.setContent(html_ef88a554ceb2279b39f6bddb1e4802bf);
+            
+        
+
+        circle_marker_953666f9be4c5c4edeb8ec39014fe194.bindPopup(popup_a4f97af3456539431cd717f77e3c3373)
+        ;
+
+        
+    
+    
+            var circle_marker_b9f15f75253061cd4092f3ba0972cd95 = L.circleMarker(
+                [55.694161, 37.613096],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_8846e15b45d75101e4b75d57f35a6c90 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a06c165bea0a6beb9e0572141d55249b = $(`<div id="html_a06c165bea0a6beb9e0572141d55249b" style="width: 100.0%; height: 100.0%;"><b>ООО «УгрозаПром»</b><br>Численность персонала (чел.): 48<br>Адрес: клх Бомнак, ул. Ивановская, д. 6/6 к. 23, 913577</div>`)[0];
+                popup_8846e15b45d75101e4b75d57f35a6c90.setContent(html_a06c165bea0a6beb9e0572141d55249b);
+            
+        
+
+        circle_marker_b9f15f75253061cd4092f3ba0972cd95.bindPopup(popup_8846e15b45d75101e4b75d57f35a6c90)
+        ;
+
+        
+    
+    
+            var circle_marker_8de2357c596cef72f3840dd86638515d = L.circleMarker(
+                [55.814564, 37.604283],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_b7274d41eb739400eb0c072f860b657e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_433b41e8eff93f8aa1875bc371e23b65 = $(`<div id="html_433b41e8eff93f8aa1875bc371e23b65" style="width: 100.0%; height: 100.0%;"><b>ООО «НажатьПром»</b><br>Численность персонала (чел.): 191<br>Адрес: п. Чикола, ш. Ленина, д. 97 стр. 965, 392827</div>`)[0];
+                popup_b7274d41eb739400eb0c072f860b657e.setContent(html_433b41e8eff93f8aa1875bc371e23b65);
+            
+        
+
+        circle_marker_8de2357c596cef72f3840dd86638515d.bindPopup(popup_b7274d41eb739400eb0c072f860b657e)
+        ;
+
+        
+    
+    
+            var circle_marker_3255bc9b97f5e1e793df3b3f4a5b0fe8 = L.circleMarker(
+                [55.789951, 37.523657],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_9b499191ff2fec57e613ba6f9a17afdc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2d21b2e386e7ab764b1eec29d0222950 = $(`<div id="html_2d21b2e386e7ab764b1eec29d0222950" style="width: 100.0%; height: 100.0%;"><b>ООО «СынокПром»</b><br>Численность персонала (чел.): 216<br>Адрес: п. Казань, наб. Стадионная, д. 66, 777392</div>`)[0];
+                popup_9b499191ff2fec57e613ba6f9a17afdc.setContent(html_2d21b2e386e7ab764b1eec29d0222950);
+            
+        
+
+        circle_marker_3255bc9b97f5e1e793df3b3f4a5b0fe8.bindPopup(popup_9b499191ff2fec57e613ba6f9a17afdc)
+        ;
+
+        
+    
+    
+            var circle_marker_2fe7f1c090bd0468defdbe11667ae2e4 = L.circleMarker(
+                [55.759811, 37.649197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_4099398707c7e09641cc4e8b63c5f464 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_120e6421ca7e7cd74364cbb8f31c0c1a = $(`<div id="html_120e6421ca7e7cd74364cbb8f31c0c1a" style="width: 100.0%; height: 100.0%;"><b>ООО «СоветоватьПром»</b><br>Численность персонала (чел.): 73<br>Адрес: д. Владикавказ, пр. Партизанский, д. 317, 686508</div>`)[0];
+                popup_4099398707c7e09641cc4e8b63c5f464.setContent(html_120e6421ca7e7cd74364cbb8f31c0c1a);
+            
+        
+
+        circle_marker_2fe7f1c090bd0468defdbe11667ae2e4.bindPopup(popup_4099398707c7e09641cc4e8b63c5f464)
+        ;
+
+        
+    
+    
+            var circle_marker_2c16ae28c033fedfeef2b6f370fcc837 = L.circleMarker(
+                [55.769742, 37.779002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_61a443ea49e95cba20503ea2084a5559 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8f90c7cccb941ac0230531009235d36 = $(`<div id="html_f8f90c7cccb941ac0230531009235d36" style="width: 100.0%; height: 100.0%;"><b>ООО «ПотянутьсяПром»</b><br>Численность персонала (чел.): 265<br>Адрес: клх Джубга, ул. Угловая, д. 3/2 стр. 78, 890260</div>`)[0];
+                popup_61a443ea49e95cba20503ea2084a5559.setContent(html_f8f90c7cccb941ac0230531009235d36);
+            
+        
+
+        circle_marker_2c16ae28c033fedfeef2b6f370fcc837.bindPopup(popup_61a443ea49e95cba20503ea2084a5559)
+        ;
+
+        
+    
+    
+            var circle_marker_43cba31f150efe28feadd5651b94f2e4 = L.circleMarker(
+                [55.759413, 37.560817],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_27a606ca780d3d6d3fe90bd64be5c192 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_91d800e93971fb5c4147166ba83716d5 = $(`<div id="html_91d800e93971fb5c4147166ba83716d5" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыбиратьПром»</b><br>Численность персонала (чел.): 46<br>Адрес: к. Кяхта, пер. Омский, д. 7/1, 268181</div>`)[0];
+                popup_27a606ca780d3d6d3fe90bd64be5c192.setContent(html_91d800e93971fb5c4147166ba83716d5);
+            
+        
+
+        circle_marker_43cba31f150efe28feadd5651b94f2e4.bindPopup(popup_27a606ca780d3d6d3fe90bd64be5c192)
+        ;
+
+        
+    
+    
+            var circle_marker_36c8a54c6bb6185cb69573881de31044 = L.circleMarker(
+                [55.734931, 37.709161],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_e1e3afec44bba59112025f63766508bb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4c65cb947f6ce3db9c4e947c8849f8bd = $(`<div id="html_4c65cb947f6ce3db9c4e947c8849f8bd" style="width: 100.0%; height: 100.0%;"><b>ООО «ПересечьПром»</b><br>Численность персонала (чел.): 187<br>Адрес: ст. Воткинск, ул. 8-е Марта, д. 880, 957947</div>`)[0];
+                popup_e1e3afec44bba59112025f63766508bb.setContent(html_4c65cb947f6ce3db9c4e947c8849f8bd);
+            
+        
+
+        circle_marker_36c8a54c6bb6185cb69573881de31044.bindPopup(popup_e1e3afec44bba59112025f63766508bb)
+        ;
+
+        
+    
+    
+            var circle_marker_c7156419b6c170c68491f3dba33718c0 = L.circleMarker(
+                [55.705542, 37.565408],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_dfbb9d5f63b6c7754d194004c83c2316 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea6bbce9e2b45de4a59120c55211a2ef = $(`<div id="html_ea6bbce9e2b45de4a59120c55211a2ef" style="width: 100.0%; height: 100.0%;"><b>ООО «ТесноПром»</b><br>Численность персонала (чел.): 221<br>Адрес: п. Домбай, алл. Советской Армии, д. 826 стр. 98, 744890</div>`)[0];
+                popup_dfbb9d5f63b6c7754d194004c83c2316.setContent(html_ea6bbce9e2b45de4a59120c55211a2ef);
+            
+        
+
+        circle_marker_c7156419b6c170c68491f3dba33718c0.bindPopup(popup_dfbb9d5f63b6c7754d194004c83c2316)
+        ;
+
+        
+    
+    
+            var circle_marker_5c76fe030a21758a33b9df8a8ea61677 = L.circleMarker(
+                [55.809586, 37.642972],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_2768557a0e29e13bdb75593537758959 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_aa195982e261a406fdc94eef1d21b6a2 = $(`<div id="html_aa195982e261a406fdc94eef1d21b6a2" style="width: 100.0%; height: 100.0%;"><b>ООО «ИюньПром»</b><br>Численность персонала (чел.): 41<br>Адрес: с. Новый Уренгой, пер. Курчатова, д. 3/3 стр. 523, 326111</div>`)[0];
+                popup_2768557a0e29e13bdb75593537758959.setContent(html_aa195982e261a406fdc94eef1d21b6a2);
+            
+        
+
+        circle_marker_5c76fe030a21758a33b9df8a8ea61677.bindPopup(popup_2768557a0e29e13bdb75593537758959)
+        ;
+
+        
+    
+    
+            var circle_marker_ba107bc42f3e6685c3a7c84906a1a42c = L.circleMarker(
+                [55.788637, 37.588535],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_0bfaba59b2ff3cebf4486f950302a2f3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_07d4edb39816dd39a02329387d00e691 = $(`<div id="html_07d4edb39816dd39a02329387d00e691" style="width: 100.0%; height: 100.0%;"><b>ООО «СлишкомПром»</b><br>Численность персонала (чел.): 240<br>Адрес: д. Дербент, наб. Шаумяна, д. 577 к. 464, 853686</div>`)[0];
+                popup_0bfaba59b2ff3cebf4486f950302a2f3.setContent(html_07d4edb39816dd39a02329387d00e691);
+            
+        
+
+        circle_marker_ba107bc42f3e6685c3a7c84906a1a42c.bindPopup(popup_0bfaba59b2ff3cebf4486f950302a2f3)
+        ;
+
+        
+    
+    
+            var circle_marker_a9f10829cdd10fd34c22321d77915e4b = L.circleMarker(
+                [55.733457, 37.581755],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_11c50cdfa1c5d537448c629426b349dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dee2f50013d8b82535e9e6414947b7e8 = $(`<div id="html_dee2f50013d8b82535e9e6414947b7e8" style="width: 100.0%; height: 100.0%;"><b>ООО «ЕврейскийПром»</b><br>Численность персонала (чел.): 110<br>Адрес: г. Урус-Мартан, алл. Хуторская, д. 7 к. 713, 303718</div>`)[0];
+                popup_11c50cdfa1c5d537448c629426b349dd.setContent(html_dee2f50013d8b82535e9e6414947b7e8);
+            
+        
+
+        circle_marker_a9f10829cdd10fd34c22321d77915e4b.bindPopup(popup_11c50cdfa1c5d537448c629426b349dd)
+        ;
+
+        
+    
+    
+            var circle_marker_b978abcd0b6cbc3b083276473d59f07b = L.circleMarker(
+                [55.827316, 37.64053],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_c2de8d60a80c740c9e6a041ac553e448 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d464c5c6dbb5ee4d4e206be735608048 = $(`<div id="html_d464c5c6dbb5ee4d4e206be735608048" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Численность персонала (чел.): 24<br>Адрес: г. Стрежевой, пр. Пушкина, д. 4/3 стр. 6, 498218</div>`)[0];
+                popup_c2de8d60a80c740c9e6a041ac553e448.setContent(html_d464c5c6dbb5ee4d4e206be735608048);
+            
+        
+
+        circle_marker_b978abcd0b6cbc3b083276473d59f07b.bindPopup(popup_c2de8d60a80c740c9e6a041ac553e448)
+        ;
+
+        
+    
+    
+            var circle_marker_870c09470bba7df780fff8c724761aeb = L.circleMarker(
+                [55.795983, 37.525188],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_9b503f5b16d6caa8ba990a4d7d64c3e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0079a27d538e32dfe185f5680661adf0 = $(`<div id="html_0079a27d538e32dfe185f5680661adf0" style="width: 100.0%; height: 100.0%;"><b>ООО «СпалитьПром»</b><br>Численность персонала (чел.): 167<br>Адрес: с. Биробиджан, пер. Карбышева, д. 1 к. 9, 141381</div>`)[0];
+                popup_9b503f5b16d6caa8ba990a4d7d64c3e0.setContent(html_0079a27d538e32dfe185f5680661adf0);
+            
+        
+
+        circle_marker_870c09470bba7df780fff8c724761aeb.bindPopup(popup_9b503f5b16d6caa8ba990a4d7d64c3e0)
+        ;
+
+        
+    
+    
+            var circle_marker_34cb33eec1d100e2ed3adce2abe8ebc1 = L.circleMarker(
+                [55.712791, 37.722661],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_94344a3e6284d29dfee84860a9dff0c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b31e13c019a2ff8a1337baa856346b1 = $(`<div id="html_2b31e13c019a2ff8a1337baa856346b1" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Численность персонала (чел.): 338<br>Адрес: п. Качканар, ул. Томская, д. 11 к. 6/3, 459334</div>`)[0];
+                popup_94344a3e6284d29dfee84860a9dff0c6.setContent(html_2b31e13c019a2ff8a1337baa856346b1);
+            
+        
+
+        circle_marker_34cb33eec1d100e2ed3adce2abe8ebc1.bindPopup(popup_94344a3e6284d29dfee84860a9dff0c6)
+        ;
+
+        
+    
+    
+            var circle_marker_3192fb5b2e9831d106e0a34323098afd = L.circleMarker(
+                [55.737441, 37.575311],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_2a920b2aa363ad59b1ddd536e6b077c4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_559878a7f40e1e2ee6c5ab151ecfeda7 = $(`<div id="html_559878a7f40e1e2ee6c5ab151ecfeda7" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Численность персонала (чел.): 130<br>Адрес: д. Белгород, пр. Васильковый, д. 768 стр. 82, 769389</div>`)[0];
+                popup_2a920b2aa363ad59b1ddd536e6b077c4.setContent(html_559878a7f40e1e2ee6c5ab151ecfeda7);
+            
+        
+
+        circle_marker_3192fb5b2e9831d106e0a34323098afd.bindPopup(popup_2a920b2aa363ad59b1ddd536e6b077c4)
+        ;
+
+        
+    
+    
+            var circle_marker_6a32917cdcab109f3c283e4452c1e1a9 = L.circleMarker(
+                [55.714395, 37.639672],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_f81ee0a679c4d224b8b077bab11ef8cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_42a39240bc52b02d91995f58dba5726f = $(`<div id="html_42a39240bc52b02d91995f58dba5726f" style="width: 100.0%; height: 100.0%;"><b>ООО «ОсвободитьПром»</b><br>Численность персонала (чел.): 168<br>Адрес: к. Зеленоград, наб. Путейская, д. 1, 016451</div>`)[0];
+                popup_f81ee0a679c4d224b8b077bab11ef8cc.setContent(html_42a39240bc52b02d91995f58dba5726f);
+            
+        
+
+        circle_marker_6a32917cdcab109f3c283e4452c1e1a9.bindPopup(popup_f81ee0a679c4d224b8b077bab11ef8cc)
+        ;
+
+        
+    
+    
+            var circle_marker_99fe1a45d37b094599453d7264a3d164 = L.circleMarker(
+                [55.790401, 37.711574],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_6a9ca381b200e8cb7ce95d02b034a2bb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ac04dc9de2d7d8d15133a302724cf9a8 = $(`<div id="html_ac04dc9de2d7d8d15133a302724cf9a8" style="width: 100.0%; height: 100.0%;"><b>ООО «КидатьПром»</b><br>Численность персонала (чел.): 184<br>Адрес: клх Джубга, пер. Краснознаменный, д. 94 стр. 36, 518812</div>`)[0];
+                popup_6a9ca381b200e8cb7ce95d02b034a2bb.setContent(html_ac04dc9de2d7d8d15133a302724cf9a8);
+            
+        
+
+        circle_marker_99fe1a45d37b094599453d7264a3d164.bindPopup(popup_6a9ca381b200e8cb7ce95d02b034a2bb)
+        ;
+
+        
+    
+    
+            var circle_marker_7192f89d0ce0c77713e2820a089f7325 = L.circleMarker(
+                [55.690336, 37.679124],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_29ae88de6b2588be556a4ce8bf224614 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40677073b3ed260ea73b682b96811e6b = $(`<div id="html_40677073b3ed260ea73b682b96811e6b" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗадержатьПром»</b><br>Численность персонала (чел.): 149<br>Адрес: п. Ростов, ш. Дачное, д. 6/7 к. 881, 038860</div>`)[0];
+                popup_29ae88de6b2588be556a4ce8bf224614.setContent(html_40677073b3ed260ea73b682b96811e6b);
+            
+        
+
+        circle_marker_7192f89d0ce0c77713e2820a089f7325.bindPopup(popup_29ae88de6b2588be556a4ce8bf224614)
+        ;
+
+        
+    
+    
+            var circle_marker_2ccc7bca430ee7399f7c0f6e7365a970 = L.circleMarker(
+                [55.663726, 37.690377],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_929ffe8b73030b37170efd55e709775a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_83e1f091467ecb51060e67ea73398bbc = $(`<div id="html_83e1f091467ecb51060e67ea73398bbc" style="width: 100.0%; height: 100.0%;"><b>ООО «ПробоватьПром»</b><br>Численность персонала (чел.): 220<br>Адрес: п. Долинск, ш. Больничное, д. 5/5, 421230</div>`)[0];
+                popup_929ffe8b73030b37170efd55e709775a.setContent(html_83e1f091467ecb51060e67ea73398bbc);
+            
+        
+
+        circle_marker_2ccc7bca430ee7399f7c0f6e7365a970.bindPopup(popup_929ffe8b73030b37170efd55e709775a)
+        ;
+
+        
+    
+    
+            var circle_marker_f9235e2f28fcd614ae494b2c6cc3724a = L.circleMarker(
+                [55.713257, 37.710065],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_68c8922d76c4ffbaf13ba2362d7e428b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5f508c1e910c77ddbcfc818ad4fbe6e4 = $(`<div id="html_5f508c1e910c77ddbcfc818ad4fbe6e4" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧислоПром»</b><br>Численность персонала (чел.): 208<br>Адрес: ст. Ростов, ул. Гагарина, д. 3/2 стр. 6, 833901</div>`)[0];
+                popup_68c8922d76c4ffbaf13ba2362d7e428b.setContent(html_5f508c1e910c77ddbcfc818ad4fbe6e4);
+            
+        
+
+        circle_marker_f9235e2f28fcd614ae494b2c6cc3724a.bindPopup(popup_68c8922d76c4ffbaf13ba2362d7e428b)
+        ;
+
+        
+    
+    
+            var circle_marker_ad48236dedd3ce2fbbebb0de5e5d6f9e = L.circleMarker(
+                [55.716326, 37.622895],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_30ee6800b1687b10f9a310acdd7ddec7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_abb963616626936a35a7f70a131b2f19 = $(`<div id="html_abb963616626936a35a7f70a131b2f19" style="width: 100.0%; height: 100.0%;"><b>ООО «ПриятельПром»</b><br>Численность персонала (чел.): 226<br>Адрес: к. Находка, пр. Монтажников, д. 327 стр. 9/6, 608495</div>`)[0];
+                popup_30ee6800b1687b10f9a310acdd7ddec7.setContent(html_abb963616626936a35a7f70a131b2f19);
+            
+        
+
+        circle_marker_ad48236dedd3ce2fbbebb0de5e5d6f9e.bindPopup(popup_30ee6800b1687b10f9a310acdd7ddec7)
+        ;
+
+        
+    
+    
+            var circle_marker_50c7450482c5044ee8240434b385eecf = L.circleMarker(
+                [55.716042, 37.567458],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_e1f1798f33b102c3b59cf06df98b57f0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5c3de15a8f7e647f09658405a1cc6a09 = $(`<div id="html_5c3de15a8f7e647f09658405a1cc6a09" style="width: 100.0%; height: 100.0%;"><b>ООО «НаходитьПром»</b><br>Численность персонала (чел.): 206<br>Адрес: с. Троицк (Челяб.), ул. Чехова, д. 691, 018409</div>`)[0];
+                popup_e1f1798f33b102c3b59cf06df98b57f0.setContent(html_5c3de15a8f7e647f09658405a1cc6a09);
+            
+        
+
+        circle_marker_50c7450482c5044ee8240434b385eecf.bindPopup(popup_e1f1798f33b102c3b59cf06df98b57f0)
+        ;
+
+        
+    
+    
+            var circle_marker_ff39c38ac1cd026bacdcfe24d9042118 = L.circleMarker(
+                [55.741145, 37.63364],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_c58c301a77064a75061c404ed9ce734d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_95fffef577a4ad008567210f7006df88 = $(`<div id="html_95fffef577a4ad008567210f7006df88" style="width: 100.0%; height: 100.0%;"><b>ООО «ПлодПром»</b><br>Численность персонала (чел.): 205<br>Адрес: д. Гусь-Хрустальный, ш. Семашко, д. 874, 332945</div>`)[0];
+                popup_c58c301a77064a75061c404ed9ce734d.setContent(html_95fffef577a4ad008567210f7006df88);
+            
+        
+
+        circle_marker_ff39c38ac1cd026bacdcfe24d9042118.bindPopup(popup_c58c301a77064a75061c404ed9ce734d)
+        ;
+
+        
+    
+    
+            var circle_marker_c3bedba2f7a84d82c3623b6143fc4ce0 = L.circleMarker(
+                [55.796985, 37.700749],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_867b05f4cfaca411bfab58e845135b5e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_18641fb71e4827a6e4ebdfb47d21501d = $(`<div id="html_18641fb71e4827a6e4ebdfb47d21501d" style="width: 100.0%; height: 100.0%;"><b>ООО «АкадемикПром»</b><br>Численность персонала (чел.): 145<br>Адрес: к. Плес, пер. Приозерный, д. 6/8, 132902</div>`)[0];
+                popup_867b05f4cfaca411bfab58e845135b5e.setContent(html_18641fb71e4827a6e4ebdfb47d21501d);
+            
+        
+
+        circle_marker_c3bedba2f7a84d82c3623b6143fc4ce0.bindPopup(popup_867b05f4cfaca411bfab58e845135b5e)
+        ;
+
+        
+    
+    
+            var circle_marker_a3021e628e58d67aa6640e88e0d37ff1 = L.circleMarker(
+                [55.668512, 37.5462],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_4c4b2d7b07a645a71335a347d3056545 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b1f639d36bcb33e27c196e34c16240da = $(`<div id="html_b1f639d36bcb33e27c196e34c16240da" style="width: 100.0%; height: 100.0%;"><b>ООО «СлишкомПром»</b><br>Численность персонала (чел.): 21<br>Адрес: клх Суздаль, пр. Геологический, д. 826 стр. 3/8, 876532</div>`)[0];
+                popup_4c4b2d7b07a645a71335a347d3056545.setContent(html_b1f639d36bcb33e27c196e34c16240da);
+            
+        
+
+        circle_marker_a3021e628e58d67aa6640e88e0d37ff1.bindPopup(popup_4c4b2d7b07a645a71335a347d3056545)
+        ;
+
+        
+    
+    
+            var circle_marker_3f47543f9525a5ffd48f41f63fab72bf = L.circleMarker(
+                [55.715702, 37.431694],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_0225cc0ed6d52874148f7b2a8f6f3ed7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5a347ee42b11e2608c09eef3b2063113 = $(`<div id="html_5a347ee42b11e2608c09eef3b2063113" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Численность персонала (чел.): 94<br>Адрес: ст. Якутск, наб. Водников, д. 228, 429444</div>`)[0];
+                popup_0225cc0ed6d52874148f7b2a8f6f3ed7.setContent(html_5a347ee42b11e2608c09eef3b2063113);
+            
+        
+
+        circle_marker_3f47543f9525a5ffd48f41f63fab72bf.bindPopup(popup_0225cc0ed6d52874148f7b2a8f6f3ed7)
+        ;
+
+        
+    
+    
+            var circle_marker_ec724430ba7dfe669f7b5572111f0072 = L.circleMarker(
+                [55.792313, 37.613065],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_385687c0eaf43b209381fe374dd804fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9110112664e223f75716ce9de0c6ff07 = $(`<div id="html_9110112664e223f75716ce9de0c6ff07" style="width: 100.0%; height: 100.0%;"><b>ООО «СопровождатьсяПром»</b><br>Численность персонала (чел.): 131<br>Адрес: д. Новгород Великий, пер. Абрикосовый, д. 5 к. 2, 967393</div>`)[0];
+                popup_385687c0eaf43b209381fe374dd804fa.setContent(html_9110112664e223f75716ce9de0c6ff07);
+            
+        
+
+        circle_marker_ec724430ba7dfe669f7b5572111f0072.bindPopup(popup_385687c0eaf43b209381fe374dd804fa)
+        ;
+
+        
+    
+    
+            var circle_marker_02885c32d4ef16655e48e127bcd069f8 = L.circleMarker(
+                [55.697227, 37.707451],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_24a6a3ea28ddbad2242a5aee0b2db384 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_70cb1b61919478863a98d6cd0154d2af = $(`<div id="html_70cb1b61919478863a98d6cd0154d2af" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗаведениеПром»</b><br>Численность персонала (чел.): 39<br>Адрес: к. Билибино, ш. Кузнецкое, д. 27 к. 4/7, 712863</div>`)[0];
+                popup_24a6a3ea28ddbad2242a5aee0b2db384.setContent(html_70cb1b61919478863a98d6cd0154d2af);
+            
+        
+
+        circle_marker_02885c32d4ef16655e48e127bcd069f8.bindPopup(popup_24a6a3ea28ddbad2242a5aee0b2db384)
+        ;
+
+        
+    
+    
+            var circle_marker_bcfb331ce59efa2d9007df1626e35ad6 = L.circleMarker(
+                [55.690602, 37.709015],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_0f695f376fd396be99c64b412d8d6e73 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bfbccd2f521e3748088a2ebd0f3b81b3 = $(`<div id="html_bfbccd2f521e3748088a2ebd0f3b81b3" style="width: 100.0%; height: 100.0%;"><b>ООО «КомандованиеПром»</b><br>Численность персонала (чел.): 27<br>Адрес: с. Калевала, бул. Разина, д. 257 к. 4/3, 309376</div>`)[0];
+                popup_0f695f376fd396be99c64b412d8d6e73.setContent(html_bfbccd2f521e3748088a2ebd0f3b81b3);
+            
+        
+
+        circle_marker_bcfb331ce59efa2d9007df1626e35ad6.bindPopup(popup_0f695f376fd396be99c64b412d8d6e73)
+        ;
+
+        
+    
+    
+            var circle_marker_140c9df8845986862a6c201a43185cd3 = L.circleMarker(
+                [55.796279, 37.658838],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_4cac8536a214a9853a72d3d897d131ca = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa02fbb99b708db803d8c72c3666485c = $(`<div id="html_fa02fbb99b708db803d8c72c3666485c" style="width: 100.0%; height: 100.0%;"><b>ООО «СходитьПром»</b><br>Численность персонала (чел.): 239<br>Адрес: к. Катайск, пер. Ангарский, д. 2, 426258</div>`)[0];
+                popup_4cac8536a214a9853a72d3d897d131ca.setContent(html_fa02fbb99b708db803d8c72c3666485c);
+            
+        
+
+        circle_marker_140c9df8845986862a6c201a43185cd3.bindPopup(popup_4cac8536a214a9853a72d3d897d131ca)
+        ;
+
+        
+    
+    
+            var circle_marker_3cbf99a46fc52a3994cee4f73ee5c267 = L.circleMarker(
+                [55.80327, 37.565156],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_499641bde4338af141be7a78bb486c69 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_761082c3ff1465b1db5dc961cf328ba8 = $(`<div id="html_761082c3ff1465b1db5dc961cf328ba8" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрелестьПром»</b><br>Численность персонала (чел.): 87<br>Адрес: ст. Ялуторовск, алл. Энергетическая, д. 331 стр. 8/3, 005436</div>`)[0];
+                popup_499641bde4338af141be7a78bb486c69.setContent(html_761082c3ff1465b1db5dc961cf328ba8);
+            
+        
+
+        circle_marker_3cbf99a46fc52a3994cee4f73ee5c267.bindPopup(popup_499641bde4338af141be7a78bb486c69)
+        ;
+
+        
+    
+    
+            var circle_marker_7d0621e73549811912901d9b3d6ace7a = L.circleMarker(
+                [55.724491, 37.671859],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_141d0cc6c37f215e963d3866a057945b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c89fca683d37a4c5926be3fe41475564 = $(`<div id="html_c89fca683d37a4c5926be3fe41475564" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Численность персонала (чел.): 14<br>Адрес: п. Магнитогорск, алл. Стахановская, д. 71 стр. 4/8, 406335</div>`)[0];
+                popup_141d0cc6c37f215e963d3866a057945b.setContent(html_c89fca683d37a4c5926be3fe41475564);
+            
+        
+
+        circle_marker_7d0621e73549811912901d9b3d6ace7a.bindPopup(popup_141d0cc6c37f215e963d3866a057945b)
+        ;
+
+        
+    
+    
+            var circle_marker_312b5b7fbec2e058c271feb3aa2d4e96 = L.circleMarker(
+                [55.743527, 37.481594],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_c4c7d0f5fd6663546a683b1053b53c8e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6de21e061b710dd1d239574870e194e8 = $(`<div id="html_6de21e061b710dd1d239574870e194e8" style="width: 100.0%; height: 100.0%;"><b>ООО «НожПром»</b><br>Численность персонала (чел.): 30<br>Адрес: д. Нарткала, ул. Жданова, д. 616 стр. 1/6, 281832</div>`)[0];
+                popup_c4c7d0f5fd6663546a683b1053b53c8e.setContent(html_6de21e061b710dd1d239574870e194e8);
+            
+        
+
+        circle_marker_312b5b7fbec2e058c271feb3aa2d4e96.bindPopup(popup_c4c7d0f5fd6663546a683b1053b53c8e)
+        ;
+
+        
+    
+    
+            var circle_marker_f1e7e75f51a0503a178c14f7ea2ecc51 = L.circleMarker(
+                [55.722463, 37.4359],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_e44f1dd600a05e30623f0ca758b3ef1a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6625294cd5f403410d39867874e26ef7 = $(`<div id="html_6625294cd5f403410d39867874e26ef7" style="width: 100.0%; height: 100.0%;"><b>ООО «НажатьПром»</b><br>Численность персонала (чел.): 128<br>Адрес: п. Благовещенск (Амур.), ш. Инженерное, д. 7, 579887</div>`)[0];
+                popup_e44f1dd600a05e30623f0ca758b3ef1a.setContent(html_6625294cd5f403410d39867874e26ef7);
+            
+        
+
+        circle_marker_f1e7e75f51a0503a178c14f7ea2ecc51.bindPopup(popup_e44f1dd600a05e30623f0ca758b3ef1a)
+        ;
+
+        
+    
+    
+            var circle_marker_edef3ec6d72eeeb0ab57e6ce04927718 = L.circleMarker(
+                [55.734662, 37.481492],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_114b85d3a99009f7ed4af10f6e3bda14 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b082822bec19ee4bfaff458c9edaf153 = $(`<div id="html_b082822bec19ee4bfaff458c9edaf153" style="width: 100.0%; height: 100.0%;"><b>ООО «ПроходПром»</b><br>Численность персонала (чел.): 152<br>Адрес: п. Адлер, пер. 9 мая, д. 5 стр. 5/3, 517028</div>`)[0];
+                popup_114b85d3a99009f7ed4af10f6e3bda14.setContent(html_b082822bec19ee4bfaff458c9edaf153);
+            
+        
+
+        circle_marker_edef3ec6d72eeeb0ab57e6ce04927718.bindPopup(popup_114b85d3a99009f7ed4af10f6e3bda14)
+        ;
+
+        
+    
+    
+            var circle_marker_8df92a743427201ac0857e64d7523e97 = L.circleMarker(
+                [55.789804, 37.648611],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_33c70c7d50fd62f13bfd517f0f3912c0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0fe7c9045d6b1a5f6c3647cf9a11aecd = $(`<div id="html_0fe7c9045d6b1a5f6c3647cf9a11aecd" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыраженныйПром»</b><br>Численность персонала (чел.): 13<br>Адрес: к. Сорочинск, наб. Песчаная, д. 2/1 стр. 5/7, 879232</div>`)[0];
+                popup_33c70c7d50fd62f13bfd517f0f3912c0.setContent(html_0fe7c9045d6b1a5f6c3647cf9a11aecd);
+            
+        
+
+        circle_marker_8df92a743427201ac0857e64d7523e97.bindPopup(popup_33c70c7d50fd62f13bfd517f0f3912c0)
+        ;
+
+        
+    
+    
+            var circle_marker_78f971227d68d1569f14274719d267df = L.circleMarker(
+                [55.778797, 37.517879],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_d5c9abe642185f6072b98d0b356ebe44 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f64493f55579706b8f38ce42f0edee77 = $(`<div id="html_f64493f55579706b8f38ce42f0edee77" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧеткоПром»</b><br>Численность персонала (чел.): 24<br>Адрес: ст. Яр-Сале, ш. Мирное, д. 68, 445189</div>`)[0];
+                popup_d5c9abe642185f6072b98d0b356ebe44.setContent(html_f64493f55579706b8f38ce42f0edee77);
+            
+        
+
+        circle_marker_78f971227d68d1569f14274719d267df.bindPopup(popup_d5c9abe642185f6072b98d0b356ebe44)
+        ;
+
+        
+    
+    
+            var circle_marker_a853f5b349a106308acb10f6bbb9daa8 = L.circleMarker(
+                [55.737703, 37.637586],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b6ff9d61eb17334a64c907749e56d583);
+        
+    
+        var popup_ba9d7b93280a5a752bcea436a1d0ea41 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea79097298b14ba39bbec8788f7cad44 = $(`<div id="html_ea79097298b14ba39bbec8788f7cad44" style="width: 100.0%; height: 100.0%;"><b>ООО «РучейПром»</b><br>Численность персонала (чел.): 115<br>Адрес: ст. Рыбинск, алл. Олимпийская, д. 189, 140140</div>`)[0];
+                popup_ba9d7b93280a5a752bcea436a1d0ea41.setContent(html_ea79097298b14ba39bbec8788f7cad44);
+            
+        
+
+        circle_marker_a853f5b349a106308acb10f6bbb9daa8.bindPopup(popup_ba9d7b93280a5a752bcea436a1d0ea41)
+        ;
+
+        
+    
+</script>
+</html>

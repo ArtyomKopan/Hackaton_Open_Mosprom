@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b113a278fc89dd82b01eb288c771ecbe {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+                 <h3 align="center" style="font-size:20px"><b>Тепловая карта: Налоги</b></h3>
+                 <p align="center">Налоги в бюджет Москвы (тыс. руб.)</p>
+                 
+    
+            <div class="folium-map" id="map_b113a278fc89dd82b01eb288c771ecbe" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b113a278fc89dd82b01eb288c771ecbe = L.map(
+                "map_b113a278fc89dd82b01eb288c771ecbe",
+                {
+                    center: [55.7558, 37.6173],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5b67bb961c34b8c1d8be37b42bd6a8a0 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5b67bb961c34b8c1d8be37b42bd6a8a0.addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+            var heat_map_68a20161b570ad860a84aaaa3721b11e = L.heatLayer(
+                [[55.775792, 37.609714, 0.42534776088530357], [55.769562, 37.700922, 0.5459587340986658], [55.693989, 37.594371, 0.7778628865446272], [55.75049, 37.565334, 0.6056986244699555], [55.682291, 37.741703, 0.18721881787154826], [55.77356, 37.518676, 0.09034349467369945], [55.748951, 37.498605, 0.991726135070845], [55.743162, 37.638468, 0.27368717033819423], [55.85414, 37.577453, 0.058081885406970735], [55.779239, 37.690141, 0.7514026786637709], [55.749129, 37.535697, 0.39358064432723133], [55.761767, 37.545516, 0.08671075085324233], [55.792706, 37.609964, 0.2637197486813528], [55.623705, 37.665682, 0.37451197124831936], [55.807507, 37.469197, 0.4221190143758403], [55.787, 37.69321, 0.03405212534905368], [55.754669, 37.660756, 0.5854502792429414], [55.716995, 37.569969, 0.6101813786327438], [55.662525, 37.607713, 0.607918993691178], [55.683143, 37.521558, 0.16883855621056987], [55.779644, 37.395771, 0.10421837832247388], [55.751013, 37.675693, 0.547338788913021], [55.805731, 37.585375, 0.25506774226910744], [55.734617, 37.658044, 0.8428838297652291], [55.746734, 37.570911, 0.10663266625297342], [55.739323, 37.546894, 0.37571426724583723], [55.765047, 37.655927, 0.41976613403661184], [55.74958, 37.708942, 0.1785958992656945], [55.68765, 37.672604, 0.11265061019753853], [55.712701, 37.574619, 0.3761182645568311], [55.687772, 37.67507, 0.791375788602751], [55.743349, 37.678662, 0.014207777433033406], [55.73995, 37.6911, 0.2748022029165374], [55.74633, 37.639886, 0.9509417985313889], [55.722767, 37.551008, 0.7001144120384735], [55.729787, 37.675428, 0.09909892439755921], [55.750202, 37.685532, 0.5001001913331264], [55.736202, 37.684708, 0.4028467266521874], [55.814951, 37.704589, 0.41326662529734204], [55.810224, 37.627371, 0.35786728203537077], [55.756291, 37.439214, 0.7553230685696556], [55.796536, 37.539856, 0.050780846002689006], [55.796412, 37.748624, 0.23790593649808667], [55.685297, 37.744687, 1.0], [55.767925, 37.627326, 0.49461875581756126], [55.725568, 37.632636, 0.6847301944358258], [55.730475, 37.664894, 0.399097631606164], [55.675589, 37.518716, 0.552765280794291], [55.777569, 37.593942, 0.2858911211086979], [55.799534, 37.710625, 0.217822422173958], [55.711295, 37.655008, 0.49944733167856037], [55.787758, 37.639116, 0.7872485520736374], [55.738671, 37.547929, 0.3002281776812494], [55.788518, 37.603303, 0.2854063243355052], [55.739893, 37.518098, 0.8784517530251319], [55.701797, 37.74061, 0.7849538473471921], [55.727708, 37.698193, 0.4185347502327024], [55.709923, 37.491052, 0.43742243251628915], [55.728737, 37.63934, 0.35563075292170854], [55.795818, 37.64205, 0.65691255559003], [55.745263, 37.562219, 0.1748274123487434], [55.703027, 37.672246, 0.5081478177681249], [55.694161, 37.613096, 0.23775726548764092], [55.814564, 37.604283, 0.42442664701623745], [55.789951, 37.523657, 0.5752372272210157], [55.759811, 37.649197, 0.17081975902368393], [55.769742, 37.779002, 0.8812441824387217], [55.759413, 37.560817, 0.21596403454338609], [55.734931, 37.709161, 0.5573191384838142], [55.705542, 37.565408, 0.7613377805357328], [55.809586, 37.642972, 0.10702050367152756], [55.788637, 37.588535, 0.6184196917985314], [55.733457, 37.581755, 0.39848678767194123], [55.827316, 37.64053, 0.09300664494777122], [55.795983, 37.525188, 0.6312377184817458], [55.712791, 37.722661, 0.842224506153687], [55.737441, 37.575311, 0.3606597114489606], [55.714395, 37.639672, 0.5082900248215948], [55.790401, 37.711574, 0.6882789068155962], [55.690336, 37.679124, 0.4594677577826042], [55.663726, 37.690377, 0.5168386079222257], [55.713257, 37.710065, 0.5583113558796152], [55.716326, 37.622895, 0.6562823197848795], [55.716042, 37.567458, 0.4953847347192057], [55.741145, 37.63364, 0.7019469438411418], [55.796985, 37.700749, 0.6151586255041886], [55.668512, 37.5462, 0.06473976109215017], [55.715702, 37.431694, 0.2688812183266108], [55.792313, 37.613065, 0.2631218326610818], [55.697227, 37.707451, 0.14999935360430242], [55.690602, 37.709015, 0.10526877133105803], [55.796279, 37.658838, 0.5942897404074878], [55.80327, 37.565156, 0.25946323301272106], [55.724491, 37.671859, 0.044636854897093806], [55.743527, 37.481594, 0.11420842382873099], [55.722463, 37.4359, 0.3658438049436343], [55.734662, 37.481492, 0.40019004033509153], [55.789804, 37.648611, 0.031376047161030096], [55.778797, 37.517879, 0.06450059468404179], [55.737703, 37.637586, 0.30010536249870723]],
+                {
+  "minOpacity": 0.2,
+  "maxZoom": 18,
+  "radius": 15,
+  "blur": 10,
+  "gradient": {
+  0.2: "blue",
+  0.4: "cyan",
+  0.6: "lime",
+  0.8: "yellow",
+  1.0: "red",
+},
+  "maxOpacity": 0.8,
+}
+            );
+        
+    
+            heat_map_68a20161b570ad860a84aaaa3721b11e.addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+            var circle_marker_74ffdda1e91aac63dddb72e27a886b9c = L.circleMarker(
+                [55.775792, 37.609714],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_3768f7ad3e8c3903288497f0734fb63e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fbaef32ee538c6833d57e9d1e23e0ef3 = $(`<div id="html_fbaef32ee538c6833d57e9d1e23e0ef3" style="width: 100.0%; height: 100.0%;"><b>ООО «ТоропливыйПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 131,606<br>Адрес: ст. Азов (Рост.), бул. Челюскинцев, д. 5, 351161</div>`)[0];
+                popup_3768f7ad3e8c3903288497f0734fb63e.setContent(html_fbaef32ee538c6833d57e9d1e23e0ef3);
+            
+        
+
+        circle_marker_74ffdda1e91aac63dddb72e27a886b9c.bindPopup(popup_3768f7ad3e8c3903288497f0734fb63e)
+        ;
+
+        
+    
+    
+            var circle_marker_0fe1566e28ed7c59365b17f5dc8cab1b = L.circleMarker(
+                [55.769562, 37.700922],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_36172d6230c12880da74a49f4bb05f12 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e9097e2591ed21def3d0f42b17a89303 = $(`<div id="html_e9097e2591ed21def3d0f42b17a89303" style="width: 100.0%; height: 100.0%;"><b>ООО «ПохороныПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 168,924<br>Адрес: к. Дзержинск, бул. Механический, д. 7/6, 287101</div>`)[0];
+                popup_36172d6230c12880da74a49f4bb05f12.setContent(html_e9097e2591ed21def3d0f42b17a89303);
+            
+        
+
+        circle_marker_0fe1566e28ed7c59365b17f5dc8cab1b.bindPopup(popup_36172d6230c12880da74a49f4bb05f12)
+        ;
+
+        
+    
+    
+            var circle_marker_0dd085eb9a4381a70849a5a2ffe7ff7e = L.circleMarker(
+                [55.693989, 37.594371],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_0d3c2943aa4f4339485094f6da1d3537 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_669cefa2b2771f5af22831c2e9d077eb = $(`<div id="html_669cefa2b2771f5af22831c2e9d077eb" style="width: 100.0%; height: 100.0%;"><b>ООО «СовещаниеПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 240,677<br>Адрес: к. Тулун, пр. Ульяновский, д. 74 стр. 8, 133150</div>`)[0];
+                popup_0d3c2943aa4f4339485094f6da1d3537.setContent(html_669cefa2b2771f5af22831c2e9d077eb);
+            
+        
+
+        circle_marker_0dd085eb9a4381a70849a5a2ffe7ff7e.bindPopup(popup_0d3c2943aa4f4339485094f6da1d3537)
+        ;
+
+        
+    
+    
+            var circle_marker_b4586a8f4fddaa212313f69cc4e58a9e = L.circleMarker(
+                [55.75049, 37.565334],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_f24afd0623967c13f63146060203221b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_921c124482bb176208136559d9ba9d2e = $(`<div id="html_921c124482bb176208136559d9ba9d2e" style="width: 100.0%; height: 100.0%;"><b>ООО «ВторойПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 187,408<br>Адрес: г. Ковров, пр. Вахитова, д. 4/7, 260647</div>`)[0];
+                popup_f24afd0623967c13f63146060203221b.setContent(html_921c124482bb176208136559d9ba9d2e);
+            
+        
+
+        circle_marker_b4586a8f4fddaa212313f69cc4e58a9e.bindPopup(popup_f24afd0623967c13f63146060203221b)
+        ;
+
+        
+    
+    
+            var circle_marker_d3efc067a1104322893c4dd7d9fa1142 = L.circleMarker(
+                [55.682291, 37.741703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_c21d38c8706d5b6d5908085215c15673 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed37e3b955fa64c71bd909cbb0e8c717 = $(`<div id="html_ed37e3b955fa64c71bd909cbb0e8c717" style="width: 100.0%; height: 100.0%;"><b>ООО «ПривлекатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 57,927<br>Адрес: г. Костомукша, наб. Авиационная, д. 9/5 к. 284, 411824</div>`)[0];
+                popup_c21d38c8706d5b6d5908085215c15673.setContent(html_ed37e3b955fa64c71bd909cbb0e8c717);
+            
+        
+
+        circle_marker_d3efc067a1104322893c4dd7d9fa1142.bindPopup(popup_c21d38c8706d5b6d5908085215c15673)
+        ;
+
+        
+    
+    
+            var circle_marker_296f603d8efab74be117978d4d60ac78 = L.circleMarker(
+                [55.77356, 37.518676],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_fdb37cd0f1a83bb17291fb03964a902a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0a48a60df73aa850050ed5dd70aa14de = $(`<div id="html_0a48a60df73aa850050ed5dd70aa14de" style="width: 100.0%; height: 100.0%;"><b>ООО «ПадальПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 27,953<br>Адрес: ст. Всеволожск, ш. Партизанское, д. 4/4 к. 6/5, 303654</div>`)[0];
+                popup_fdb37cd0f1a83bb17291fb03964a902a.setContent(html_0a48a60df73aa850050ed5dd70aa14de);
+            
+        
+
+        circle_marker_296f603d8efab74be117978d4d60ac78.bindPopup(popup_fdb37cd0f1a83bb17291fb03964a902a)
+        ;
+
+        
+    
+    
+            var circle_marker_41bdf3f544aa5a4771620e5c4950fa11 = L.circleMarker(
+                [55.748951, 37.498605],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_f18c83fa53e1cbe911aea5be61ad9b09 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a40027c05203fb759e7999d23b4b67b2 = $(`<div id="html_a40027c05203fb759e7999d23b4b67b2" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧеткоПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 306,848<br>Адрес: д. Хатанга, пр. Советский, д. 5 к. 66, 773872</div>`)[0];
+                popup_f18c83fa53e1cbe911aea5be61ad9b09.setContent(html_a40027c05203fb759e7999d23b4b67b2);
+            
+        
+
+        circle_marker_41bdf3f544aa5a4771620e5c4950fa11.bindPopup(popup_f18c83fa53e1cbe911aea5be61ad9b09)
+        ;
+
+        
+    
+    
+            var circle_marker_5c99fee01895bf01a84f360434292062 = L.circleMarker(
+                [55.743162, 37.638468],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_2f2b2324003b7285f0707fd94a2f6e7a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d24a6ccb7475740eda510c5fb0af1958 = $(`<div id="html_d24a6ccb7475740eda510c5fb0af1958" style="width: 100.0%; height: 100.0%;"><b>ООО «ВстатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 84,681<br>Адрес: с. Кропоткин (Краснод.), ш. Энергетическое, д. 4/5, 143455</div>`)[0];
+                popup_2f2b2324003b7285f0707fd94a2f6e7a.setContent(html_d24a6ccb7475740eda510c5fb0af1958);
+            
+        
+
+        circle_marker_5c99fee01895bf01a84f360434292062.bindPopup(popup_2f2b2324003b7285f0707fd94a2f6e7a)
+        ;
+
+        
+    
+    
+            var circle_marker_b298eb483c26d85e9c7ec726cd79f4c9 = L.circleMarker(
+                [55.85414, 37.577453],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_5521c8a179fca0f6398dca50aad99bfe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e1a224dd68e6d6367bdf4b263791f455 = $(`<div id="html_e1a224dd68e6d6367bdf4b263791f455" style="width: 100.0%; height: 100.0%;"><b>ООО «СпособПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 17,971<br>Адрес: п. Славгород, ул. Троицкая, д. 6/4, 556464</div>`)[0];
+                popup_5521c8a179fca0f6398dca50aad99bfe.setContent(html_e1a224dd68e6d6367bdf4b263791f455);
+            
+        
+
+        circle_marker_b298eb483c26d85e9c7ec726cd79f4c9.bindPopup(popup_5521c8a179fca0f6398dca50aad99bfe)
+        ;
+
+        
+    
+    
+            var circle_marker_e3f71ef28a21dc43e9bb36d50917e18b = L.circleMarker(
+                [55.779239, 37.690141],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_99e02a17379983947f7ba5adcd7bb923 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4529af63a6b16f7e99309a711469b46e = $(`<div id="html_4529af63a6b16f7e99309a711469b46e" style="width: 100.0%; height: 100.0%;"><b>ООО «ХозяйкаПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 232,490<br>Адрес: г. Радужный, ул. Седова, д. 8 к. 36, 987769</div>`)[0];
+                popup_99e02a17379983947f7ba5adcd7bb923.setContent(html_4529af63a6b16f7e99309a711469b46e);
+            
+        
+
+        circle_marker_e3f71ef28a21dc43e9bb36d50917e18b.bindPopup(popup_99e02a17379983947f7ba5adcd7bb923)
+        ;
+
+        
+    
+    
+            var circle_marker_153a527b0db0202e46bff057af7a62a2 = L.circleMarker(
+                [55.749129, 37.535697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_d28abb523c4499eb93e3aed97ffa6106 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_866f840fd9b93e2824c5e41d7f752605 = $(`<div id="html_866f840fd9b93e2824c5e41d7f752605" style="width: 100.0%; height: 100.0%;"><b>ООО «ТысячаПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 121,777<br>Адрес: клх Калуга, ул. Брянская, д. 83 к. 9, 134352</div>`)[0];
+                popup_d28abb523c4499eb93e3aed97ffa6106.setContent(html_866f840fd9b93e2824c5e41d7f752605);
+            
+        
+
+        circle_marker_153a527b0db0202e46bff057af7a62a2.bindPopup(popup_d28abb523c4499eb93e3aed97ffa6106)
+        ;
+
+        
+    
+    
+            var circle_marker_593584c5609a6520a347b6d827bde0f5 = L.circleMarker(
+                [55.761767, 37.545516],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_8fd8e1170fe70f21a87dfd3c590d6de1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_41033f977b4842041b98a6ea15d96b84 = $(`<div id="html_41033f977b4842041b98a6ea15d96b84" style="width: 100.0%; height: 100.0%;"><b>ООО «ГолубчикПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 26,829<br>Адрес: г. Поронайск, бул. Чайкиной, д. 1 к. 54, 134936</div>`)[0];
+                popup_8fd8e1170fe70f21a87dfd3c590d6de1.setContent(html_41033f977b4842041b98a6ea15d96b84);
+            
+        
+
+        circle_marker_593584c5609a6520a347b6d827bde0f5.bindPopup(popup_8fd8e1170fe70f21a87dfd3c590d6de1)
+        ;
+
+        
+    
+    
+            var circle_marker_4b5c8b3653db29ccbdecb8aded7a0cd3 = L.circleMarker(
+                [55.792706, 37.609964],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_9f2df640f9beeac890a898aeba65bbec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8ed773140bcaad754fdc9ebcd3efd1f5 = $(`<div id="html_8ed773140bcaad754fdc9ebcd3efd1f5" style="width: 100.0%; height: 100.0%;"><b>ООО «ДоставатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 81,597<br>Адрес: клх Таганрог, бул. Юности, д. 671 к. 6, 680876</div>`)[0];
+                popup_9f2df640f9beeac890a898aeba65bbec.setContent(html_8ed773140bcaad754fdc9ebcd3efd1f5);
+            
+        
+
+        circle_marker_4b5c8b3653db29ccbdecb8aded7a0cd3.bindPopup(popup_9f2df640f9beeac890a898aeba65bbec)
+        ;
+
+        
+    
+    
+            var circle_marker_d2e286f433c30c6ce926cebd73660d05 = L.circleMarker(
+                [55.623705, 37.665682],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b461a7a8307faeb6011cc104d55db43f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa27b6e3dc388721e35ea61c32702ee0 = $(`<div id="html_fa27b6e3dc388721e35ea61c32702ee0" style="width: 100.0%; height: 100.0%;"><b>ООО «ВажныйПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 115,877<br>Адрес: д. Стерлитамак, наб. Репина, д. 6/4 к. 79, 605766</div>`)[0];
+                popup_b461a7a8307faeb6011cc104d55db43f.setContent(html_fa27b6e3dc388721e35ea61c32702ee0);
+            
+        
+
+        circle_marker_d2e286f433c30c6ce926cebd73660d05.bindPopup(popup_b461a7a8307faeb6011cc104d55db43f)
+        ;
+
+        
+    
+    
+            var circle_marker_31fc2bc3c46818f91004f37956780172 = L.circleMarker(
+                [55.807507, 37.469197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b5edd11f6b70cc70b21321b368267c6d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e699331c23049d557b7a010e5febb2b5 = $(`<div id="html_e699331c23049d557b7a010e5febb2b5" style="width: 100.0%; height: 100.0%;"><b>ООО «СохранятьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 130,607<br>Адрес: д. Приозерск, бул. Осенний, д. 22 стр. 4/8, 374740</div>`)[0];
+                popup_b5edd11f6b70cc70b21321b368267c6d.setContent(html_e699331c23049d557b7a010e5febb2b5);
+            
+        
+
+        circle_marker_31fc2bc3c46818f91004f37956780172.bindPopup(popup_b5edd11f6b70cc70b21321b368267c6d)
+        ;
+
+        
+    
+    
+            var circle_marker_dacd749838c21b2a6fc116ecae3f3c35 = L.circleMarker(
+                [55.787, 37.69321],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_debd418d9eca9c1b3c717f6b537c8053 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a35d8b01adeae2bc900cec97bd2d7bab = $(`<div id="html_a35d8b01adeae2bc900cec97bd2d7bab" style="width: 100.0%; height: 100.0%;"><b>ООО «ЭкзаменПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 10,536<br>Адрес: к. Пушкин, алл. Шахтерская, д. 9, 247451</div>`)[0];
+                popup_debd418d9eca9c1b3c717f6b537c8053.setContent(html_a35d8b01adeae2bc900cec97bd2d7bab);
+            
+        
+
+        circle_marker_dacd749838c21b2a6fc116ecae3f3c35.bindPopup(popup_debd418d9eca9c1b3c717f6b537c8053)
+        ;
+
+        
+    
+    
+            var circle_marker_ecbafd9978c58c3894fd7e5eebee8ccf = L.circleMarker(
+                [55.754669, 37.660756],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_bbe997af50e73a48b461a194e684fb79 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c45143747e76e52ad0317aa524ca831e = $(`<div id="html_c45143747e76e52ad0317aa524ca831e" style="width: 100.0%; height: 100.0%;"><b>ООО «ВолкПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 181,143<br>Адрес: с. Саянск, ш. Гастелло, д. 658, 643171</div>`)[0];
+                popup_bbe997af50e73a48b461a194e684fb79.setContent(html_c45143747e76e52ad0317aa524ca831e);
+            
+        
+
+        circle_marker_ecbafd9978c58c3894fd7e5eebee8ccf.bindPopup(popup_bbe997af50e73a48b461a194e684fb79)
+        ;
+
+        
+    
+    
+            var circle_marker_bb3013b781196bb52cc46409be1eca35 = L.circleMarker(
+                [55.716995, 37.569969],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_3772505a011c82b9ef6dafe8b25a27f2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_514a4e2ca14e54c95c76ce971884d6f3 = $(`<div id="html_514a4e2ca14e54c95c76ce971884d6f3" style="width: 100.0%; height: 100.0%;"><b>ООО «ВздрагиватьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 188,795<br>Адрес: клх Сасово, ул. Космонавтов, д. 31, 998569</div>`)[0];
+                popup_3772505a011c82b9ef6dafe8b25a27f2.setContent(html_514a4e2ca14e54c95c76ce971884d6f3);
+            
+        
+
+        circle_marker_bb3013b781196bb52cc46409be1eca35.bindPopup(popup_3772505a011c82b9ef6dafe8b25a27f2)
+        ;
+
+        
+    
+    
+            var circle_marker_4b961dc52a72ba3db684af7ccd23db95 = L.circleMarker(
+                [55.662525, 37.607713],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b403ad41d1d56f21bbf61e88883d5a46 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ece31b5435000422abf811afd5eccc08 = $(`<div id="html_ece31b5435000422abf811afd5eccc08" style="width: 100.0%; height: 100.0%;"><b>ООО «ЛенинградПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 188,095<br>Адрес: к. Усть-Кулом, ул. Медицинская, д. 96 к. 194, 445502</div>`)[0];
+                popup_b403ad41d1d56f21bbf61e88883d5a46.setContent(html_ece31b5435000422abf811afd5eccc08);
+            
+        
+
+        circle_marker_4b961dc52a72ba3db684af7ccd23db95.bindPopup(popup_b403ad41d1d56f21bbf61e88883d5a46)
+        ;
+
+        
+    
+    
+            var circle_marker_ccd4f874632100cc00b05a2384725b5e = L.circleMarker(
+                [55.683143, 37.521558],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_c6272690046fc80687684d67655578d2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_915d2865d6b7c986e66fc53e26c20044 = $(`<div id="html_915d2865d6b7c986e66fc53e26c20044" style="width: 100.0%; height: 100.0%;"><b>ООО «КаютаПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 52,240<br>Адрес: клх Руза, алл. Максима Горького, д. 98, 160607</div>`)[0];
+                popup_c6272690046fc80687684d67655578d2.setContent(html_915d2865d6b7c986e66fc53e26c20044);
+            
+        
+
+        circle_marker_ccd4f874632100cc00b05a2384725b5e.bindPopup(popup_c6272690046fc80687684d67655578d2)
+        ;
+
+        
+    
+    
+            var circle_marker_a0dfd893cf269058bf71072b0f872e28 = L.circleMarker(
+                [55.779644, 37.395771],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_8ae7e5d49619f99a23224575ad21ef58 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f3bfaf5740386bc5d4968d944b3553e8 = $(`<div id="html_f3bfaf5740386bc5d4968d944b3553e8" style="width: 100.0%; height: 100.0%;"><b>ООО «ИсследованиеПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 32,246<br>Адрес: г. Соболево, бул. Лермонтова, д. 1 к. 9, 477005</div>`)[0];
+                popup_8ae7e5d49619f99a23224575ad21ef58.setContent(html_f3bfaf5740386bc5d4968d944b3553e8);
+            
+        
+
+        circle_marker_a0dfd893cf269058bf71072b0f872e28.bindPopup(popup_8ae7e5d49619f99a23224575ad21ef58)
+        ;
+
+        
+    
+    
+            var circle_marker_e8fd7ff4e4216dbe3e837765e683d709 = L.circleMarker(
+                [55.751013, 37.675693],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_c278d4d180303fcfacd329cee849febb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_71dc9e0f7503d4040c2da58f0a477296 = $(`<div id="html_71dc9e0f7503d4040c2da58f0a477296" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 169,351<br>Адрес: клх Мыс Шмидта, бул. Студенческий, д. 9/6, 542357</div>`)[0];
+                popup_c278d4d180303fcfacd329cee849febb.setContent(html_71dc9e0f7503d4040c2da58f0a477296);
+            
+        
+
+        circle_marker_e8fd7ff4e4216dbe3e837765e683d709.bindPopup(popup_c278d4d180303fcfacd329cee849febb)
+        ;
+
+        
+    
+    
+            var circle_marker_18a1f941af5d8cac05eb8d1bd9974cb2 = L.circleMarker(
+                [55.805731, 37.585375],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_12239512655a9f27f260b06ab7f8a0e2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_00262a7a4e3d2f12ecb81fb7e01c1380 = $(`<div id="html_00262a7a4e3d2f12ecb81fb7e01c1380" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрелестьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 78,920<br>Адрес: к. Североморск, алл. Николаева, д. 637 стр. 760, 361530</div>`)[0];
+                popup_12239512655a9f27f260b06ab7f8a0e2.setContent(html_00262a7a4e3d2f12ecb81fb7e01c1380);
+            
+        
+
+        circle_marker_18a1f941af5d8cac05eb8d1bd9974cb2.bindPopup(popup_12239512655a9f27f260b06ab7f8a0e2)
+        ;
+
+        
+    
+    
+            var circle_marker_9e01cbd1cef4929b784876d25fb9ab1d = L.circleMarker(
+                [55.734617, 37.658044],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_3c7692584021ee417f9b3ebac6e4feac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4eb44baf02ea3e722d7ca8110505d0e0 = $(`<div id="html_4eb44baf02ea3e722d7ca8110505d0e0" style="width: 100.0%; height: 100.0%;"><b>ООО «ПривлекатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 260,795<br>Адрес: д. Урюпинск, ш. 9 мая, д. 167 стр. 6/5, 515319</div>`)[0];
+                popup_3c7692584021ee417f9b3ebac6e4feac.setContent(html_4eb44baf02ea3e722d7ca8110505d0e0);
+            
+        
+
+        circle_marker_9e01cbd1cef4929b784876d25fb9ab1d.bindPopup(popup_3c7692584021ee417f9b3ebac6e4feac)
+        ;
+
+        
+    
+    
+            var circle_marker_9d9a767fdf71d9b3679cefaf35ae6d27 = L.circleMarker(
+                [55.746734, 37.570911],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_d6dbd70ed3ffb978c7e2c03d3dc83dd0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f231d7277d76675c19ecafe9ad584461 = $(`<div id="html_f231d7277d76675c19ecafe9ad584461" style="width: 100.0%; height: 100.0%;"><b>ООО «ЯркоПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 32,993<br>Адрес: с. Шелагонцы, пр. Ольховый, д. 6/8 стр. 759, 016582</div>`)[0];
+                popup_d6dbd70ed3ffb978c7e2c03d3dc83dd0.setContent(html_f231d7277d76675c19ecafe9ad584461);
+            
+        
+
+        circle_marker_9d9a767fdf71d9b3679cefaf35ae6d27.bindPopup(popup_d6dbd70ed3ffb978c7e2c03d3dc83dd0)
+        ;
+
+        
+    
+    
+            var circle_marker_a31022aec3893bc462e069e091b4dfb8 = L.circleMarker(
+                [55.739323, 37.546894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b4ac26b2e1fa0d57cb678bae209947c1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3d701f7fd32014b1f34b5a365227e63a = $(`<div id="html_3d701f7fd32014b1f34b5a365227e63a" style="width: 100.0%; height: 100.0%;"><b>ООО «ВздрогнутьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 116,249<br>Адрес: ст. Ербогачен, бул. Локомотивный, д. 9 стр. 41, 370589</div>`)[0];
+                popup_b4ac26b2e1fa0d57cb678bae209947c1.setContent(html_3d701f7fd32014b1f34b5a365227e63a);
+            
+        
+
+        circle_marker_a31022aec3893bc462e069e091b4dfb8.bindPopup(popup_b4ac26b2e1fa0d57cb678bae209947c1)
+        ;
+
+        
+    
+    
+            var circle_marker_10cceef60a9b294051d678ad0827c5b0 = L.circleMarker(
+                [55.765047, 37.655927],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_937db5994e6774ba846c5d71266a218d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4266b6b182c82e117725da8fca5aa623 = $(`<div id="html_4266b6b182c82e117725da8fca5aa623" style="width: 100.0%; height: 100.0%;"><b>ООО «ИзредкаПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 129,879<br>Адрес: п. Якутск, пер. Энтузиастов, д. 101 стр. 4, 907844</div>`)[0];
+                popup_937db5994e6774ba846c5d71266a218d.setContent(html_4266b6b182c82e117725da8fca5aa623);
+            
+        
+
+        circle_marker_10cceef60a9b294051d678ad0827c5b0.bindPopup(popup_937db5994e6774ba846c5d71266a218d)
+        ;
+
+        
+    
+    
+            var circle_marker_4c925ea249c64ccd8d5a0bad8d42949e = L.circleMarker(
+                [55.74958, 37.708942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_0086fcd21740c2ea78338a9bc68d6dba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c858a15bace5e5121706ee670db306eb = $(`<div id="html_c858a15bace5e5121706ee670db306eb" style="width: 100.0%; height: 100.0%;"><b>ООО «СравнениеПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 55,259<br>Адрес: с. Териберка, алл. Рыбацкая, д. 1 к. 847, 801624</div>`)[0];
+                popup_0086fcd21740c2ea78338a9bc68d6dba.setContent(html_c858a15bace5e5121706ee670db306eb);
+            
+        
+
+        circle_marker_4c925ea249c64ccd8d5a0bad8d42949e.bindPopup(popup_0086fcd21740c2ea78338a9bc68d6dba)
+        ;
+
+        
+    
+    
+            var circle_marker_2fc14009fc7f367fe2bcd494294cf8fa = L.circleMarker(
+                [55.68765, 37.672604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b18eba6e7c1c583178fa23675e977d50 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11d3af5fb311cf49d08722abde144bbd = $(`<div id="html_11d3af5fb311cf49d08722abde144bbd" style="width: 100.0%; height: 100.0%;"><b>ООО «ОбидаПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 34,855<br>Адрес: с. Анадырь, наб. Рябиновая, д. 5/1 к. 5/4, 972896</div>`)[0];
+                popup_b18eba6e7c1c583178fa23675e977d50.setContent(html_11d3af5fb311cf49d08722abde144bbd);
+            
+        
+
+        circle_marker_2fc14009fc7f367fe2bcd494294cf8fa.bindPopup(popup_b18eba6e7c1c583178fa23675e977d50)
+        ;
+
+        
+    
+    
+            var circle_marker_e474f410fc9d5cf959bfc37421011866 = L.circleMarker(
+                [55.712701, 37.574619],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_44f53fd418d468a0bf918abb3ed5de4c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5f135a7559ec3c600874abc380d14f0a = $(`<div id="html_5f135a7559ec3c600874abc380d14f0a" style="width: 100.0%; height: 100.0%;"><b>ООО «ПосвятитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 116,374<br>Адрес: ст. Нефтегорск (Самар.), наб. Западная, д. 2, 747338</div>`)[0];
+                popup_44f53fd418d468a0bf918abb3ed5de4c.setContent(html_5f135a7559ec3c600874abc380d14f0a);
+            
+        
+
+        circle_marker_e474f410fc9d5cf959bfc37421011866.bindPopup(popup_44f53fd418d468a0bf918abb3ed5de4c)
+        ;
+
+        
+    
+    
+            var circle_marker_45db377733b477127babfaecbbd36ccd = L.circleMarker(
+                [55.687772, 37.67507],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_3bd15d181180ea7e35d9c273fa6583d9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_98ab279b899fbc8de6327a63467c7d20 = $(`<div id="html_98ab279b899fbc8de6327a63467c7d20" style="width: 100.0%; height: 100.0%;"><b>ООО «СкрытыйПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 244,858<br>Адрес: с. Урус-Мартан, пр. Элеваторный, д. 5/4 стр. 852, 205493</div>`)[0];
+                popup_3bd15d181180ea7e35d9c273fa6583d9.setContent(html_98ab279b899fbc8de6327a63467c7d20);
+            
+        
+
+        circle_marker_45db377733b477127babfaecbbd36ccd.bindPopup(popup_3bd15d181180ea7e35d9c273fa6583d9)
+        ;
+
+        
+    
+    
+            var circle_marker_a9ee851c1eed601a587486bb4025fe3b = L.circleMarker(
+                [55.743349, 37.678662],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_d8471cf8b95001e24317fd46dac4c7ff = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a0c1fdbe5a76f4a5668f068345e0b340 = $(`<div id="html_a0c1fdbe5a76f4a5668f068345e0b340" style="width: 100.0%; height: 100.0%;"><b>ООО «ЛегкоПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 4,396<br>Адрес: г. Фатеж, ул. З.Космодемьянской, д. 99, 258713</div>`)[0];
+                popup_d8471cf8b95001e24317fd46dac4c7ff.setContent(html_a0c1fdbe5a76f4a5668f068345e0b340);
+            
+        
+
+        circle_marker_a9ee851c1eed601a587486bb4025fe3b.bindPopup(popup_d8471cf8b95001e24317fd46dac4c7ff)
+        ;
+
+        
+    
+    
+            var circle_marker_31a4a4c76dde0bc97291504001ae3f24 = L.circleMarker(
+                [55.73995, 37.6911],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_93d340e5dcc5addbac629585bee42425 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_00f8d21082b607958b4fc08ec7379959 = $(`<div id="html_00f8d21082b607958b4fc08ec7379959" style="width: 100.0%; height: 100.0%;"><b>ООО «ГоловнойПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 85,026<br>Адрес: клх Урюпинск, пер. Воровского, д. 83 к. 3, 310690</div>`)[0];
+                popup_93d340e5dcc5addbac629585bee42425.setContent(html_00f8d21082b607958b4fc08ec7379959);
+            
+        
+
+        circle_marker_31a4a4c76dde0bc97291504001ae3f24.bindPopup(popup_93d340e5dcc5addbac629585bee42425)
+        ;
+
+        
+    
+    
+            var circle_marker_ed85d01e2f135507cc37960e68d733e5 = L.circleMarker(
+                [55.74633, 37.639886],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_eba0ae294f2725972ec77b738893c995 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4963bb4d2729ec1b453e1d6bf9cca55c = $(`<div id="html_4963bb4d2729ec1b453e1d6bf9cca55c" style="width: 100.0%; height: 100.0%;"><b>ООО «СброситьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 294,229<br>Адрес: ст. Кимры, ш. Среднее, д. 1/9 к. 7/9, 634351</div>`)[0];
+                popup_eba0ae294f2725972ec77b738893c995.setContent(html_4963bb4d2729ec1b453e1d6bf9cca55c);
+            
+        
+
+        circle_marker_ed85d01e2f135507cc37960e68d733e5.bindPopup(popup_eba0ae294f2725972ec77b738893c995)
+        ;
+
+        
+    
+    
+            var circle_marker_868e1689925aadc305ecf8be6973e575 = L.circleMarker(
+                [55.722767, 37.551008],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_166178d8f8ccf6d421dcc2dcd3cdaf06 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_24be473fa6fb780ca2483f5129fb5ca1 = $(`<div id="html_24be473fa6fb780ca2483f5129fb5ca1" style="width: 100.0%; height: 100.0%;"><b>ООО «ГрудьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 216,621<br>Адрес: п. Каменск-Уральский, алл. Воровского, д. 97 к. 5, 772522</div>`)[0];
+                popup_166178d8f8ccf6d421dcc2dcd3cdaf06.setContent(html_24be473fa6fb780ca2483f5129fb5ca1);
+            
+        
+
+        circle_marker_868e1689925aadc305ecf8be6973e575.bindPopup(popup_166178d8f8ccf6d421dcc2dcd3cdaf06)
+        ;
+
+        
+    
+    
+            var circle_marker_20ab9f21dfd3a6440c583c2a7a1ea337 = L.circleMarker(
+                [55.729787, 37.675428],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_5e16979c691b2cd4a915cd3191ed5da5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_edad999d95857a7e7f6c205c1b9ecbf7 = $(`<div id="html_edad999d95857a7e7f6c205c1b9ecbf7" style="width: 100.0%; height: 100.0%;"><b>ООО «ТрястиПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 30,662<br>Адрес: к. Валдай, ш. Речное, д. 766 стр. 1/1, 176591</div>`)[0];
+                popup_5e16979c691b2cd4a915cd3191ed5da5.setContent(html_edad999d95857a7e7f6c205c1b9ecbf7);
+            
+        
+
+        circle_marker_20ab9f21dfd3a6440c583c2a7a1ea337.bindPopup(popup_5e16979c691b2cd4a915cd3191ed5da5)
+        ;
+
+        
+    
+    
+            var circle_marker_1961fc1576073f095e6dfdceeb632444 = L.circleMarker(
+                [55.750202, 37.685532],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_dcaec9c1751c56fc9bd67d1a09fff46b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a33d33832d24e84b73036cf70620ecd0 = $(`<div id="html_a33d33832d24e84b73036cf70620ecd0" style="width: 100.0%; height: 100.0%;"><b>ООО «МягкийПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 154,735<br>Адрес: ст. Котельнич, ул. Нижняя, д. 3 стр. 3/7, 511047</div>`)[0];
+                popup_dcaec9c1751c56fc9bd67d1a09fff46b.setContent(html_a33d33832d24e84b73036cf70620ecd0);
+            
+        
+
+        circle_marker_1961fc1576073f095e6dfdceeb632444.bindPopup(popup_dcaec9c1751c56fc9bd67d1a09fff46b)
+        ;
+
+        
+    
+    
+            var circle_marker_7abcca5ae4999a2dce4848e0d6859d16 = L.circleMarker(
+                [55.736202, 37.684708],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_f2a0525e9729eb17f01aa83868982dc0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8caee6d19e3170aaa62253377894e424 = $(`<div id="html_8caee6d19e3170aaa62253377894e424" style="width: 100.0%; height: 100.0%;"><b>ООО «МгновениеПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 124,644<br>Адрес: к. Руза, пер. Геологический, д. 6 стр. 67, 654793</div>`)[0];
+                popup_f2a0525e9729eb17f01aa83868982dc0.setContent(html_8caee6d19e3170aaa62253377894e424);
+            
+        
+
+        circle_marker_7abcca5ae4999a2dce4848e0d6859d16.bindPopup(popup_f2a0525e9729eb17f01aa83868982dc0)
+        ;
+
+        
+    
+    
+            var circle_marker_7e48840e0a830e473e7c0d49657101ec = L.circleMarker(
+                [55.814951, 37.704589],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_c00c74f33ab90fc99f2f2f202f3700ab = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6d1c7d587e8f709e74ea7fe147d0970f = $(`<div id="html_6d1c7d587e8f709e74ea7fe147d0970f" style="width: 100.0%; height: 100.0%;"><b>ООО «ИнвалидПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 127,868<br>Адрес: с. Озеры, пр. Громова, д. 15 к. 2/5, 112545</div>`)[0];
+                popup_c00c74f33ab90fc99f2f2f202f3700ab.setContent(html_6d1c7d587e8f709e74ea7fe147d0970f);
+            
+        
+
+        circle_marker_7e48840e0a830e473e7c0d49657101ec.bindPopup(popup_c00c74f33ab90fc99f2f2f202f3700ab)
+        ;
+
+        
+    
+    
+            var circle_marker_ef8e20c552de062ab7f547e1de0870a3 = L.circleMarker(
+                [55.810224, 37.627371],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_abca3902d55395a04575b468092324a3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b1af61f75a571d0b1b263ec7c5cb90f8 = $(`<div id="html_b1af61f75a571d0b1b263ec7c5cb90f8" style="width: 100.0%; height: 100.0%;"><b>ООО «ВоенныйПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 110,727<br>Адрес: к. Сургут (Хант.), бул. Комарова, д. 7/2 стр. 6, 924991</div>`)[0];
+                popup_abca3902d55395a04575b468092324a3.setContent(html_b1af61f75a571d0b1b263ec7c5cb90f8);
+            
+        
+
+        circle_marker_ef8e20c552de062ab7f547e1de0870a3.bindPopup(popup_abca3902d55395a04575b468092324a3)
+        ;
+
+        
+    
+    
+            var circle_marker_0ba21218779671d551317237d26492b3 = L.circleMarker(
+                [55.756291, 37.439214],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b7ff87bbe772f4d9d9465981403b0b88 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a9368a4ec2fd1590520dd829ebb917e2 = $(`<div id="html_a9368a4ec2fd1590520dd829ebb917e2" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыбиратьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 233,703<br>Адрес: к. Урус-Мартан, пер. Дачный, д. 9/4 к. 2/4, 074517</div>`)[0];
+                popup_b7ff87bbe772f4d9d9465981403b0b88.setContent(html_a9368a4ec2fd1590520dd829ebb917e2);
+            
+        
+
+        circle_marker_0ba21218779671d551317237d26492b3.bindPopup(popup_b7ff87bbe772f4d9d9465981403b0b88)
+        ;
+
+        
+    
+    
+            var circle_marker_8b816745c8b65e13fb99b57ee97d0355 = L.circleMarker(
+                [55.796536, 37.539856],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_88e8e82d4fbd12d236ffa6900e61184c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7d5973f5f5de21bcf7e53f817886b0dc = $(`<div id="html_7d5973f5f5de21bcf7e53f817886b0dc" style="width: 100.0%; height: 100.0%;"><b>ООО «ИсполнятьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 15,712<br>Адрес: с. Мценск, ул. Студенческая, д. 6/2 стр. 4/7, 745458</div>`)[0];
+                popup_88e8e82d4fbd12d236ffa6900e61184c.setContent(html_7d5973f5f5de21bcf7e53f817886b0dc);
+            
+        
+
+        circle_marker_8b816745c8b65e13fb99b57ee97d0355.bindPopup(popup_88e8e82d4fbd12d236ffa6900e61184c)
+        ;
+
+        
+    
+    
+            var circle_marker_b0c7432806033cc1687e0ed0f8708933 = L.circleMarker(
+                [55.796412, 37.748624],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_46b1e1b0bafbbfecd65212eefe3fdaeb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_38e51fe22d3f96022f58f62db54e462c = $(`<div id="html_38e51fe22d3f96022f58f62db54e462c" style="width: 100.0%; height: 100.0%;"><b>ООО «УпорПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 73,610<br>Адрес: к. Джейрах, ш. Запрудное, д. 91 к. 892, 326973</div>`)[0];
+                popup_46b1e1b0bafbbfecd65212eefe3fdaeb.setContent(html_38e51fe22d3f96022f58f62db54e462c);
+            
+        
+
+        circle_marker_b0c7432806033cc1687e0ed0f8708933.bindPopup(popup_46b1e1b0bafbbfecd65212eefe3fdaeb)
+        ;
+
+        
+    
+    
+            var circle_marker_fc181a44587d0b8468f4252acaf3ff62 = L.circleMarker(
+                [55.685297, 37.744687],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_d68fa6be4fc82c66b744f4f143655d39 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_69f117f7050b50afb4d3e1bb994342f4 = $(`<div id="html_69f117f7050b50afb4d3e1bb994342f4" style="width: 100.0%; height: 100.0%;"><b>ООО «ТристаПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 309,408<br>Адрес: к. Кашира, ул. Розы Люксембург, д. 9, 661889</div>`)[0];
+                popup_d68fa6be4fc82c66b744f4f143655d39.setContent(html_69f117f7050b50afb4d3e1bb994342f4);
+            
+        
+
+        circle_marker_fc181a44587d0b8468f4252acaf3ff62.bindPopup(popup_d68fa6be4fc82c66b744f4f143655d39)
+        ;
+
+        
+    
+    
+            var circle_marker_6808bb7da8f46de4cb820121fb9b44ba = L.circleMarker(
+                [55.767925, 37.627326],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_db9752127bd04aded3272d394ef80c97 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_225bbb3a4f21d6e4161451c37c525855 = $(`<div id="html_225bbb3a4f21d6e4161451c37c525855" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыдержатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 153,039<br>Адрес: с. Хасавюрт, наб. Авиационная, д. 2, 380003</div>`)[0];
+                popup_db9752127bd04aded3272d394ef80c97.setContent(html_225bbb3a4f21d6e4161451c37c525855);
+            
+        
+
+        circle_marker_6808bb7da8f46de4cb820121fb9b44ba.bindPopup(popup_db9752127bd04aded3272d394ef80c97)
+        ;
+
+        
+    
+    
+            var circle_marker_baf3fbdd2a5f125c9a0cd016d37e571c = L.circleMarker(
+                [55.725568, 37.632636],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_96027843698d5cb35a77753b8934b08c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9311d15fa4134b9ee71e3ab29b34360a = $(`<div id="html_9311d15fa4134b9ee71e3ab29b34360a" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрошептатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 211,861<br>Адрес: д. Нефтекамск, ш. Зеленое, д. 1 стр. 5/2, 836702</div>`)[0];
+                popup_96027843698d5cb35a77753b8934b08c.setContent(html_9311d15fa4134b9ee71e3ab29b34360a);
+            
+        
+
+        circle_marker_baf3fbdd2a5f125c9a0cd016d37e571c.bindPopup(popup_96027843698d5cb35a77753b8934b08c)
+        ;
+
+        
+    
+    
+            var circle_marker_e18f0fa170f6bd0e8bfddb7d1f3fc87b = L.circleMarker(
+                [55.730475, 37.664894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_dccc5778508b7cb9586e4aaef5ecb60e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1240d313654d9cf357689c5985f25f3e = $(`<div id="html_1240d313654d9cf357689c5985f25f3e" style="width: 100.0%; height: 100.0%;"><b>ООО «ИдеяПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 123,484<br>Адрес: ст. Ивдель, пр. Докучаева, д. 81, 210032</div>`)[0];
+                popup_dccc5778508b7cb9586e4aaef5ecb60e.setContent(html_1240d313654d9cf357689c5985f25f3e);
+            
+        
+
+        circle_marker_e18f0fa170f6bd0e8bfddb7d1f3fc87b.bindPopup(popup_dccc5778508b7cb9586e4aaef5ecb60e)
+        ;
+
+        
+    
+    
+            var circle_marker_b9b9aac88ba38a27680c274be0e91752 = L.circleMarker(
+                [55.675589, 37.518716],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_26160af9159c53d3ea3b5a61ac20ab6a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e1c2dce84ad9ce407353bd6feaef47a9 = $(`<div id="html_e1c2dce84ad9ce407353bd6feaef47a9" style="width: 100.0%; height: 100.0%;"><b>ООО «НервноПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 171,030<br>Адрес: к. Ирбит, наб. Новосельская, д. 840, 932133</div>`)[0];
+                popup_26160af9159c53d3ea3b5a61ac20ab6a.setContent(html_e1c2dce84ad9ce407353bd6feaef47a9);
+            
+        
+
+        circle_marker_b9b9aac88ba38a27680c274be0e91752.bindPopup(popup_26160af9159c53d3ea3b5a61ac20ab6a)
+        ;
+
+        
+    
+    
+            var circle_marker_7ee263d0299da60aefc498246e192009 = L.circleMarker(
+                [55.777569, 37.593942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_9acd0cb7eaad5639cdcdff41c9629d7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_086b44b9efa31d11f30dfb01739c8ad9 = $(`<div id="html_086b44b9efa31d11f30dfb01739c8ad9" style="width: 100.0%; height: 100.0%;"><b>ООО «ОстановитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 88,457<br>Адрес: ст. Суздаль, наб. Локомотивная, д. 4 стр. 56, 220969</div>`)[0];
+                popup_9acd0cb7eaad5639cdcdff41c9629d7b.setContent(html_086b44b9efa31d11f30dfb01739c8ad9);
+            
+        
+
+        circle_marker_7ee263d0299da60aefc498246e192009.bindPopup(popup_9acd0cb7eaad5639cdcdff41c9629d7b)
+        ;
+
+        
+    
+    
+            var circle_marker_fbf9401f83585e48a141fbb8cc116f0f = L.circleMarker(
+                [55.799534, 37.710625],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_907dac03ee1729c1e87fb50e8749c4cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_59902eee35ecfc2f68b07f4b5b3948f7 = $(`<div id="html_59902eee35ecfc2f68b07f4b5b3948f7" style="width: 100.0%; height: 100.0%;"><b>ООО «ДыханиеПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 67,396<br>Адрес: д. Вилюйск, пер. Клары Цеткин, д. 762 к. 20, 336884</div>`)[0];
+                popup_907dac03ee1729c1e87fb50e8749c4cc.setContent(html_59902eee35ecfc2f68b07f4b5b3948f7);
+            
+        
+
+        circle_marker_fbf9401f83585e48a141fbb8cc116f0f.bindPopup(popup_907dac03ee1729c1e87fb50e8749c4cc)
+        ;
+
+        
+    
+    
+            var circle_marker_4776d3d7d6b1fb5730d0715cfc0ac710 = L.circleMarker(
+                [55.711295, 37.655008],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_87d1159839306eb1c1d2b4ce5d98cd22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d42ed9574786334b5a17e21e970f14a6 = $(`<div id="html_d42ed9574786334b5a17e21e970f14a6" style="width: 100.0%; height: 100.0%;"><b>ООО «ОчереднойПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 154,533<br>Адрес: д. Биробиджан, ш. Правды, д. 4/8 к. 2, 089899</div>`)[0];
+                popup_87d1159839306eb1c1d2b4ce5d98cd22.setContent(html_d42ed9574786334b5a17e21e970f14a6);
+            
+        
+
+        circle_marker_4776d3d7d6b1fb5730d0715cfc0ac710.bindPopup(popup_87d1159839306eb1c1d2b4ce5d98cd22)
+        ;
+
+        
+    
+    
+            var circle_marker_1c5f0fc51868339bcff7cc56978284ae = L.circleMarker(
+                [55.787758, 37.639116],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_d0478e271fea32d297f5a3a047957309 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_87c49bbfc6f96d3ee0e19e9916e2d1cc = $(`<div id="html_87c49bbfc6f96d3ee0e19e9916e2d1cc" style="width: 100.0%; height: 100.0%;"><b>ООО «ДрогнутьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 243,581<br>Адрес: к. Печенга, пер. Короленко, д. 465, 745054</div>`)[0];
+                popup_d0478e271fea32d297f5a3a047957309.setContent(html_87c49bbfc6f96d3ee0e19e9916e2d1cc);
+            
+        
+
+        circle_marker_1c5f0fc51868339bcff7cc56978284ae.bindPopup(popup_d0478e271fea32d297f5a3a047957309)
+        ;
+
+        
+    
+    
+            var circle_marker_25e36e860ef33058f33d1babb5b2f6f7 = L.circleMarker(
+                [55.738671, 37.547929],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_c4fc894704fd3dcc97bad04786371e58 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_53e70a04ceffeb4dd816adfcdc84013b = $(`<div id="html_53e70a04ceffeb4dd816adfcdc84013b" style="width: 100.0%; height: 100.0%;"><b>ООО «ИнвалидПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 92,893<br>Адрес: п. Соль-Илецк, пер. Котовского, д. 3 стр. 2, 060293</div>`)[0];
+                popup_c4fc894704fd3dcc97bad04786371e58.setContent(html_53e70a04ceffeb4dd816adfcdc84013b);
+            
+        
+
+        circle_marker_25e36e860ef33058f33d1babb5b2f6f7.bindPopup(popup_c4fc894704fd3dcc97bad04786371e58)
+        ;
+
+        
+    
+    
+            var circle_marker_94220ae70f59fcf2023b77f5a2fe0094 = L.circleMarker(
+                [55.788518, 37.603303],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_38a8652980bb85f387d581a5ec15881a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_07b049de63d6df4db6363dff0fcc76c0 = $(`<div id="html_07b049de63d6df4db6363dff0fcc76c0" style="width: 100.0%; height: 100.0%;"><b>ООО «ПламяПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 88,307<br>Адрес: с. Пинега, бул. Парковый, д. 45 к. 6/9, 282417</div>`)[0];
+                popup_38a8652980bb85f387d581a5ec15881a.setContent(html_07b049de63d6df4db6363dff0fcc76c0);
+            
+        
+
+        circle_marker_94220ae70f59fcf2023b77f5a2fe0094.bindPopup(popup_38a8652980bb85f387d581a5ec15881a)
+        ;
+
+        
+    
+    
+            var circle_marker_5cc5d94c57de12a00d3c33f134d5e373 = L.circleMarker(
+                [55.739893, 37.518098],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_4af8318d3c0cc7b14107c56462a1854b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_213f3bdeb0d58160b383fef2fc70855b = $(`<div id="html_213f3bdeb0d58160b383fef2fc70855b" style="width: 100.0%; height: 100.0%;"><b>ООО «МеталлПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 271,800<br>Адрес: с. Верхний Тагил, пер. Блюхера, д. 7/7, 600835</div>`)[0];
+                popup_4af8318d3c0cc7b14107c56462a1854b.setContent(html_213f3bdeb0d58160b383fef2fc70855b);
+            
+        
+
+        circle_marker_5cc5d94c57de12a00d3c33f134d5e373.bindPopup(popup_4af8318d3c0cc7b14107c56462a1854b)
+        ;
+
+        
+    
+    
+            var circle_marker_14c3d0760ceb93298d60ba8f19ee687c = L.circleMarker(
+                [55.701797, 37.74061],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_f2ec47298e0a2f9dac3f909d3ded05d2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_25e25b747183de46af5e93ddfc5680d6 = $(`<div id="html_25e25b747183de46af5e93ddfc5680d6" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗатянутьсяПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 242,871<br>Адрес: с. Горячинск, наб. Монтажников, д. 13 стр. 7, 849926</div>`)[0];
+                popup_f2ec47298e0a2f9dac3f909d3ded05d2.setContent(html_25e25b747183de46af5e93ddfc5680d6);
+            
+        
+
+        circle_marker_14c3d0760ceb93298d60ba8f19ee687c.bindPopup(popup_f2ec47298e0a2f9dac3f909d3ded05d2)
+        ;
+
+        
+    
+    
+            var circle_marker_df41ea2f3bb24e537c6977a6703b808c = L.circleMarker(
+                [55.727708, 37.698193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_d0617cef5b2628f5af28c8a84e3bd7da = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_aa4a2c4dafb02a25dba4fb9716351908 = $(`<div id="html_aa4a2c4dafb02a25dba4fb9716351908" style="width: 100.0%; height: 100.0%;"><b>ООО «ВозмутитьсяПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 129,498<br>Адрес: к. Неплюевка, ул. Юности, д. 8/5, 762120</div>`)[0];
+                popup_d0617cef5b2628f5af28c8a84e3bd7da.setContent(html_aa4a2c4dafb02a25dba4fb9716351908);
+            
+        
+
+        circle_marker_df41ea2f3bb24e537c6977a6703b808c.bindPopup(popup_d0617cef5b2628f5af28c8a84e3bd7da)
+        ;
+
+        
+    
+    
+            var circle_marker_c7a3d85605d2eae8359f440f8976822a = L.circleMarker(
+                [55.709923, 37.491052],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_8ab7300060cdc2a5c6c9dd52472aa3c4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f466130d8d7703100e8e5a7c939d948d = $(`<div id="html_f466130d8d7703100e8e5a7c939d948d" style="width: 100.0%; height: 100.0%;"><b>ООО «ПредоставитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 135,342<br>Адрес: с. Кисловодск, пр. Сурикова, д. 2/8, 517016</div>`)[0];
+                popup_8ab7300060cdc2a5c6c9dd52472aa3c4.setContent(html_f466130d8d7703100e8e5a7c939d948d);
+            
+        
+
+        circle_marker_c7a3d85605d2eae8359f440f8976822a.bindPopup(popup_8ab7300060cdc2a5c6c9dd52472aa3c4)
+        ;
+
+        
+    
+    
+            var circle_marker_0a245753fd3f97b9cd6ed56bd837edd2 = L.circleMarker(
+                [55.728737, 37.63934],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_1c95590e32d630af29cf9de1bba25d44 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3bc7e23944d7de9c114fdda03839dd12 = $(`<div id="html_3bc7e23944d7de9c114fdda03839dd12" style="width: 100.0%; height: 100.0%;"><b>ООО «СходитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 110,035<br>Адрес: г. Тутаев, ул. Седова, д. 9/3 стр. 22, 995866</div>`)[0];
+                popup_1c95590e32d630af29cf9de1bba25d44.setContent(html_3bc7e23944d7de9c114fdda03839dd12);
+            
+        
+
+        circle_marker_0a245753fd3f97b9cd6ed56bd837edd2.bindPopup(popup_1c95590e32d630af29cf9de1bba25d44)
+        ;
+
+        
+    
+    
+            var circle_marker_4dfb1ebf5a4878f7fd9a98871fe473e1 = L.circleMarker(
+                [55.795818, 37.64205],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_3175c19be369c356fadde991eeb9a860 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_728f8baf2cf220c93748003c47fd9edb = $(`<div id="html_728f8baf2cf220c93748003c47fd9edb" style="width: 100.0%; height: 100.0%;"><b>ООО «УголПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 203,254<br>Адрес: ст. Бирск, ш. Калинина, д. 18 стр. 8, 983863</div>`)[0];
+                popup_3175c19be369c356fadde991eeb9a860.setContent(html_728f8baf2cf220c93748003c47fd9edb);
+            
+        
+
+        circle_marker_4dfb1ebf5a4878f7fd9a98871fe473e1.bindPopup(popup_3175c19be369c356fadde991eeb9a860)
+        ;
+
+        
+    
+    
+            var circle_marker_443e1ec399b46719307efd410fa1269d = L.circleMarker(
+                [55.745263, 37.562219],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_1aa860ddd399bac02ab774360a0e71af = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_905bba3cb343ecf22aee75949bef0821 = $(`<div id="html_905bba3cb343ecf22aee75949bef0821" style="width: 100.0%; height: 100.0%;"><b>ООО «ДеловойПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 54,093<br>Адрес: г. Нижнекамск, алл. Толстого, д. 6, 398780</div>`)[0];
+                popup_1aa860ddd399bac02ab774360a0e71af.setContent(html_905bba3cb343ecf22aee75949bef0821);
+            
+        
+
+        circle_marker_443e1ec399b46719307efd410fa1269d.bindPopup(popup_1aa860ddd399bac02ab774360a0e71af)
+        ;
+
+        
+    
+    
+            var circle_marker_0e77c2a816b7cafb8af1eba406365a61 = L.circleMarker(
+                [55.703027, 37.672246],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_0ff765f9ead45451c23f41dc1851419b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1ff017bec650f9475c43806a5d81972c = $(`<div id="html_1ff017bec650f9475c43806a5d81972c" style="width: 100.0%; height: 100.0%;"><b>ООО «ЖестокийПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 157,225<br>Адрес: к. Подольск, пр. Черемушки, д. 6/1 к. 2/9, 919015</div>`)[0];
+                popup_0ff765f9ead45451c23f41dc1851419b.setContent(html_1ff017bec650f9475c43806a5d81972c);
+            
+        
+
+        circle_marker_0e77c2a816b7cafb8af1eba406365a61.bindPopup(popup_0ff765f9ead45451c23f41dc1851419b)
+        ;
+
+        
+    
+    
+            var circle_marker_f0d31f6983834dc2cb8079f90eec25fd = L.circleMarker(
+                [55.694161, 37.613096],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_dbca3d4207e466f5a30f81f745c42fd3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_93faf636b2468ce0058a5abc9117c1b8 = $(`<div id="html_93faf636b2468ce0058a5abc9117c1b8" style="width: 100.0%; height: 100.0%;"><b>ООО «УгрозаПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 73,564<br>Адрес: клх Бомнак, ул. Ивановская, д. 6/6 к. 23, 913577</div>`)[0];
+                popup_dbca3d4207e466f5a30f81f745c42fd3.setContent(html_93faf636b2468ce0058a5abc9117c1b8);
+            
+        
+
+        circle_marker_f0d31f6983834dc2cb8079f90eec25fd.bindPopup(popup_dbca3d4207e466f5a30f81f745c42fd3)
+        ;
+
+        
+    
+    
+            var circle_marker_96eb91276f6277216670908c50639cc3 = L.circleMarker(
+                [55.814564, 37.604283],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_f681874845ad3715ad85c5fd9a7028a7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_43991b062bb4995ee065a5cd21abde55 = $(`<div id="html_43991b062bb4995ee065a5cd21abde55" style="width: 100.0%; height: 100.0%;"><b>ООО «НажатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 131,321<br>Адрес: п. Чикола, ш. Ленина, д. 97 стр. 965, 392827</div>`)[0];
+                popup_f681874845ad3715ad85c5fd9a7028a7.setContent(html_43991b062bb4995ee065a5cd21abde55);
+            
+        
+
+        circle_marker_96eb91276f6277216670908c50639cc3.bindPopup(popup_f681874845ad3715ad85c5fd9a7028a7)
+        ;
+
+        
+    
+    
+            var circle_marker_14b313b6db635b65495b68e3c1899a79 = L.circleMarker(
+                [55.789951, 37.523657],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_49b5d6a73251c383474ae2c999873c17 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_240f7dcaaf8cf36e9ffb0f1364e4100b = $(`<div id="html_240f7dcaaf8cf36e9ffb0f1364e4100b" style="width: 100.0%; height: 100.0%;"><b>ООО «СынокПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 177,983<br>Адрес: п. Казань, наб. Стадионная, д. 66, 777392</div>`)[0];
+                popup_49b5d6a73251c383474ae2c999873c17.setContent(html_240f7dcaaf8cf36e9ffb0f1364e4100b);
+            
+        
+
+        circle_marker_14b313b6db635b65495b68e3c1899a79.bindPopup(popup_49b5d6a73251c383474ae2c999873c17)
+        ;
+
+        
+    
+    
+            var circle_marker_03adc706f2a8610fb671ed2716dfde56 = L.circleMarker(
+                [55.759811, 37.649197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_2d7dd7acbaef26783dcf6ee1dac0d7b9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1b08a0ec3022652d022b63aef540f056 = $(`<div id="html_1b08a0ec3022652d022b63aef540f056" style="width: 100.0%; height: 100.0%;"><b>ООО «СоветоватьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 52,853<br>Адрес: д. Владикавказ, пр. Партизанский, д. 317, 686508</div>`)[0];
+                popup_2d7dd7acbaef26783dcf6ee1dac0d7b9.setContent(html_1b08a0ec3022652d022b63aef540f056);
+            
+        
+
+        circle_marker_03adc706f2a8610fb671ed2716dfde56.bindPopup(popup_2d7dd7acbaef26783dcf6ee1dac0d7b9)
+        ;
+
+        
+    
+    
+            var circle_marker_e91b5595c2a4c47bbe3ab6a3343f02b7 = L.circleMarker(
+                [55.769742, 37.779002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_9fa9f4d09249d4fd9e0b450ff2fa98cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_97129573707e9035ea95cf74581f5cc6 = $(`<div id="html_97129573707e9035ea95cf74581f5cc6" style="width: 100.0%; height: 100.0%;"><b>ООО «ПотянутьсяПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 272,664<br>Адрес: клх Джубга, ул. Угловая, д. 3/2 стр. 78, 890260</div>`)[0];
+                popup_9fa9f4d09249d4fd9e0b450ff2fa98cc.setContent(html_97129573707e9035ea95cf74581f5cc6);
+            
+        
+
+        circle_marker_e91b5595c2a4c47bbe3ab6a3343f02b7.bindPopup(popup_9fa9f4d09249d4fd9e0b450ff2fa98cc)
+        ;
+
+        
+    
+    
+            var circle_marker_05c5a8b5b2375dde1d74e139058dd9fa = L.circleMarker(
+                [55.759413, 37.560817],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_f6ed238526d0ee3f399cf2bde0243d9f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0cb2a403a1e3bcf739fdc0e3c1b83824 = $(`<div id="html_0cb2a403a1e3bcf739fdc0e3c1b83824" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыбиратьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 66,821<br>Адрес: к. Кяхта, пер. Омский, д. 7/1, 268181</div>`)[0];
+                popup_f6ed238526d0ee3f399cf2bde0243d9f.setContent(html_0cb2a403a1e3bcf739fdc0e3c1b83824);
+            
+        
+
+        circle_marker_05c5a8b5b2375dde1d74e139058dd9fa.bindPopup(popup_f6ed238526d0ee3f399cf2bde0243d9f)
+        ;
+
+        
+    
+    
+            var circle_marker_d266a6283236f07899cfe549a9ab0651 = L.circleMarker(
+                [55.734931, 37.709161],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_c6857ca84552737b904acc5b5258ffd0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_15d389d4a972331529b0185b2e783439 = $(`<div id="html_15d389d4a972331529b0185b2e783439" style="width: 100.0%; height: 100.0%;"><b>ООО «ПересечьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 172,439<br>Адрес: ст. Воткинск, ул. 8-е Марта, д. 880, 957947</div>`)[0];
+                popup_c6857ca84552737b904acc5b5258ffd0.setContent(html_15d389d4a972331529b0185b2e783439);
+            
+        
+
+        circle_marker_d266a6283236f07899cfe549a9ab0651.bindPopup(popup_c6857ca84552737b904acc5b5258ffd0)
+        ;
+
+        
+    
+    
+            var circle_marker_b20e5e7c2bbc5c43cfa7a0daeb832dc8 = L.circleMarker(
+                [55.705542, 37.565408],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b49771bc36a20bd705a36ac3f95f1fdb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2eaa4730ceeffde79e5c837e8a997c87 = $(`<div id="html_2eaa4730ceeffde79e5c837e8a997c87" style="width: 100.0%; height: 100.0%;"><b>ООО «ТесноПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 235,564<br>Адрес: п. Домбай, алл. Советской Армии, д. 826 стр. 98, 744890</div>`)[0];
+                popup_b49771bc36a20bd705a36ac3f95f1fdb.setContent(html_2eaa4730ceeffde79e5c837e8a997c87);
+            
+        
+
+        circle_marker_b20e5e7c2bbc5c43cfa7a0daeb832dc8.bindPopup(popup_b49771bc36a20bd705a36ac3f95f1fdb)
+        ;
+
+        
+    
+    
+            var circle_marker_f187c6eab24902efc38f305517e94c3d = L.circleMarker(
+                [55.809586, 37.642972],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_6e28b2ee8bae75df5efde794aff3c2bf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_db4e8d867feb114c0fe6c784a9cffcbd = $(`<div id="html_db4e8d867feb114c0fe6c784a9cffcbd" style="width: 100.0%; height: 100.0%;"><b>ООО «ИюньПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 33,113<br>Адрес: с. Новый Уренгой, пер. Курчатова, д. 3/3 стр. 523, 326111</div>`)[0];
+                popup_6e28b2ee8bae75df5efde794aff3c2bf.setContent(html_db4e8d867feb114c0fe6c784a9cffcbd);
+            
+        
+
+        circle_marker_f187c6eab24902efc38f305517e94c3d.bindPopup(popup_6e28b2ee8bae75df5efde794aff3c2bf)
+        ;
+
+        
+    
+    
+            var circle_marker_851f423d00e6837d30bfc1c7214d8f82 = L.circleMarker(
+                [55.788637, 37.588535],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_609dbd9a67aadde8ae026c2dcf7983c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0b2c37f07008458ea7204455514b7789 = $(`<div id="html_0b2c37f07008458ea7204455514b7789" style="width: 100.0%; height: 100.0%;"><b>ООО «СлишкомПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 191,344<br>Адрес: д. Дербент, наб. Шаумяна, д. 577 к. 464, 853686</div>`)[0];
+                popup_609dbd9a67aadde8ae026c2dcf7983c3.setContent(html_0b2c37f07008458ea7204455514b7789);
+            
+        
+
+        circle_marker_851f423d00e6837d30bfc1c7214d8f82.bindPopup(popup_609dbd9a67aadde8ae026c2dcf7983c3)
+        ;
+
+        
+    
+    
+            var circle_marker_8f3dcda0ba6c77f35ac1885f47b9d6be = L.circleMarker(
+                [55.733457, 37.581755],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_e420115b67c55d0b2ee14977e8bfae0c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2cbd5e3ac493a2a813f9888434010ac0 = $(`<div id="html_2cbd5e3ac493a2a813f9888434010ac0" style="width: 100.0%; height: 100.0%;"><b>ООО «ЕврейскийПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 123,295<br>Адрес: г. Урус-Мартан, алл. Хуторская, д. 7 к. 713, 303718</div>`)[0];
+                popup_e420115b67c55d0b2ee14977e8bfae0c.setContent(html_2cbd5e3ac493a2a813f9888434010ac0);
+            
+        
+
+        circle_marker_8f3dcda0ba6c77f35ac1885f47b9d6be.bindPopup(popup_e420115b67c55d0b2ee14977e8bfae0c)
+        ;
+
+        
+    
+    
+            var circle_marker_617ca968b840657be23d7ed352e48687 = L.circleMarker(
+                [55.827316, 37.64053],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_039e5fb0a912c7eebf54f5bbbd9a0bd6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_119fedc26068b7647c3ebfc10ac65956 = $(`<div id="html_119fedc26068b7647c3ebfc10ac65956" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 28,777<br>Адрес: г. Стрежевой, пр. Пушкина, д. 4/3 стр. 6, 498218</div>`)[0];
+                popup_039e5fb0a912c7eebf54f5bbbd9a0bd6.setContent(html_119fedc26068b7647c3ebfc10ac65956);
+            
+        
+
+        circle_marker_617ca968b840657be23d7ed352e48687.bindPopup(popup_039e5fb0a912c7eebf54f5bbbd9a0bd6)
+        ;
+
+        
+    
+    
+            var circle_marker_f24e8b43b5f834fddf09ff5f0b4318e6 = L.circleMarker(
+                [55.795983, 37.525188],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_dec25da6a682711a66213197c5e2edde = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f6f7d15f91ed12b06db1d9fb4f0f02ec = $(`<div id="html_f6f7d15f91ed12b06db1d9fb4f0f02ec" style="width: 100.0%; height: 100.0%;"><b>ООО «СпалитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 195,310<br>Адрес: с. Биробиджан, пер. Карбышева, д. 1 к. 9, 141381</div>`)[0];
+                popup_dec25da6a682711a66213197c5e2edde.setContent(html_f6f7d15f91ed12b06db1d9fb4f0f02ec);
+            
+        
+
+        circle_marker_f24e8b43b5f834fddf09ff5f0b4318e6.bindPopup(popup_dec25da6a682711a66213197c5e2edde)
+        ;
+
+        
+    
+    
+            var circle_marker_0455f239bdeab50769cc255a846c8fb5 = L.circleMarker(
+                [55.712791, 37.722661],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_69dfb50d2ab56a1ffba8b2a9631b24a2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6634aed407492cf021974f385ee6b408 = $(`<div id="html_6634aed407492cf021974f385ee6b408" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 260,591<br>Адрес: п. Качканар, ул. Томская, д. 11 к. 6/3, 459334</div>`)[0];
+                popup_69dfb50d2ab56a1ffba8b2a9631b24a2.setContent(html_6634aed407492cf021974f385ee6b408);
+            
+        
+
+        circle_marker_0455f239bdeab50769cc255a846c8fb5.bindPopup(popup_69dfb50d2ab56a1ffba8b2a9631b24a2)
+        ;
+
+        
+    
+    
+            var circle_marker_f7f9eb033f2eab0622fa6999cd77639a = L.circleMarker(
+                [55.737441, 37.575311],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_2749dce35c4c5e35267054b230910a97 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_804c4a9d0f5481fdff242b233719789b = $(`<div id="html_804c4a9d0f5481fdff242b233719789b" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 111,591<br>Адрес: д. Белгород, пр. Васильковый, д. 768 стр. 82, 769389</div>`)[0];
+                popup_2749dce35c4c5e35267054b230910a97.setContent(html_804c4a9d0f5481fdff242b233719789b);
+            
+        
+
+        circle_marker_f7f9eb033f2eab0622fa6999cd77639a.bindPopup(popup_2749dce35c4c5e35267054b230910a97)
+        ;
+
+        
+    
+    
+            var circle_marker_fa9e2b76197373fcab73b45330a3fcfd = L.circleMarker(
+                [55.714395, 37.639672],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_05d191ffd3718680e1a73074d31d3a7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a6ac17a442c44da56794958307f8a2d9 = $(`<div id="html_a6ac17a442c44da56794958307f8a2d9" style="width: 100.0%; height: 100.0%;"><b>ООО «ОсвободитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 157,269<br>Адрес: к. Зеленоград, наб. Путейская, д. 1, 016451</div>`)[0];
+                popup_05d191ffd3718680e1a73074d31d3a7b.setContent(html_a6ac17a442c44da56794958307f8a2d9);
+            
+        
+
+        circle_marker_fa9e2b76197373fcab73b45330a3fcfd.bindPopup(popup_05d191ffd3718680e1a73074d31d3a7b)
+        ;
+
+        
+    
+    
+            var circle_marker_1c80bf0354aebead6300828cadfecec2 = L.circleMarker(
+                [55.790401, 37.711574],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_12d666bc3851e2ba3ea2af420cb1eb22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8e4c307bc416287568a1faf149729973 = $(`<div id="html_8e4c307bc416287568a1faf149729973" style="width: 100.0%; height: 100.0%;"><b>ООО «КидатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 212,959<br>Адрес: клх Джубга, пер. Краснознаменный, д. 94 стр. 36, 518812</div>`)[0];
+                popup_12d666bc3851e2ba3ea2af420cb1eb22.setContent(html_8e4c307bc416287568a1faf149729973);
+            
+        
+
+        circle_marker_1c80bf0354aebead6300828cadfecec2.bindPopup(popup_12d666bc3851e2ba3ea2af420cb1eb22)
+        ;
+
+        
+    
+    
+            var circle_marker_d9f1bffd41bee2122e12ccf69d63c23e = L.circleMarker(
+                [55.690336, 37.679124],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b748a2ae30acb3dfd7570f58097b7cbe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f9676c3bd0a43456345756f4b5c990b8 = $(`<div id="html_f9676c3bd0a43456345756f4b5c990b8" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗадержатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 142,163<br>Адрес: п. Ростов, ш. Дачное, д. 6/7 к. 881, 038860</div>`)[0];
+                popup_b748a2ae30acb3dfd7570f58097b7cbe.setContent(html_f9676c3bd0a43456345756f4b5c990b8);
+            
+        
+
+        circle_marker_d9f1bffd41bee2122e12ccf69d63c23e.bindPopup(popup_b748a2ae30acb3dfd7570f58097b7cbe)
+        ;
+
+        
+    
+    
+            var circle_marker_60855566f7cb79f1adb3f39658dc35d5 = L.circleMarker(
+                [55.663726, 37.690377],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_84a3e583a6c8163515cfb968739ec9a1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_957ab2e24856bce960beada7c2e7690f = $(`<div id="html_957ab2e24856bce960beada7c2e7690f" style="width: 100.0%; height: 100.0%;"><b>ООО «ПробоватьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 159,914<br>Адрес: п. Долинск, ш. Больничное, д. 5/5, 421230</div>`)[0];
+                popup_84a3e583a6c8163515cfb968739ec9a1.setContent(html_957ab2e24856bce960beada7c2e7690f);
+            
+        
+
+        circle_marker_60855566f7cb79f1adb3f39658dc35d5.bindPopup(popup_84a3e583a6c8163515cfb968739ec9a1)
+        ;
+
+        
+    
+    
+            var circle_marker_83e22c9ddea3d998b9166705d39dce26 = L.circleMarker(
+                [55.713257, 37.710065],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_470952aabd53d0341fa67c534af0aa70 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5ce297c26abc84233fc5ac02c7794530 = $(`<div id="html_5ce297c26abc84233fc5ac02c7794530" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧислоПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 172,746<br>Адрес: ст. Ростов, ул. Гагарина, д. 3/2 стр. 6, 833901</div>`)[0];
+                popup_470952aabd53d0341fa67c534af0aa70.setContent(html_5ce297c26abc84233fc5ac02c7794530);
+            
+        
+
+        circle_marker_83e22c9ddea3d998b9166705d39dce26.bindPopup(popup_470952aabd53d0341fa67c534af0aa70)
+        ;
+
+        
+    
+    
+            var circle_marker_e073781ebc4bf91c5aacaa92465cf1ee = L.circleMarker(
+                [55.716326, 37.622895],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_36795ad7da2f36347f80c9be82d784d2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_55d61e1703632c587d16336f14322668 = $(`<div id="html_55d61e1703632c587d16336f14322668" style="width: 100.0%; height: 100.0%;"><b>ООО «ПриятельПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 203,059<br>Адрес: к. Находка, пр. Монтажников, д. 327 стр. 9/6, 608495</div>`)[0];
+                popup_36795ad7da2f36347f80c9be82d784d2.setContent(html_55d61e1703632c587d16336f14322668);
+            
+        
+
+        circle_marker_e073781ebc4bf91c5aacaa92465cf1ee.bindPopup(popup_36795ad7da2f36347f80c9be82d784d2)
+        ;
+
+        
+    
+    
+            var circle_marker_bf27849ae8ce3a921dfe5816574a4d97 = L.circleMarker(
+                [55.716042, 37.567458],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_273c6a6eedd83d34ce22804c973a99db = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4df487e8d6212c0e492de3d08b5da64a = $(`<div id="html_4df487e8d6212c0e492de3d08b5da64a" style="width: 100.0%; height: 100.0%;"><b>ООО «НаходитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 153,276<br>Адрес: с. Троицк (Челяб.), ул. Чехова, д. 691, 018409</div>`)[0];
+                popup_273c6a6eedd83d34ce22804c973a99db.setContent(html_4df487e8d6212c0e492de3d08b5da64a);
+            
+        
+
+        circle_marker_bf27849ae8ce3a921dfe5816574a4d97.bindPopup(popup_273c6a6eedd83d34ce22804c973a99db)
+        ;
+
+        
+    
+    
+            var circle_marker_f7b6c31fdbfedcc927270d0d8b2505f3 = L.circleMarker(
+                [55.741145, 37.63364],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_c959e81b7d0267bc7367c0b04c65108e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_27cda99609e7d4acda040dda59cbb30d = $(`<div id="html_27cda99609e7d4acda040dda59cbb30d" style="width: 100.0%; height: 100.0%;"><b>ООО «ПлодПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 217,188<br>Адрес: д. Гусь-Хрустальный, ш. Семашко, д. 874, 332945</div>`)[0];
+                popup_c959e81b7d0267bc7367c0b04c65108e.setContent(html_27cda99609e7d4acda040dda59cbb30d);
+            
+        
+
+        circle_marker_f7b6c31fdbfedcc927270d0d8b2505f3.bindPopup(popup_c959e81b7d0267bc7367c0b04c65108e)
+        ;
+
+        
+    
+    
+            var circle_marker_fab4076368885795e3a6c49f8cbf96fc = L.circleMarker(
+                [55.796985, 37.700749],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b171675e17dcbb15d1ea1302011653de = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11c5e51d44b0e9bdca29508a6a432613 = $(`<div id="html_11c5e51d44b0e9bdca29508a6a432613" style="width: 100.0%; height: 100.0%;"><b>ООО «АкадемикПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 190,335<br>Адрес: к. Плес, пер. Приозерный, д. 6/8, 132902</div>`)[0];
+                popup_b171675e17dcbb15d1ea1302011653de.setContent(html_11c5e51d44b0e9bdca29508a6a432613);
+            
+        
+
+        circle_marker_fab4076368885795e3a6c49f8cbf96fc.bindPopup(popup_b171675e17dcbb15d1ea1302011653de)
+        ;
+
+        
+    
+    
+            var circle_marker_ddbbf841512b6c7afbbb28a4fba12ee3 = L.circleMarker(
+                [55.668512, 37.5462],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_f1c129a93d3607e4756a54539db6b2c2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f3f46c082689ea545b6c3747001c0420 = $(`<div id="html_f3f46c082689ea545b6c3747001c0420" style="width: 100.0%; height: 100.0%;"><b>ООО «СлишкомПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 20,031<br>Адрес: клх Суздаль, пр. Геологический, д. 826 стр. 3/8, 876532</div>`)[0];
+                popup_f1c129a93d3607e4756a54539db6b2c2.setContent(html_f3f46c082689ea545b6c3747001c0420);
+            
+        
+
+        circle_marker_ddbbf841512b6c7afbbb28a4fba12ee3.bindPopup(popup_f1c129a93d3607e4756a54539db6b2c2)
+        ;
+
+        
+    
+    
+            var circle_marker_5336d9719a679112a3a3562065520c01 = L.circleMarker(
+                [55.715702, 37.431694],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_447776fae2f58594ef11571e4e25bb2b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d1155671b93c93dbb05db85bf0d3d168 = $(`<div id="html_d1155671b93c93dbb05db85bf0d3d168" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 83,194<br>Адрес: ст. Якутск, наб. Водников, д. 228, 429444</div>`)[0];
+                popup_447776fae2f58594ef11571e4e25bb2b.setContent(html_d1155671b93c93dbb05db85bf0d3d168);
+            
+        
+
+        circle_marker_5336d9719a679112a3a3562065520c01.bindPopup(popup_447776fae2f58594ef11571e4e25bb2b)
+        ;
+
+        
+    
+    
+            var circle_marker_2386f69a4891a640e8e22be593e9ac05 = L.circleMarker(
+                [55.792313, 37.613065],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_e83ed050fc2e4d25cc99a4f03b2fd139 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_509f0ea422b3190519f63e1cafef3ac6 = $(`<div id="html_509f0ea422b3190519f63e1cafef3ac6" style="width: 100.0%; height: 100.0%;"><b>ООО «СопровождатьсяПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 81,412<br>Адрес: д. Новгород Великий, пер. Абрикосовый, д. 5 к. 2, 967393</div>`)[0];
+                popup_e83ed050fc2e4d25cc99a4f03b2fd139.setContent(html_509f0ea422b3190519f63e1cafef3ac6);
+            
+        
+
+        circle_marker_2386f69a4891a640e8e22be593e9ac05.bindPopup(popup_e83ed050fc2e4d25cc99a4f03b2fd139)
+        ;
+
+        
+    
+    
+            var circle_marker_63d82b95b9cc239d2f571a1dfed0a562 = L.circleMarker(
+                [55.697227, 37.707451],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_eb49e5d7341c48fe8faf7e9156f86c0a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_640cd2934a42a3d6de0b5438e5e43c1a = $(`<div id="html_640cd2934a42a3d6de0b5438e5e43c1a" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗаведениеПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 46,411<br>Адрес: к. Билибино, ш. Кузнецкое, д. 27 к. 4/7, 712863</div>`)[0];
+                popup_eb49e5d7341c48fe8faf7e9156f86c0a.setContent(html_640cd2934a42a3d6de0b5438e5e43c1a);
+            
+        
+
+        circle_marker_63d82b95b9cc239d2f571a1dfed0a562.bindPopup(popup_eb49e5d7341c48fe8faf7e9156f86c0a)
+        ;
+
+        
+    
+    
+            var circle_marker_34e922a4034d649a680923484fc77d19 = L.circleMarker(
+                [55.690602, 37.709015],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_6a509f5687082289a3af7a485e17e443 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_be5a180725070c72280cce9ce1f9de49 = $(`<div id="html_be5a180725070c72280cce9ce1f9de49" style="width: 100.0%; height: 100.0%;"><b>ООО «КомандованиеПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 32,571<br>Адрес: с. Калевала, бул. Разина, д. 257 к. 4/3, 309376</div>`)[0];
+                popup_6a509f5687082289a3af7a485e17e443.setContent(html_be5a180725070c72280cce9ce1f9de49);
+            
+        
+
+        circle_marker_34e922a4034d649a680923484fc77d19.bindPopup(popup_6a509f5687082289a3af7a485e17e443)
+        ;
+
+        
+    
+    
+            var circle_marker_bdadf03160c778aeb90c096ac12a57a5 = L.circleMarker(
+                [55.796279, 37.658838],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_1a35cf0ad461eba8b62d7d7584de6a7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a7e6fcb77411e5ae1ae6c59d5a31bfd = $(`<div id="html_2a7e6fcb77411e5ae1ae6c59d5a31bfd" style="width: 100.0%; height: 100.0%;"><b>ООО «СходитьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 183,878<br>Адрес: к. Катайск, пер. Ангарский, д. 2, 426258</div>`)[0];
+                popup_1a35cf0ad461eba8b62d7d7584de6a7b.setContent(html_2a7e6fcb77411e5ae1ae6c59d5a31bfd);
+            
+        
+
+        circle_marker_bdadf03160c778aeb90c096ac12a57a5.bindPopup(popup_1a35cf0ad461eba8b62d7d7584de6a7b)
+        ;
+
+        
+    
+    
+            var circle_marker_a4b5c4de16c613ad1ec4238cc0e7bd5a = L.circleMarker(
+                [55.80327, 37.565156],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_254c7b6386b1727ea52075d8e501e4b0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ffdc86320b197d25075f1bb16a4305c4 = $(`<div id="html_ffdc86320b197d25075f1bb16a4305c4" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрелестьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 80,280<br>Адрес: ст. Ялуторовск, алл. Энергетическая, д. 331 стр. 8/3, 005436</div>`)[0];
+                popup_254c7b6386b1727ea52075d8e501e4b0.setContent(html_ffdc86320b197d25075f1bb16a4305c4);
+            
+        
+
+        circle_marker_a4b5c4de16c613ad1ec4238cc0e7bd5a.bindPopup(popup_254c7b6386b1727ea52075d8e501e4b0)
+        ;
+
+        
+    
+    
+            var circle_marker_bb21278d135af21fde9a393a2ddeb4dd = L.circleMarker(
+                [55.724491, 37.671859],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_177ad776f0f3879beb2939cd892528aa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5a99373c9197c91001f4b6b1166ea081 = $(`<div id="html_5a99373c9197c91001f4b6b1166ea081" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 13,811<br>Адрес: п. Магнитогорск, алл. Стахановская, д. 71 стр. 4/8, 406335</div>`)[0];
+                popup_177ad776f0f3879beb2939cd892528aa.setContent(html_5a99373c9197c91001f4b6b1166ea081);
+            
+        
+
+        circle_marker_bb21278d135af21fde9a393a2ddeb4dd.bindPopup(popup_177ad776f0f3879beb2939cd892528aa)
+        ;
+
+        
+    
+    
+            var circle_marker_45e692c0458f2730fe3e9a8c255f2c48 = L.circleMarker(
+                [55.743527, 37.481594],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_64e89d2fb58a2ab06f0608130cde2a91 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_23999c5a4df7826c38a58d2d6a545b7d = $(`<div id="html_23999c5a4df7826c38a58d2d6a545b7d" style="width: 100.0%; height: 100.0%;"><b>ООО «НожПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 35,337<br>Адрес: д. Нарткала, ул. Жданова, д. 616 стр. 1/6, 281832</div>`)[0];
+                popup_64e89d2fb58a2ab06f0608130cde2a91.setContent(html_23999c5a4df7826c38a58d2d6a545b7d);
+            
+        
+
+        circle_marker_45e692c0458f2730fe3e9a8c255f2c48.bindPopup(popup_64e89d2fb58a2ab06f0608130cde2a91)
+        ;
+
+        
+    
+    
+            var circle_marker_89d0fba6e13e58e4752fd8e45691a082 = L.circleMarker(
+                [55.722463, 37.4359],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_9c3c61e30ff871df9a3437b6dc132422 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0b04f4575defb3aafa842e978bf3360f = $(`<div id="html_0b04f4575defb3aafa842e978bf3360f" style="width: 100.0%; height: 100.0%;"><b>ООО «НажатьПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 113,195<br>Адрес: п. Благовещенск (Амур.), ш. Инженерное, д. 7, 579887</div>`)[0];
+                popup_9c3c61e30ff871df9a3437b6dc132422.setContent(html_0b04f4575defb3aafa842e978bf3360f);
+            
+        
+
+        circle_marker_89d0fba6e13e58e4752fd8e45691a082.bindPopup(popup_9c3c61e30ff871df9a3437b6dc132422)
+        ;
+
+        
+    
+    
+            var circle_marker_118022754102c6aa933d923691683643 = L.circleMarker(
+                [55.734662, 37.481492],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_5482238512093dccc53243eb5060de03 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d12656326351fec9e6edee5f07c1d5a5 = $(`<div id="html_d12656326351fec9e6edee5f07c1d5a5" style="width: 100.0%; height: 100.0%;"><b>ООО «ПроходПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 123,822<br>Адрес: п. Адлер, пер. 9 мая, д. 5 стр. 5/3, 517028</div>`)[0];
+                popup_5482238512093dccc53243eb5060de03.setContent(html_d12656326351fec9e6edee5f07c1d5a5);
+            
+        
+
+        circle_marker_118022754102c6aa933d923691683643.bindPopup(popup_5482238512093dccc53243eb5060de03)
+        ;
+
+        
+    
+    
+            var circle_marker_60baae68f86f705258d0f75f8d02da59 = L.circleMarker(
+                [55.789804, 37.648611],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_b31b175af6c20d3e3ff16a99e3a2f812 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3939684328efa88f2d236088b2ddcfa3 = $(`<div id="html_3939684328efa88f2d236088b2ddcfa3" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыраженныйПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 9,708<br>Адрес: к. Сорочинск, наб. Песчаная, д. 2/1 стр. 5/7, 879232</div>`)[0];
+                popup_b31b175af6c20d3e3ff16a99e3a2f812.setContent(html_3939684328efa88f2d236088b2ddcfa3);
+            
+        
+
+        circle_marker_60baae68f86f705258d0f75f8d02da59.bindPopup(popup_b31b175af6c20d3e3ff16a99e3a2f812)
+        ;
+
+        
+    
+    
+            var circle_marker_853f2de1cb0960c59be054979cd29aa6 = L.circleMarker(
+                [55.778797, 37.517879],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_aebcf3463edb242184d65b3073fe0a23 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_166e46fd603d75d904e577cb71411929 = $(`<div id="html_166e46fd603d75d904e577cb71411929" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧеткоПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 19,957<br>Адрес: ст. Яр-Сале, ш. Мирное, д. 68, 445189</div>`)[0];
+                popup_aebcf3463edb242184d65b3073fe0a23.setContent(html_166e46fd603d75d904e577cb71411929);
+            
+        
+
+        circle_marker_853f2de1cb0960c59be054979cd29aa6.bindPopup(popup_aebcf3463edb242184d65b3073fe0a23)
+        ;
+
+        
+    
+    
+            var circle_marker_746afe15b04a29d3a4100a9299a151ad = L.circleMarker(
+                [55.737703, 37.637586],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_b113a278fc89dd82b01eb288c771ecbe);
+        
+    
+        var popup_d32b3735d8cb6179bd6df916fcf3b774 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9e28b29116e38037cc3040d0432340af = $(`<div id="html_9e28b29116e38037cc3040d0432340af" style="width: 100.0%; height: 100.0%;"><b>ООО «РучейПром»</b><br>Налоги в бюджет Москвы (тыс. руб.): 92,855<br>Адрес: ст. Рыбинск, алл. Олимпийская, д. 189, 140140</div>`)[0];
+                popup_d32b3735d8cb6179bd6df916fcf3b774.setContent(html_9e28b29116e38037cc3040d0432340af);
+            
+        
+
+        circle_marker_746afe15b04a29d3a4100a9299a151ad.bindPopup(popup_d32b3735d8cb6179bd6df916fcf3b774)
+        ;
+
+        
+    
+</script>
+</html>

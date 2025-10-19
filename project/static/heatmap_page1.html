@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a25c4d90a957bb8bf55ecb7ef22de825 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+                 <h3 align="center" style="font-size:20px"><b>Тепловая карта: Фонд оплаты труда</b></h3>
+                 <p align="center">Фонд оплаты труда (тыс. руб.)</p>
+                 
+    
+            <div class="folium-map" id="map_a25c4d90a957bb8bf55ecb7ef22de825" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a25c4d90a957bb8bf55ecb7ef22de825 = L.map(
+                "map_a25c4d90a957bb8bf55ecb7ef22de825",
+                {
+                    center: [55.7558, 37.6173],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6fe181e57451a5f1140e4e6894dce644 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6fe181e57451a5f1140e4e6894dce644.addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+            var heat_map_5ab6ce3f26122393235c5a8b9a2340b9 = L.heatLayer(
+                [[55.775792, 37.609714, 0.38543302767846904], [55.769562, 37.700922, 0.4509178549881008], [55.693989, 37.594371, 1.0], [55.75049, 37.565334, 0.6839570729789276], [55.682291, 37.741703, 0.18247777039343357], [55.77356, 37.518676, 0.11506345668512277], [55.748951, 37.498605, 0.8066179157486693], [55.743162, 37.638468, 0.23322762561517404], [55.85414, 37.577453, 0.05559609821700142], [55.779239, 37.690141, 0.7346129024675344], [55.749129, 37.535697, 0.37925582193805557], [55.761767, 37.545516, 0.0933137731315769], [55.792706, 37.609964, 0.2628268551740153], [55.623705, 37.665682, 0.34576004490441076], [55.807507, 37.469197, 0.4036702802465469], [55.787, 37.69321, 0.04435129723457497], [55.754669, 37.660756, 0.768570082293886], [55.716995, 37.569969, 0.8628782487849667], [55.662525, 37.607713, 0.6735398052955008], [55.683143, 37.521558, 0.1884581987946186], [55.779644, 37.395771, 0.0974979182560221], [55.751013, 37.675693, 0.4923347658011313], [55.805731, 37.585375, 0.23856109286394547], [55.734617, 37.658044, 0.7911911065902779], [55.746734, 37.570911, 0.13546775309127407], [55.739323, 37.546894, 0.40313355001990925], [55.765047, 37.655927, 0.4831382299370811], [55.74958, 37.708942, 0.1917864960527], [55.68765, 37.672604, 0.1262521627699411], [55.712701, 37.574619, 0.47161776260069477], [55.687772, 37.67507, 0.7439892981620106], [55.743349, 37.678662, 0.022676406877839915], [55.73995, 37.6911, 0.2501335592800193], [55.74633, 37.639886, 0.7582195942504689], [55.722767, 37.551008, 0.7314909988168429], [55.729787, 37.675428, 0.10531825929875323], [55.750202, 37.685532, 0.5598044620908901], [55.736202, 37.684708, 0.38584118483820806], [55.814951, 37.704589, 0.3756607622780156], [55.810224, 37.627371, 0.3771876119671964], [55.756291, 37.439214, 0.7920791867628864], [55.796536, 37.539856, 0.06923232262793376], [55.796412, 37.748624, 0.20407751139527777], [55.685297, 37.744687, 0.9308999900988054], [55.767925, 37.627326, 0.5434555596632454], [55.725568, 37.632636, 0.8967820048993106], [55.730475, 37.664894, 0.4412556424343832], [55.675589, 37.518716, 0.7093007477182732], [55.777569, 37.593942, 0.5272931059905077], [55.799534, 37.710625, 0.3285426509985604], [55.711295, 37.655008, 0.6730191021824655], [55.787758, 37.639116, 0.5086259706198076], [55.738671, 37.547929, 0.44656400053851103], [55.788518, 37.603303, 0.21693891390305806], [55.739893, 37.518098, 0.8912870199612357], [55.701797, 37.74061, 0.7765670777443227], [55.727708, 37.698193, 0.5364721901086353], [55.709923, 37.491052, 0.3361069143817345], [55.728737, 37.63934, 0.2866196395537767], [55.795818, 37.64205, 0.6582900067028951], [55.745263, 37.562219, 0.20365706678177695], [55.703027, 37.672246, 0.43832962572772], [55.694161, 37.613096, 0.1945493923586996], [55.814564, 37.604283, 0.5126900904712755], [55.789951, 37.523657, 0.59769077785637], [55.759811, 37.649197, 0.3007502113798205], [55.769742, 37.779002, 0.7853175256131083], [55.759413, 37.560817, 0.14344836527002838], [55.734931, 37.709161, 0.8558592634223515], [55.705542, 37.565408, 0.7274712206463414], [55.809586, 37.642972, 0.1570610832476773], [55.788637, 37.588535, 0.7070626503432296], [55.733457, 37.581755, 0.3869345901439662], [55.827316, 37.64053, 0.07668190310933128], [55.795983, 37.525188, 0.681823864158459], [55.712791, 37.722661, 0.7987363155161692], [55.737441, 37.575311, 0.3360812709999708], [55.714395, 37.639672, 0.46957483985351933], [55.790401, 37.711574, 0.717906239248478], [55.690336, 37.679124, 0.4525221690596928], [55.663726, 37.690377, 0.6306539204812978], [55.713257, 37.710065, 0.7599154409486342], [55.716326, 37.622895, 0.8533633075973505], [55.716042, 37.567458, 0.7161671193435865], [55.741145, 37.63364, 0.925484428412582], [55.796985, 37.700749, 0.49984756434173794], [55.668512, 37.5462, 0.0782231772007542], [55.715702, 37.431694, 0.3461658870366294], [55.792313, 37.613065, 0.37479049000940967], [55.697227, 37.707451, 0.1498333892501519], [55.690602, 37.709015, 0.15871383481815637], [55.796279, 37.658838, 0.7127147009946071], [55.80327, 37.565156, 0.3382087812911585], [55.724491, 37.671859, 0.048362883769235206], [55.743527, 37.481594, 0.11599196079981708], [55.722463, 37.4359, 0.5207143320148361], [55.734662, 37.481492, 0.47153531200516285], [55.789804, 37.648611, 0.034850424291120764], [55.778797, 37.517879, 0.07654887806643203], [55.737703, 37.637586, 0.40233985173851444]],
+                {
+  "minOpacity": 0.2,
+  "maxZoom": 18,
+  "radius": 15,
+  "blur": 10,
+  "gradient": {
+  0.2: "blue",
+  0.4: "cyan",
+  0.6: "lime",
+  0.8: "yellow",
+  1.0: "red",
+},
+  "maxOpacity": 0.8,
+}
+            );
+        
+    
+            heat_map_5ab6ce3f26122393235c5a8b9a2340b9.addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+            var circle_marker_a42a912fc3c0d74fe982c1b635131170 = L.circleMarker(
+                [55.775792, 37.609714],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_a06298588709667e5d2bd9553c360550 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9665bfbfb6b45a0775ea39defa5ac1de = $(`<div id="html_9665bfbfb6b45a0775ea39defa5ac1de" style="width: 100.0%; height: 100.0%;"><b>ООО «ТоропливыйПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,164,393<br>Адрес: ст. Азов (Рост.), бул. Челюскинцев, д. 5, 351161</div>`)[0];
+                popup_a06298588709667e5d2bd9553c360550.setContent(html_9665bfbfb6b45a0775ea39defa5ac1de);
+            
+        
+
+        circle_marker_a42a912fc3c0d74fe982c1b635131170.bindPopup(popup_a06298588709667e5d2bd9553c360550)
+        ;
+
+        
+    
+    
+            var circle_marker_89425da06d367a991c6bc8f4dfcf88cd = L.circleMarker(
+                [55.769562, 37.700922],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_a9a2ac4160f211504aa85dc8cb9477f1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b70e17f4a76f0c530d37febb75d6f6c7 = $(`<div id="html_b70e17f4a76f0c530d37febb75d6f6c7" style="width: 100.0%; height: 100.0%;"><b>ООО «ПохороныПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,532,122<br>Адрес: к. Дзержинск, бул. Механический, д. 7/6, 287101</div>`)[0];
+                popup_a9a2ac4160f211504aa85dc8cb9477f1.setContent(html_b70e17f4a76f0c530d37febb75d6f6c7);
+            
+        
+
+        circle_marker_89425da06d367a991c6bc8f4dfcf88cd.bindPopup(popup_a9a2ac4160f211504aa85dc8cb9477f1)
+        ;
+
+        
+    
+    
+            var circle_marker_27c8c73250775ce6babcdb6411e35e85 = L.circleMarker(
+                [55.693989, 37.594371],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_cf22064fbda62778bcfee9b00d66475e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ff5a2b3f769d99792e70ffa5b4fd27e9 = $(`<div id="html_ff5a2b3f769d99792e70ffa5b4fd27e9" style="width: 100.0%; height: 100.0%;"><b>ООО «СовещаниеПром»</b><br>Фонд оплаты труда (тыс. руб.): 5,615,484<br>Адрес: к. Тулун, пр. Ульяновский, д. 74 стр. 8, 133150</div>`)[0];
+                popup_cf22064fbda62778bcfee9b00d66475e.setContent(html_ff5a2b3f769d99792e70ffa5b4fd27e9);
+            
+        
+
+        circle_marker_27c8c73250775ce6babcdb6411e35e85.bindPopup(popup_cf22064fbda62778bcfee9b00d66475e)
+        ;
+
+        
+    
+    
+            var circle_marker_8fea33c27a0acf44d0f0aaeb326fb72f = L.circleMarker(
+                [55.75049, 37.565334],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_1ffdff8d2aa16dd412e679708d1672a5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d79e251108613fea51321380bed6dcaf = $(`<div id="html_d79e251108613fea51321380bed6dcaf" style="width: 100.0%; height: 100.0%;"><b>ООО «ВторойПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,840,750<br>Адрес: г. Ковров, пр. Вахитова, д. 4/7, 260647</div>`)[0];
+                popup_1ffdff8d2aa16dd412e679708d1672a5.setContent(html_d79e251108613fea51321380bed6dcaf);
+            
+        
+
+        circle_marker_8fea33c27a0acf44d0f0aaeb326fb72f.bindPopup(popup_1ffdff8d2aa16dd412e679708d1672a5)
+        ;
+
+        
+    
+    
+            var circle_marker_01c71644e021f45349200996ecf67e7c = L.circleMarker(
+                [55.682291, 37.741703],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_b5994b115886e78dcbda28c78bd65a10 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_141b42383b9f97b68dbd21746258868c = $(`<div id="html_141b42383b9f97b68dbd21746258868c" style="width: 100.0%; height: 100.0%;"><b>ООО «ПривлекатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,024,701<br>Адрес: г. Костомукша, наб. Авиационная, д. 9/5 к. 284, 411824</div>`)[0];
+                popup_b5994b115886e78dcbda28c78bd65a10.setContent(html_141b42383b9f97b68dbd21746258868c);
+            
+        
+
+        circle_marker_01c71644e021f45349200996ecf67e7c.bindPopup(popup_b5994b115886e78dcbda28c78bd65a10)
+        ;
+
+        
+    
+    
+            var circle_marker_2666d730c6c3d79971ccefd4520d7fb5 = L.circleMarker(
+                [55.77356, 37.518676],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_ca1b302638793b572c842586667f5e23 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a39f1de988a5adba6c90cdc7d34a81ce = $(`<div id="html_a39f1de988a5adba6c90cdc7d34a81ce" style="width: 100.0%; height: 100.0%;"><b>ООО «ПадальПром»</b><br>Фонд оплаты труда (тыс. руб.): 646,137<br>Адрес: ст. Всеволожск, ш. Партизанское, д. 4/4 к. 6/5, 303654</div>`)[0];
+                popup_ca1b302638793b572c842586667f5e23.setContent(html_a39f1de988a5adba6c90cdc7d34a81ce);
+            
+        
+
+        circle_marker_2666d730c6c3d79971ccefd4520d7fb5.bindPopup(popup_ca1b302638793b572c842586667f5e23)
+        ;
+
+        
+    
+    
+            var circle_marker_7507bde9d29015e2795b14937661401b = L.circleMarker(
+                [55.748951, 37.498605],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_d38864763ab9f3d4fafaf18fba61587f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0172c7d91e415f0bc19d2c966c568cb8 = $(`<div id="html_0172c7d91e415f0bc19d2c966c568cb8" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧеткоПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,529,550<br>Адрес: д. Хатанга, пр. Советский, д. 5 к. 66, 773872</div>`)[0];
+                popup_d38864763ab9f3d4fafaf18fba61587f.setContent(html_0172c7d91e415f0bc19d2c966c568cb8);
+            
+        
+
+        circle_marker_7507bde9d29015e2795b14937661401b.bindPopup(popup_d38864763ab9f3d4fafaf18fba61587f)
+        ;
+
+        
+    
+    
+            var circle_marker_06945b87eacd570d46c48ab45ad42268 = L.circleMarker(
+                [55.743162, 37.638468],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_2aeffd9142cf7c1e7b8e0bd81b5e4af5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1667675dfae41b117c883709e0366d75 = $(`<div id="html_1667675dfae41b117c883709e0366d75" style="width: 100.0%; height: 100.0%;"><b>ООО «ВстатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,309,686<br>Адрес: с. Кропоткин (Краснод.), ш. Энергетическое, д. 4/5, 143455</div>`)[0];
+                popup_2aeffd9142cf7c1e7b8e0bd81b5e4af5.setContent(html_1667675dfae41b117c883709e0366d75);
+            
+        
+
+        circle_marker_06945b87eacd570d46c48ab45ad42268.bindPopup(popup_2aeffd9142cf7c1e7b8e0bd81b5e4af5)
+        ;
+
+        
+    
+    
+            var circle_marker_66aff4a837604b2a2cea3ca5d261e684 = L.circleMarker(
+                [55.85414, 37.577453],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_055308e66270d3db68647d07c8b140b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_25cd3ceea4ffce19db63bf3f28c17402 = $(`<div id="html_25cd3ceea4ffce19db63bf3f28c17402" style="width: 100.0%; height: 100.0%;"><b>ООО «СпособПром»</b><br>Фонд оплаты труда (тыс. руб.): 312,199<br>Адрес: п. Славгород, ул. Троицкая, д. 6/4, 556464</div>`)[0];
+                popup_055308e66270d3db68647d07c8b140b5.setContent(html_25cd3ceea4ffce19db63bf3f28c17402);
+            
+        
+
+        circle_marker_66aff4a837604b2a2cea3ca5d261e684.bindPopup(popup_055308e66270d3db68647d07c8b140b5)
+        ;
+
+        
+    
+    
+            var circle_marker_a4de41898ccb4e9b8e699c05d9f2d5ed = L.circleMarker(
+                [55.779239, 37.690141],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_0f7ea96dd8d48644fcddd7515ecc0af7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b0708c27a159f16290d8d17d623d7611 = $(`<div id="html_b0708c27a159f16290d8d17d623d7611" style="width: 100.0%; height: 100.0%;"><b>ООО «ХозяйкаПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,125,207<br>Адрес: г. Радужный, ул. Седова, д. 8 к. 36, 987769</div>`)[0];
+                popup_0f7ea96dd8d48644fcddd7515ecc0af7.setContent(html_b0708c27a159f16290d8d17d623d7611);
+            
+        
+
+        circle_marker_a4de41898ccb4e9b8e699c05d9f2d5ed.bindPopup(popup_0f7ea96dd8d48644fcddd7515ecc0af7)
+        ;
+
+        
+    
+    
+            var circle_marker_e2c91eb86c42ca4e8c6cc18ed6bbbe5f = L.circleMarker(
+                [55.749129, 37.535697],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_2c4d7807fd746feae1821a74d8acd6eb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1c4ca39c6aedb2d6ca318a8bf4aa0855 = $(`<div id="html_1c4ca39c6aedb2d6ca318a8bf4aa0855" style="width: 100.0%; height: 100.0%;"><b>ООО «ТысячаПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,129,705<br>Адрес: клх Калуга, ул. Брянская, д. 83 к. 9, 134352</div>`)[0];
+                popup_2c4d7807fd746feae1821a74d8acd6eb.setContent(html_1c4ca39c6aedb2d6ca318a8bf4aa0855);
+            
+        
+
+        circle_marker_e2c91eb86c42ca4e8c6cc18ed6bbbe5f.bindPopup(popup_2c4d7807fd746feae1821a74d8acd6eb)
+        ;
+
+        
+    
+    
+            var circle_marker_9a61d412d1c1e381bdadc2d397823d2e = L.circleMarker(
+                [55.761767, 37.545516],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_f7d451a255c2a36c17604c7d9cd944ad = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_181487649a448c379882f9d1f3d00ab9 = $(`<div id="html_181487649a448c379882f9d1f3d00ab9" style="width: 100.0%; height: 100.0%;"><b>ООО «ГолубчикПром»</b><br>Фонд оплаты труда (тыс. руб.): 524,002<br>Адрес: г. Поронайск, бул. Чайкиной, д. 1 к. 54, 134936</div>`)[0];
+                popup_f7d451a255c2a36c17604c7d9cd944ad.setContent(html_181487649a448c379882f9d1f3d00ab9);
+            
+        
+
+        circle_marker_9a61d412d1c1e381bdadc2d397823d2e.bindPopup(popup_f7d451a255c2a36c17604c7d9cd944ad)
+        ;
+
+        
+    
+    
+            var circle_marker_f73ab45437247af2f904420468f46a56 = L.circleMarker(
+                [55.792706, 37.609964],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_205ad337791746fc88140fe827b4e4df = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2aed78019f34d4ff54264e336931f58c = $(`<div id="html_2aed78019f34d4ff54264e336931f58c" style="width: 100.0%; height: 100.0%;"><b>ООО «ДоставатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,475,900<br>Адрес: клх Таганрог, бул. Юности, д. 671 к. 6, 680876</div>`)[0];
+                popup_205ad337791746fc88140fe827b4e4df.setContent(html_2aed78019f34d4ff54264e336931f58c);
+            
+        
+
+        circle_marker_f73ab45437247af2f904420468f46a56.bindPopup(popup_205ad337791746fc88140fe827b4e4df)
+        ;
+
+        
+    
+    
+            var circle_marker_a1d9d03489f108b8a01f1f123fce64b6 = L.circleMarker(
+                [55.623705, 37.665682],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_6cc2475e7e4f561c58f063efd875f524 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_33613295e8a49627cb668515793d8b22 = $(`<div id="html_33613295e8a49627cb668515793d8b22" style="width: 100.0%; height: 100.0%;"><b>ООО «ВажныйПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,941,610<br>Адрес: д. Стерлитамак, наб. Репина, д. 6/4 к. 79, 605766</div>`)[0];
+                popup_6cc2475e7e4f561c58f063efd875f524.setContent(html_33613295e8a49627cb668515793d8b22);
+            
+        
+
+        circle_marker_a1d9d03489f108b8a01f1f123fce64b6.bindPopup(popup_6cc2475e7e4f561c58f063efd875f524)
+        ;
+
+        
+    
+    
+            var circle_marker_f2b8c013206da30c20c1f27d06047d40 = L.circleMarker(
+                [55.807507, 37.469197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_369d04596917acb57143730c8af91383 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_05dcc314eb84b377828ecb648017ecd9 = $(`<div id="html_05dcc314eb84b377828ecb648017ecd9" style="width: 100.0%; height: 100.0%;"><b>ООО «СохранятьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,266,804<br>Адрес: д. Приозерск, бул. Осенний, д. 22 стр. 4/8, 374740</div>`)[0];
+                popup_369d04596917acb57143730c8af91383.setContent(html_05dcc314eb84b377828ecb648017ecd9);
+            
+        
+
+        circle_marker_f2b8c013206da30c20c1f27d06047d40.bindPopup(popup_369d04596917acb57143730c8af91383)
+        ;
+
+        
+    
+    
+            var circle_marker_dc1a401090269cf147cde2b6c64bd5c6 = L.circleMarker(
+                [55.787, 37.69321],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_16471538c39f80129e29e7c92e421030 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_184340cc68830a133c3a0cb91a5d8cf7 = $(`<div id="html_184340cc68830a133c3a0cb91a5d8cf7" style="width: 100.0%; height: 100.0%;"><b>ООО «ЭкзаменПром»</b><br>Фонд оплаты труда (тыс. руб.): 249,054<br>Адрес: к. Пушкин, алл. Шахтерская, д. 9, 247451</div>`)[0];
+                popup_16471538c39f80129e29e7c92e421030.setContent(html_184340cc68830a133c3a0cb91a5d8cf7);
+            
+        
+
+        circle_marker_dc1a401090269cf147cde2b6c64bd5c6.bindPopup(popup_16471538c39f80129e29e7c92e421030)
+        ;
+
+        
+    
+    
+            var circle_marker_6688582ec028ee37f6ecc6fcb008bf0c = L.circleMarker(
+                [55.754669, 37.660756],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_59ce557acbe3445769a69af31ac43439 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_19a9662a052b136df3825bce258a706a = $(`<div id="html_19a9662a052b136df3825bce258a706a" style="width: 100.0%; height: 100.0%;"><b>ООО «ВолкПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,315,893<br>Адрес: с. Саянск, ш. Гастелло, д. 658, 643171</div>`)[0];
+                popup_59ce557acbe3445769a69af31ac43439.setContent(html_19a9662a052b136df3825bce258a706a);
+            
+        
+
+        circle_marker_6688582ec028ee37f6ecc6fcb008bf0c.bindPopup(popup_59ce557acbe3445769a69af31ac43439)
+        ;
+
+        
+    
+    
+            var circle_marker_f96f70bec8bdeac35d6b4e76e3675958 = L.circleMarker(
+                [55.716995, 37.569969],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_9e2c6113a8ad383b724924cec5a35ae3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6cdf1fd665e1cceb1b294d976e93282f = $(`<div id="html_6cdf1fd665e1cceb1b294d976e93282f" style="width: 100.0%; height: 100.0%;"><b>ООО «ВздрагиватьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,845,479<br>Адрес: клх Сасово, ул. Космонавтов, д. 31, 998569</div>`)[0];
+                popup_9e2c6113a8ad383b724924cec5a35ae3.setContent(html_6cdf1fd665e1cceb1b294d976e93282f);
+            
+        
+
+        circle_marker_f96f70bec8bdeac35d6b4e76e3675958.bindPopup(popup_9e2c6113a8ad383b724924cec5a35ae3)
+        ;
+
+        
+    
+    
+            var circle_marker_812f232d5d349ea7b1b9120d6069072f = L.circleMarker(
+                [55.662525, 37.607713],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_fbdff21b59df5aed06ccea6b4381f071 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_45f4e30cee67bc96925601a05934b075 = $(`<div id="html_45f4e30cee67bc96925601a05934b075" style="width: 100.0%; height: 100.0%;"><b>ООО «ЛенинградПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,782,252<br>Адрес: к. Усть-Кулом, ул. Медицинская, д. 96 к. 194, 445502</div>`)[0];
+                popup_fbdff21b59df5aed06ccea6b4381f071.setContent(html_45f4e30cee67bc96925601a05934b075);
+            
+        
+
+        circle_marker_812f232d5d349ea7b1b9120d6069072f.bindPopup(popup_fbdff21b59df5aed06ccea6b4381f071)
+        ;
+
+        
+    
+    
+            var circle_marker_d8a1f00fdef15eb78ddf7c0ffe0e2852 = L.circleMarker(
+                [55.683143, 37.521558],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_10e0696db985cae446701c14e4fe2045 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_386387c9cc610e83c6295f13c6f8b0c4 = $(`<div id="html_386387c9cc610e83c6295f13c6f8b0c4" style="width: 100.0%; height: 100.0%;"><b>ООО «КаютаПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,058,284<br>Адрес: клх Руза, алл. Максима Горького, д. 98, 160607</div>`)[0];
+                popup_10e0696db985cae446701c14e4fe2045.setContent(html_386387c9cc610e83c6295f13c6f8b0c4);
+            
+        
+
+        circle_marker_d8a1f00fdef15eb78ddf7c0ffe0e2852.bindPopup(popup_10e0696db985cae446701c14e4fe2045)
+        ;
+
+        
+    
+    
+            var circle_marker_0d4ab9cb8b65bebbb0192782aba4e18c = L.circleMarker(
+                [55.779644, 37.395771],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_99432cc275a9a1c3e242e7f5b22dea67 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2f27ca8811acc751c135520b6d4f3133 = $(`<div id="html_2f27ca8811acc751c135520b6d4f3133" style="width: 100.0%; height: 100.0%;"><b>ООО «ИсследованиеПром»</b><br>Фонд оплаты труда (тыс. руб.): 547,498<br>Адрес: г. Соболево, бул. Лермонтова, д. 1 к. 9, 477005</div>`)[0];
+                popup_99432cc275a9a1c3e242e7f5b22dea67.setContent(html_2f27ca8811acc751c135520b6d4f3133);
+            
+        
+
+        circle_marker_0d4ab9cb8b65bebbb0192782aba4e18c.bindPopup(popup_99432cc275a9a1c3e242e7f5b22dea67)
+        ;
+
+        
+    
+    
+            var circle_marker_b175c96eca24ccf8b591a42e068b0a7a = L.circleMarker(
+                [55.751013, 37.675693],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_dd5703d72c04335605b9f660279edbd8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7a96c817cfde5b907dab266d00356c9d = $(`<div id="html_7a96c817cfde5b907dab266d00356c9d" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,764,698<br>Адрес: клх Мыс Шмидта, бул. Студенческий, д. 9/6, 542357</div>`)[0];
+                popup_dd5703d72c04335605b9f660279edbd8.setContent(html_7a96c817cfde5b907dab266d00356c9d);
+            
+        
+
+        circle_marker_b175c96eca24ccf8b591a42e068b0a7a.bindPopup(popup_dd5703d72c04335605b9f660279edbd8)
+        ;
+
+        
+    
+    
+            var circle_marker_c460c48d9e9846f21f3ea9f0ae1106eb = L.circleMarker(
+                [55.805731, 37.585375],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_9db2e8f682ff5f10e81b86f90cc15053 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fab3cab7b16900f196e43f6d8d63e334 = $(`<div id="html_fab3cab7b16900f196e43f6d8d63e334" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрелестьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,339,636<br>Адрес: к. Североморск, алл. Николаева, д. 637 стр. 760, 361530</div>`)[0];
+                popup_9db2e8f682ff5f10e81b86f90cc15053.setContent(html_fab3cab7b16900f196e43f6d8d63e334);
+            
+        
+
+        circle_marker_c460c48d9e9846f21f3ea9f0ae1106eb.bindPopup(popup_9db2e8f682ff5f10e81b86f90cc15053)
+        ;
+
+        
+    
+    
+            var circle_marker_5b07f2efcbe351b0a6925f8a822b8edf = L.circleMarker(
+                [55.734617, 37.658044],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_4e6a3981ea101aa659a56f9cbc984d8f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8fab754caeeb66ff3febd1c283c4fda8 = $(`<div id="html_8fab754caeeb66ff3febd1c283c4fda8" style="width: 100.0%; height: 100.0%;"><b>ООО «ПривлекатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,442,921<br>Адрес: д. Урюпинск, ш. 9 мая, д. 167 стр. 6/5, 515319</div>`)[0];
+                popup_4e6a3981ea101aa659a56f9cbc984d8f.setContent(html_8fab754caeeb66ff3febd1c283c4fda8);
+            
+        
+
+        circle_marker_5b07f2efcbe351b0a6925f8a822b8edf.bindPopup(popup_4e6a3981ea101aa659a56f9cbc984d8f)
+        ;
+
+        
+    
+    
+            var circle_marker_0ce451b5defd98bf81b6683df4ae0f52 = L.circleMarker(
+                [55.746734, 37.570911],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_17276a7f15abe4dc393f588e22d45c60 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0c43e999a536f2fb33e71cdb32d957d4 = $(`<div id="html_0c43e999a536f2fb33e71cdb32d957d4" style="width: 100.0%; height: 100.0%;"><b>ООО «ЯркоПром»</b><br>Фонд оплаты труда (тыс. руб.): 760,717<br>Адрес: с. Шелагонцы, пр. Ольховый, д. 6/8 стр. 759, 016582</div>`)[0];
+                popup_17276a7f15abe4dc393f588e22d45c60.setContent(html_0c43e999a536f2fb33e71cdb32d957d4);
+            
+        
+
+        circle_marker_0ce451b5defd98bf81b6683df4ae0f52.bindPopup(popup_17276a7f15abe4dc393f588e22d45c60)
+        ;
+
+        
+    
+    
+            var circle_marker_671a69b73d6d80b70b4071b897d4801a = L.circleMarker(
+                [55.739323, 37.546894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_2ae02d864aca6153f502c6bbc19a6004 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a0b469000a6346944a407ddf28c361ff = $(`<div id="html_a0b469000a6346944a407ddf28c361ff" style="width: 100.0%; height: 100.0%;"><b>ООО «ВздрогнутьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,263,790<br>Адрес: ст. Ербогачен, бул. Локомотивный, д. 9 стр. 41, 370589</div>`)[0];
+                popup_2ae02d864aca6153f502c6bbc19a6004.setContent(html_a0b469000a6346944a407ddf28c361ff);
+            
+        
+
+        circle_marker_671a69b73d6d80b70b4071b897d4801a.bindPopup(popup_2ae02d864aca6153f502c6bbc19a6004)
+        ;
+
+        
+    
+    
+            var circle_marker_de207afd99f06d4d8f67c0fcb68aa0e9 = L.circleMarker(
+                [55.765047, 37.655927],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_3fc31a2bd03fac41eb2654f3287a04d5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ac2a7a41c5d3b8748b81d5398a50170c = $(`<div id="html_ac2a7a41c5d3b8748b81d5398a50170c" style="width: 100.0%; height: 100.0%;"><b>ООО «ИзредкаПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,713,055<br>Адрес: п. Якутск, пер. Энтузиастов, д. 101 стр. 4, 907844</div>`)[0];
+                popup_3fc31a2bd03fac41eb2654f3287a04d5.setContent(html_ac2a7a41c5d3b8748b81d5398a50170c);
+            
+        
+
+        circle_marker_de207afd99f06d4d8f67c0fcb68aa0e9.bindPopup(popup_3fc31a2bd03fac41eb2654f3287a04d5)
+        ;
+
+        
+    
+    
+            var circle_marker_2f40819c56570db9a183df70f8dc10be = L.circleMarker(
+                [55.74958, 37.708942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_1ef80dd9e7db392422d8aabdec9904f8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_233ead54e6ab9caf7c5a350f4989d805 = $(`<div id="html_233ead54e6ab9caf7c5a350f4989d805" style="width: 100.0%; height: 100.0%;"><b>ООО «СравнениеПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,076,974<br>Адрес: с. Териберка, алл. Рыбацкая, д. 1 к. 847, 801624</div>`)[0];
+                popup_1ef80dd9e7db392422d8aabdec9904f8.setContent(html_233ead54e6ab9caf7c5a350f4989d805);
+            
+        
+
+        circle_marker_2f40819c56570db9a183df70f8dc10be.bindPopup(popup_1ef80dd9e7db392422d8aabdec9904f8)
+        ;
+
+        
+    
+    
+            var circle_marker_e2f173daea7fcd98ef7f5835ed9e4e4e = L.circleMarker(
+                [55.68765, 37.672604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_966dc58efaf6b5b2a711f8c35aa4d3c5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cb64e83213c1f6e207c99fd7587b9165 = $(`<div id="html_cb64e83213c1f6e207c99fd7587b9165" style="width: 100.0%; height: 100.0%;"><b>ООО «ОбидаПром»</b><br>Фонд оплаты труда (тыс. руб.): 708,967<br>Адрес: с. Анадырь, наб. Рябиновая, д. 5/1 к. 5/4, 972896</div>`)[0];
+                popup_966dc58efaf6b5b2a711f8c35aa4d3c5.setContent(html_cb64e83213c1f6e207c99fd7587b9165);
+            
+        
+
+        circle_marker_e2f173daea7fcd98ef7f5835ed9e4e4e.bindPopup(popup_966dc58efaf6b5b2a711f8c35aa4d3c5)
+        ;
+
+        
+    
+    
+            var circle_marker_1d857251ccccb23fd2284b4c48d1bddd = L.circleMarker(
+                [55.712701, 37.574619],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_2f0aafcaf49bdeb492ed046f4c127d59 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4d3659edd1608ba675c10ce37775a762 = $(`<div id="html_4d3659edd1608ba675c10ce37775a762" style="width: 100.0%; height: 100.0%;"><b>ООО «ПосвятитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,648,362<br>Адрес: ст. Нефтегорск (Самар.), наб. Западная, д. 2, 747338</div>`)[0];
+                popup_2f0aafcaf49bdeb492ed046f4c127d59.setContent(html_4d3659edd1608ba675c10ce37775a762);
+            
+        
+
+        circle_marker_1d857251ccccb23fd2284b4c48d1bddd.bindPopup(popup_2f0aafcaf49bdeb492ed046f4c127d59)
+        ;
+
+        
+    
+    
+            var circle_marker_99c1de4996f88cdf89a7deafb5502130 = L.circleMarker(
+                [55.687772, 37.67507],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_3e0194242ff65f817efd546097aba2dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3bb616fede8e8f38bc43aef380e992f8 = $(`<div id="html_3bb616fede8e8f38bc43aef380e992f8" style="width: 100.0%; height: 100.0%;"><b>ООО «СкрытыйПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,177,860<br>Адрес: с. Урус-Мартан, пр. Элеваторный, д. 5/4 стр. 852, 205493</div>`)[0];
+                popup_3e0194242ff65f817efd546097aba2dd.setContent(html_3bb616fede8e8f38bc43aef380e992f8);
+            
+        
+
+        circle_marker_99c1de4996f88cdf89a7deafb5502130.bindPopup(popup_3e0194242ff65f817efd546097aba2dd)
+        ;
+
+        
+    
+    
+            var circle_marker_0a016c886178aca3ae64a08ffb882520 = L.circleMarker(
+                [55.743349, 37.678662],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_242a35e23775a8811d9726e28e63c5cd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c014a9b1c00becdd38752767f7816b02 = $(`<div id="html_c014a9b1c00becdd38752767f7816b02" style="width: 100.0%; height: 100.0%;"><b>ООО «ЛегкоПром»</b><br>Фонд оплаты труда (тыс. руб.): 127,339<br>Адрес: г. Фатеж, ул. З.Космодемьянской, д. 99, 258713</div>`)[0];
+                popup_242a35e23775a8811d9726e28e63c5cd.setContent(html_c014a9b1c00becdd38752767f7816b02);
+            
+        
+
+        circle_marker_0a016c886178aca3ae64a08ffb882520.bindPopup(popup_242a35e23775a8811d9726e28e63c5cd)
+        ;
+
+        
+    
+    
+            var circle_marker_b908a075a3200184fb03fb43b852594f = L.circleMarker(
+                [55.73995, 37.6911],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_d815e8be0170669a2f7b8e90b568598a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b603d074487b54a295f21630f405ca2b = $(`<div id="html_b603d074487b54a295f21630f405ca2b" style="width: 100.0%; height: 100.0%;"><b>ООО «ГоловнойПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,404,621<br>Адрес: клх Урюпинск, пер. Воровского, д. 83 к. 3, 310690</div>`)[0];
+                popup_d815e8be0170669a2f7b8e90b568598a.setContent(html_b603d074487b54a295f21630f405ca2b);
+            
+        
+
+        circle_marker_b908a075a3200184fb03fb43b852594f.bindPopup(popup_d815e8be0170669a2f7b8e90b568598a)
+        ;
+
+        
+    
+    
+            var circle_marker_8e600886fcb4e13b8d13f7341c993c18 = L.circleMarker(
+                [55.74633, 37.639886],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_7e8497fa9c1c71c1b034bc4212f352ad = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c83346887b88091a9805ca50c8e06584 = $(`<div id="html_c83346887b88091a9805ca50c8e06584" style="width: 100.0%; height: 100.0%;"><b>ООО «СброситьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,257,770<br>Адрес: ст. Кимры, ш. Среднее, д. 1/9 к. 7/9, 634351</div>`)[0];
+                popup_7e8497fa9c1c71c1b034bc4212f352ad.setContent(html_c83346887b88091a9805ca50c8e06584);
+            
+        
+
+        circle_marker_8e600886fcb4e13b8d13f7341c993c18.bindPopup(popup_7e8497fa9c1c71c1b034bc4212f352ad)
+        ;
+
+        
+    
+    
+            var circle_marker_55da0b54492002f0750006252739c30d = L.circleMarker(
+                [55.722767, 37.551008],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_c84e8c289ec2075b3f38dc441025beba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_168a3545623f365301cac9bdc0d0d3e3 = $(`<div id="html_168a3545623f365301cac9bdc0d0d3e3" style="width: 100.0%; height: 100.0%;"><b>ООО «ГрудьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,107,676<br>Адрес: п. Каменск-Уральский, алл. Воровского, д. 97 к. 5, 772522</div>`)[0];
+                popup_c84e8c289ec2075b3f38dc441025beba.setContent(html_168a3545623f365301cac9bdc0d0d3e3);
+            
+        
+
+        circle_marker_55da0b54492002f0750006252739c30d.bindPopup(popup_c84e8c289ec2075b3f38dc441025beba)
+        ;
+
+        
+    
+    
+            var circle_marker_a3c18a1e3da77dcb9878210cf69a10b4 = L.circleMarker(
+                [55.729787, 37.675428],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_aaa90bf95ec62a0e8d0251ee2234116a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_99d0621e2424c2c60efd77bdf40dd451 = $(`<div id="html_99d0621e2424c2c60efd77bdf40dd451" style="width: 100.0%; height: 100.0%;"><b>ООО «ТрястиПром»</b><br>Фонд оплаты труда (тыс. руб.): 591,413<br>Адрес: к. Валдай, ш. Речное, д. 766 стр. 1/1, 176591</div>`)[0];
+                popup_aaa90bf95ec62a0e8d0251ee2234116a.setContent(html_99d0621e2424c2c60efd77bdf40dd451);
+            
+        
+
+        circle_marker_a3c18a1e3da77dcb9878210cf69a10b4.bindPopup(popup_aaa90bf95ec62a0e8d0251ee2234116a)
+        ;
+
+        
+    
+    
+            var circle_marker_456ec005936168a4ab9c5623e4d8a5e5 = L.circleMarker(
+                [55.750202, 37.685532],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_44cc61f93e30d3ddd49e378a7aaaea38 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3f63f46ac500ad33ff2a85f2fafccedb = $(`<div id="html_3f63f46ac500ad33ff2a85f2fafccedb" style="width: 100.0%; height: 100.0%;"><b>ООО «МягкийПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,143,573<br>Адрес: ст. Котельнич, ул. Нижняя, д. 3 стр. 3/7, 511047</div>`)[0];
+                popup_44cc61f93e30d3ddd49e378a7aaaea38.setContent(html_3f63f46ac500ad33ff2a85f2fafccedb);
+            
+        
+
+        circle_marker_456ec005936168a4ab9c5623e4d8a5e5.bindPopup(popup_44cc61f93e30d3ddd49e378a7aaaea38)
+        ;
+
+        
+    
+    
+            var circle_marker_1f7bae49fe7a8d8736c0123ad06f3c10 = L.circleMarker(
+                [55.736202, 37.684708],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_6a92d2a7f3bf423be49cfd3097777f69 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6bd0c5694c9a2aa9651cfd6e5668cfab = $(`<div id="html_6bd0c5694c9a2aa9651cfd6e5668cfab" style="width: 100.0%; height: 100.0%;"><b>ООО «МгновениеПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,166,685<br>Адрес: к. Руза, пер. Геологический, д. 6 стр. 67, 654793</div>`)[0];
+                popup_6a92d2a7f3bf423be49cfd3097777f69.setContent(html_6bd0c5694c9a2aa9651cfd6e5668cfab);
+            
+        
+
+        circle_marker_1f7bae49fe7a8d8736c0123ad06f3c10.bindPopup(popup_6a92d2a7f3bf423be49cfd3097777f69)
+        ;
+
+        
+    
+    
+            var circle_marker_0fcb2186db7e30789ca13e243d0038e2 = L.circleMarker(
+                [55.814951, 37.704589],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_f1d433e3e55fcc8211a082e1062d32b5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d276639dab811497c13730c1ac91a6f2 = $(`<div id="html_d276639dab811497c13730c1ac91a6f2" style="width: 100.0%; height: 100.0%;"><b>ООО «ИнвалидПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,109,517<br>Адрес: с. Озеры, пр. Громова, д. 15 к. 2/5, 112545</div>`)[0];
+                popup_f1d433e3e55fcc8211a082e1062d32b5.setContent(html_d276639dab811497c13730c1ac91a6f2);
+            
+        
+
+        circle_marker_0fcb2186db7e30789ca13e243d0038e2.bindPopup(popup_f1d433e3e55fcc8211a082e1062d32b5)
+        ;
+
+        
+    
+    
+            var circle_marker_ceb3dcd46e9de4522b79e9d1fe9b3558 = L.circleMarker(
+                [55.810224, 37.627371],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_635c2d9b7f831e807c6081aa49b95827 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0a19c7552219fd856f2e802802ee3c5d = $(`<div id="html_0a19c7552219fd856f2e802802ee3c5d" style="width: 100.0%; height: 100.0%;"><b>ООО «ВоенныйПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,118,091<br>Адрес: к. Сургут (Хант.), бул. Комарова, д. 7/2 стр. 6, 924991</div>`)[0];
+                popup_635c2d9b7f831e807c6081aa49b95827.setContent(html_0a19c7552219fd856f2e802802ee3c5d);
+            
+        
+
+        circle_marker_ceb3dcd46e9de4522b79e9d1fe9b3558.bindPopup(popup_635c2d9b7f831e807c6081aa49b95827)
+        ;
+
+        
+    
+    
+            var circle_marker_d9736aa3ec79c7b73319aa662c5e4e19 = L.circleMarker(
+                [55.756291, 37.439214],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_beb411dd73709d51af19991f47e9672e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_580a3bf969d9e79183b32b4c08c1cf89 = $(`<div id="html_580a3bf969d9e79183b32b4c08c1cf89" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыбиратьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,447,908<br>Адрес: к. Урус-Мартан, пер. Дачный, д. 9/4 к. 2/4, 074517</div>`)[0];
+                popup_beb411dd73709d51af19991f47e9672e.setContent(html_580a3bf969d9e79183b32b4c08c1cf89);
+            
+        
+
+        circle_marker_d9736aa3ec79c7b73319aa662c5e4e19.bindPopup(popup_beb411dd73709d51af19991f47e9672e)
+        ;
+
+        
+    
+    
+            var circle_marker_ca347c97c38abdec688ef8edef7ac956 = L.circleMarker(
+                [55.796536, 37.539856],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_670b338ff78f755aa99b14b00f0b09b9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7ae9e00e00f6111ff61d6d5cd5533dfd = $(`<div id="html_7ae9e00e00f6111ff61d6d5cd5533dfd" style="width: 100.0%; height: 100.0%;"><b>ООО «ИсполнятьПром»</b><br>Фонд оплаты труда (тыс. руб.): 388,773<br>Адрес: с. Мценск, ул. Студенческая, д. 6/2 стр. 4/7, 745458</div>`)[0];
+                popup_670b338ff78f755aa99b14b00f0b09b9.setContent(html_7ae9e00e00f6111ff61d6d5cd5533dfd);
+            
+        
+
+        circle_marker_ca347c97c38abdec688ef8edef7ac956.bindPopup(popup_670b338ff78f755aa99b14b00f0b09b9)
+        ;
+
+        
+    
+    
+            var circle_marker_3c2c4d895b19d178bc7c853c357c17da = L.circleMarker(
+                [55.796412, 37.748624],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_84b3e304a2993f97075765c3d670642c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_000e5310600bad5dd6980fd6c3cffb41 = $(`<div id="html_000e5310600bad5dd6980fd6c3cffb41" style="width: 100.0%; height: 100.0%;"><b>ООО «УпорПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,145,994<br>Адрес: к. Джейрах, ш. Запрудное, д. 91 к. 892, 326973</div>`)[0];
+                popup_84b3e304a2993f97075765c3d670642c.setContent(html_000e5310600bad5dd6980fd6c3cffb41);
+            
+        
+
+        circle_marker_3c2c4d895b19d178bc7c853c357c17da.bindPopup(popup_84b3e304a2993f97075765c3d670642c)
+        ;
+
+        
+    
+    
+            var circle_marker_a4cce5eebbd33a61ec208689709c35b3 = L.circleMarker(
+                [55.685297, 37.744687],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_419d3c242586a9bf779a14dbba483e9d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0ff6f114d7d8c41b42567b44ae44d61b = $(`<div id="html_0ff6f114d7d8c41b42567b44ae44d61b" style="width: 100.0%; height: 100.0%;"><b>ООО «ТристаПром»</b><br>Фонд оплаты труда (тыс. руб.): 5,227,454<br>Адрес: к. Кашира, ул. Розы Люксембург, д. 9, 661889</div>`)[0];
+                popup_419d3c242586a9bf779a14dbba483e9d.setContent(html_0ff6f114d7d8c41b42567b44ae44d61b);
+            
+        
+
+        circle_marker_a4cce5eebbd33a61ec208689709c35b3.bindPopup(popup_419d3c242586a9bf779a14dbba483e9d)
+        ;
+
+        
+    
+    
+            var circle_marker_d80983b1ac2de33c24ba952abbea9dde = L.circleMarker(
+                [55.767925, 37.627326],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_7379e109b56a5cd52a806d37a11bd16c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b1ea3fd02e283314ab66a3d3dabb5e08 = $(`<div id="html_b1ea3fd02e283314ab66a3d3dabb5e08" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыдержатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,051,766<br>Адрес: с. Хасавюрт, наб. Авиационная, д. 2, 380003</div>`)[0];
+                popup_7379e109b56a5cd52a806d37a11bd16c.setContent(html_b1ea3fd02e283314ab66a3d3dabb5e08);
+            
+        
+
+        circle_marker_d80983b1ac2de33c24ba952abbea9dde.bindPopup(popup_7379e109b56a5cd52a806d37a11bd16c)
+        ;
+
+        
+    
+    
+            var circle_marker_475c547452d0120bda4e102d59a90fba = L.circleMarker(
+                [55.725568, 37.632636],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_21af00be190514f0a6775ba7a7d22460 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a47f4ae518f1aa67fcdabbe20aae2bf3 = $(`<div id="html_a47f4ae518f1aa67fcdabbe20aae2bf3" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрошептатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 5,035,865<br>Адрес: д. Нефтекамск, ш. Зеленое, д. 1 стр. 5/2, 836702</div>`)[0];
+                popup_21af00be190514f0a6775ba7a7d22460.setContent(html_a47f4ae518f1aa67fcdabbe20aae2bf3);
+            
+        
+
+        circle_marker_475c547452d0120bda4e102d59a90fba.bindPopup(popup_21af00be190514f0a6775ba7a7d22460)
+        ;
+
+        
+    
+    
+            var circle_marker_68f71a90d656cb27e83e3c30e7463e40 = L.circleMarker(
+                [55.730475, 37.664894],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_c9075362a7b97d9a9e874e672f521809 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_49a89a8f3149de1a83720e675282507b = $(`<div id="html_49a89a8f3149de1a83720e675282507b" style="width: 100.0%; height: 100.0%;"><b>ООО «ИдеяПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,477,864<br>Адрес: ст. Ивдель, пр. Докучаева, д. 81, 210032</div>`)[0];
+                popup_c9075362a7b97d9a9e874e672f521809.setContent(html_49a89a8f3149de1a83720e675282507b);
+            
+        
+
+        circle_marker_68f71a90d656cb27e83e3c30e7463e40.bindPopup(popup_c9075362a7b97d9a9e874e672f521809)
+        ;
+
+        
+    
+    
+            var circle_marker_6274aeba61bbf5e1bb37caa1590919b5 = L.circleMarker(
+                [55.675589, 37.518716],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_72b0d872712583e486138be2ff6cea59 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_02d7b0ba856782637cad42700813cbfb = $(`<div id="html_02d7b0ba856782637cad42700813cbfb" style="width: 100.0%; height: 100.0%;"><b>ООО «НервноПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,983,067<br>Адрес: к. Ирбит, наб. Новосельская, д. 840, 932133</div>`)[0];
+                popup_72b0d872712583e486138be2ff6cea59.setContent(html_02d7b0ba856782637cad42700813cbfb);
+            
+        
+
+        circle_marker_6274aeba61bbf5e1bb37caa1590919b5.bindPopup(popup_72b0d872712583e486138be2ff6cea59)
+        ;
+
+        
+    
+    
+            var circle_marker_8738b3ca60559504ca3dde0b2dbc55c2 = L.circleMarker(
+                [55.777569, 37.593942],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_3ee046e0f5d43f45aa65697703c02ac3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_05b81f02630e0adf1eb7b0ea6dc2dded = $(`<div id="html_05b81f02630e0adf1eb7b0ea6dc2dded" style="width: 100.0%; height: 100.0%;"><b>ООО «ОстановитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,961,006<br>Адрес: ст. Суздаль, наб. Локомотивная, д. 4 стр. 56, 220969</div>`)[0];
+                popup_3ee046e0f5d43f45aa65697703c02ac3.setContent(html_05b81f02630e0adf1eb7b0ea6dc2dded);
+            
+        
+
+        circle_marker_8738b3ca60559504ca3dde0b2dbc55c2.bindPopup(popup_3ee046e0f5d43f45aa65697703c02ac3)
+        ;
+
+        
+    
+    
+            var circle_marker_7364d71dde2a9cbd08eef8e2b7189a97 = L.circleMarker(
+                [55.799534, 37.710625],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_22bb9024a09677a2b9c7d00dde59e6d9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2c0441fcaafbd0f277f6c770b8e61c51 = $(`<div id="html_2c0441fcaafbd0f277f6c770b8e61c51" style="width: 100.0%; height: 100.0%;"><b>ООО «ДыханиеПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,844,926<br>Адрес: д. Вилюйск, пер. Клары Цеткин, д. 762 к. 20, 336884</div>`)[0];
+                popup_22bb9024a09677a2b9c7d00dde59e6d9.setContent(html_2c0441fcaafbd0f277f6c770b8e61c51);
+            
+        
+
+        circle_marker_7364d71dde2a9cbd08eef8e2b7189a97.bindPopup(popup_22bb9024a09677a2b9c7d00dde59e6d9)
+        ;
+
+        
+    
+    
+            var circle_marker_9d7e8a415c2f2ff3cc178ca9066da6c4 = L.circleMarker(
+                [55.711295, 37.655008],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_1dd5c340d19989c30b9e450b849a7b8e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea9db243fbb7129bb3d7d4bf4c657b7d = $(`<div id="html_ea9db243fbb7129bb3d7d4bf4c657b7d" style="width: 100.0%; height: 100.0%;"><b>ООО «ОчереднойПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,779,328<br>Адрес: д. Биробиджан, ш. Правды, д. 4/8 к. 2, 089899</div>`)[0];
+                popup_1dd5c340d19989c30b9e450b849a7b8e.setContent(html_ea9db243fbb7129bb3d7d4bf4c657b7d);
+            
+        
+
+        circle_marker_9d7e8a415c2f2ff3cc178ca9066da6c4.bindPopup(popup_1dd5c340d19989c30b9e450b849a7b8e)
+        ;
+
+        
+    
+    
+            var circle_marker_71922abbd667dedbf73582487c11a9a0 = L.circleMarker(
+                [55.787758, 37.639116],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_226489d011f8e82f31ee87292ba646d8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_008740ba36d1de800d01909a4af2e79d = $(`<div id="html_008740ba36d1de800d01909a4af2e79d" style="width: 100.0%; height: 100.0%;"><b>ООО «ДрогнутьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,856,181<br>Адрес: к. Печенга, пер. Короленко, д. 465, 745054</div>`)[0];
+                popup_226489d011f8e82f31ee87292ba646d8.setContent(html_008740ba36d1de800d01909a4af2e79d);
+            
+        
+
+        circle_marker_71922abbd667dedbf73582487c11a9a0.bindPopup(popup_226489d011f8e82f31ee87292ba646d8)
+        ;
+
+        
+    
+    
+            var circle_marker_fbea4658f2893f04659890344a7fb58c = L.circleMarker(
+                [55.738671, 37.547929],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_960a5f0e9f296d43eb6d9a2b0bc55d27 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f8cff2acf3f10494ac0856140b3fc4c8 = $(`<div id="html_f8cff2acf3f10494ac0856140b3fc4c8" style="width: 100.0%; height: 100.0%;"><b>ООО «ИнвалидПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,507,673<br>Адрес: п. Соль-Илецк, пер. Котовского, д. 3 стр. 2, 060293</div>`)[0];
+                popup_960a5f0e9f296d43eb6d9a2b0bc55d27.setContent(html_f8cff2acf3f10494ac0856140b3fc4c8);
+            
+        
+
+        circle_marker_fbea4658f2893f04659890344a7fb58c.bindPopup(popup_960a5f0e9f296d43eb6d9a2b0bc55d27)
+        ;
+
+        
+    
+    
+            var circle_marker_18a6dbff38630f0a5d0b5ea98e16d51d = L.circleMarker(
+                [55.788518, 37.603303],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_1fdf82102f7aa5eb2ea89b0dace5468e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_82aa4791ae343c2b84db8d2ec7392295 = $(`<div id="html_82aa4791ae343c2b84db8d2ec7392295" style="width: 100.0%; height: 100.0%;"><b>ООО «ПламяПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,218,217<br>Адрес: с. Пинега, бул. Парковый, д. 45 к. 6/9, 282417</div>`)[0];
+                popup_1fdf82102f7aa5eb2ea89b0dace5468e.setContent(html_82aa4791ae343c2b84db8d2ec7392295);
+            
+        
+
+        circle_marker_18a6dbff38630f0a5d0b5ea98e16d51d.bindPopup(popup_1fdf82102f7aa5eb2ea89b0dace5468e)
+        ;
+
+        
+    
+    
+            var circle_marker_2b38bdeab387f082fc5cbb990c7fb1f8 = L.circleMarker(
+                [55.739893, 37.518098],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_697ad2a417be8aeea26ba00191f926fa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_62aea836ee2ee27c4c103c63d473dc5a = $(`<div id="html_62aea836ee2ee27c4c103c63d473dc5a" style="width: 100.0%; height: 100.0%;"><b>ООО «МеталлПром»</b><br>Фонд оплаты труда (тыс. руб.): 5,005,008<br>Адрес: с. Верхний Тагил, пер. Блюхера, д. 7/7, 600835</div>`)[0];
+                popup_697ad2a417be8aeea26ba00191f926fa.setContent(html_62aea836ee2ee27c4c103c63d473dc5a);
+            
+        
+
+        circle_marker_2b38bdeab387f082fc5cbb990c7fb1f8.bindPopup(popup_697ad2a417be8aeea26ba00191f926fa)
+        ;
+
+        
+    
+    
+            var circle_marker_00340719602c604d70df8b01e0c43b8a = L.circleMarker(
+                [55.701797, 37.74061],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_c7772a60878f46ed78fc6ccf5009bca7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_984a68a0e7982af8db709cf62a321f19 = $(`<div id="html_984a68a0e7982af8db709cf62a321f19" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗатянутьсяПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,360,800<br>Адрес: с. Горячинск, наб. Монтажников, д. 13 стр. 7, 849926</div>`)[0];
+                popup_c7772a60878f46ed78fc6ccf5009bca7.setContent(html_984a68a0e7982af8db709cf62a321f19);
+            
+        
+
+        circle_marker_00340719602c604d70df8b01e0c43b8a.bindPopup(popup_c7772a60878f46ed78fc6ccf5009bca7)
+        ;
+
+        
+    
+    
+            var circle_marker_17f5b7beda71f384e6ca660901a3abee = L.circleMarker(
+                [55.727708, 37.698193],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_7ccab8c2e10a46c2a5fddf582e7e0605 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_790f14d6115a215bc0dbf64149a9ba01 = $(`<div id="html_790f14d6115a215bc0dbf64149a9ba01" style="width: 100.0%; height: 100.0%;"><b>ООО «ВозмутитьсяПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,012,551<br>Адрес: к. Неплюевка, ул. Юности, д. 8/5, 762120</div>`)[0];
+                popup_7ccab8c2e10a46c2a5fddf582e7e0605.setContent(html_790f14d6115a215bc0dbf64149a9ba01);
+            
+        
+
+        circle_marker_17f5b7beda71f384e6ca660901a3abee.bindPopup(popup_7ccab8c2e10a46c2a5fddf582e7e0605)
+        ;
+
+        
+    
+    
+            var circle_marker_6b45285ce34db19a9922ce86fc5b40c4 = L.circleMarker(
+                [55.709923, 37.491052],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_73425aee59f98cf7ac243d0f652ce8fb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_00d31ecb20e690a3c7bfb19e4ee8e820 = $(`<div id="html_00d31ecb20e690a3c7bfb19e4ee8e820" style="width: 100.0%; height: 100.0%;"><b>ООО «ПредоставитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,887,403<br>Адрес: с. Кисловодск, пр. Сурикова, д. 2/8, 517016</div>`)[0];
+                popup_73425aee59f98cf7ac243d0f652ce8fb.setContent(html_00d31ecb20e690a3c7bfb19e4ee8e820);
+            
+        
+
+        circle_marker_6b45285ce34db19a9922ce86fc5b40c4.bindPopup(popup_73425aee59f98cf7ac243d0f652ce8fb)
+        ;
+
+        
+    
+    
+            var circle_marker_aa62a300c3b9bced88397d563b3aadde = L.circleMarker(
+                [55.728737, 37.63934],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_d1705bb34e887132f78f12df2ff4874e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f4865b85209e1dc2efa96b06cff7af35 = $(`<div id="html_f4865b85209e1dc2efa96b06cff7af35" style="width: 100.0%; height: 100.0%;"><b>ООО «СходитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,609,508<br>Адрес: г. Тутаев, ул. Седова, д. 9/3 стр. 22, 995866</div>`)[0];
+                popup_d1705bb34e887132f78f12df2ff4874e.setContent(html_f4865b85209e1dc2efa96b06cff7af35);
+            
+        
+
+        circle_marker_aa62a300c3b9bced88397d563b3aadde.bindPopup(popup_d1705bb34e887132f78f12df2ff4874e)
+        ;
+
+        
+    
+    
+            var circle_marker_d7b8d37bc0c800323e0fb4cb40c25358 = L.circleMarker(
+                [55.795818, 37.64205],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_770e0444d5b5d34bcc9daba9372b3155 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_81e73d2a84be6c29cca4bb53be480a12 = $(`<div id="html_81e73d2a84be6c29cca4bb53be480a12" style="width: 100.0%; height: 100.0%;"><b>ООО «УголПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,696,617<br>Адрес: ст. Бирск, ш. Калинина, д. 18 стр. 8, 983863</div>`)[0];
+                popup_770e0444d5b5d34bcc9daba9372b3155.setContent(html_81e73d2a84be6c29cca4bb53be480a12);
+            
+        
+
+        circle_marker_d7b8d37bc0c800323e0fb4cb40c25358.bindPopup(popup_770e0444d5b5d34bcc9daba9372b3155)
+        ;
+
+        
+    
+    
+            var circle_marker_4cb7ba7ce535644a12d762eb1ea6b76b = L.circleMarker(
+                [55.745263, 37.562219],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_2a7bfeac8dfdece98849caa8761b75d1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af08724a800423841fb2d3e496ad8cb2 = $(`<div id="html_af08724a800423841fb2d3e496ad8cb2" style="width: 100.0%; height: 100.0%;"><b>ООО «ДеловойПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,143,633<br>Адрес: г. Нижнекамск, алл. Толстого, д. 6, 398780</div>`)[0];
+                popup_2a7bfeac8dfdece98849caa8761b75d1.setContent(html_af08724a800423841fb2d3e496ad8cb2);
+            
+        
+
+        circle_marker_4cb7ba7ce535644a12d762eb1ea6b76b.bindPopup(popup_2a7bfeac8dfdece98849caa8761b75d1)
+        ;
+
+        
+    
+    
+            var circle_marker_f8485de4841a6cf0a4632944d6b825bd = L.circleMarker(
+                [55.703027, 37.672246],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_fb32e5abe5557d7b9673fdf03f7cce8c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4ee7f8c0f931be461a6809fc1bae0431 = $(`<div id="html_4ee7f8c0f931be461a6809fc1bae0431" style="width: 100.0%; height: 100.0%;"><b>ООО «ЖестокийПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,461,433<br>Адрес: к. Подольск, пр. Черемушки, д. 6/1 к. 2/9, 919015</div>`)[0];
+                popup_fb32e5abe5557d7b9673fdf03f7cce8c.setContent(html_4ee7f8c0f931be461a6809fc1bae0431);
+            
+        
+
+        circle_marker_f8485de4841a6cf0a4632944d6b825bd.bindPopup(popup_fb32e5abe5557d7b9673fdf03f7cce8c)
+        ;
+
+        
+    
+    
+            var circle_marker_3b744ec25e4493718c1f121e28d0ffff = L.circleMarker(
+                [55.694161, 37.613096],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_843b3a121942201bcd794a34937af8c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_df4e36302a82b0b068eb579e4de74bf7 = $(`<div id="html_df4e36302a82b0b068eb579e4de74bf7" style="width: 100.0%; height: 100.0%;"><b>ООО «УгрозаПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,092,489<br>Адрес: клх Бомнак, ул. Ивановская, д. 6/6 к. 23, 913577</div>`)[0];
+                popup_843b3a121942201bcd794a34937af8c9.setContent(html_df4e36302a82b0b068eb579e4de74bf7);
+            
+        
+
+        circle_marker_3b744ec25e4493718c1f121e28d0ffff.bindPopup(popup_843b3a121942201bcd794a34937af8c9)
+        ;
+
+        
+    
+    
+            var circle_marker_4884ec6a5711b7f32fd5773223da666c = L.circleMarker(
+                [55.814564, 37.604283],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_0a1cb84e52ffed83a9ebae6bad49628d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_637bf902f449457314ef705c7617734b = $(`<div id="html_637bf902f449457314ef705c7617734b" style="width: 100.0%; height: 100.0%;"><b>ООО «НажатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,879,003<br>Адрес: п. Чикола, ш. Ленина, д. 97 стр. 965, 392827</div>`)[0];
+                popup_0a1cb84e52ffed83a9ebae6bad49628d.setContent(html_637bf902f449457314ef705c7617734b);
+            
+        
+
+        circle_marker_4884ec6a5711b7f32fd5773223da666c.bindPopup(popup_0a1cb84e52ffed83a9ebae6bad49628d)
+        ;
+
+        
+    
+    
+            var circle_marker_8396ff7dc286fc9c331c66a572578d97 = L.circleMarker(
+                [55.789951, 37.523657],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_56529a0a8f2305707b45044e95995b48 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4f61189bfd5f13d89ca2a69acc2fb65e = $(`<div id="html_4f61189bfd5f13d89ca2a69acc2fb65e" style="width: 100.0%; height: 100.0%;"><b>ООО «СынокПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,356,323<br>Адрес: п. Казань, наб. Стадионная, д. 66, 777392</div>`)[0];
+                popup_56529a0a8f2305707b45044e95995b48.setContent(html_4f61189bfd5f13d89ca2a69acc2fb65e);
+            
+        
+
+        circle_marker_8396ff7dc286fc9c331c66a572578d97.bindPopup(popup_56529a0a8f2305707b45044e95995b48)
+        ;
+
+        
+    
+    
+            var circle_marker_97167ff2ef7ee86802022c874358be49 = L.circleMarker(
+                [55.759811, 37.649197],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_4d551457445866b3234d000b43663a37 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fcd58f599f91ca253e9e642973955b1a = $(`<div id="html_fcd58f599f91ca253e9e642973955b1a" style="width: 100.0%; height: 100.0%;"><b>ООО «СоветоватьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,688,858<br>Адрес: д. Владикавказ, пр. Партизанский, д. 317, 686508</div>`)[0];
+                popup_4d551457445866b3234d000b43663a37.setContent(html_fcd58f599f91ca253e9e642973955b1a);
+            
+        
+
+        circle_marker_97167ff2ef7ee86802022c874358be49.bindPopup(popup_4d551457445866b3234d000b43663a37)
+        ;
+
+        
+    
+    
+            var circle_marker_7c6ee84fc35b21d9024232778ea4a2e6 = L.circleMarker(
+                [55.769742, 37.779002],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_23efb58a329e762c4b23f4e6179455dc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4db8716d5b367c2a30c6f72f9ae55ee9 = $(`<div id="html_4db8716d5b367c2a30c6f72f9ae55ee9" style="width: 100.0%; height: 100.0%;"><b>ООО «ПотянутьсяПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,409,938<br>Адрес: клх Джубга, ул. Угловая, д. 3/2 стр. 78, 890260</div>`)[0];
+                popup_23efb58a329e762c4b23f4e6179455dc.setContent(html_4db8716d5b367c2a30c6f72f9ae55ee9);
+            
+        
+
+        circle_marker_7c6ee84fc35b21d9024232778ea4a2e6.bindPopup(popup_23efb58a329e762c4b23f4e6179455dc)
+        ;
+
+        
+    
+    
+            var circle_marker_fe68b7cd08456d20cc79efbd2b0f1d9b = L.circleMarker(
+                [55.759413, 37.560817],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_ee362f09628125a02a9828324ab0acf2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a863b77cde2f07340d31e29d603dacf9 = $(`<div id="html_a863b77cde2f07340d31e29d603dacf9" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыбиратьПром»</b><br>Фонд оплаты труда (тыс. руб.): 805,532<br>Адрес: к. Кяхта, пер. Омский, д. 7/1, 268181</div>`)[0];
+                popup_ee362f09628125a02a9828324ab0acf2.setContent(html_a863b77cde2f07340d31e29d603dacf9);
+            
+        
+
+        circle_marker_fe68b7cd08456d20cc79efbd2b0f1d9b.bindPopup(popup_ee362f09628125a02a9828324ab0acf2)
+        ;
+
+        
+    
+    
+            var circle_marker_382a5ff87973ba02ab8f72f118887ed6 = L.circleMarker(
+                [55.734931, 37.709161],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_ee63c99e8ab548f043e564992492ffb4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9f73da824eae7798c94ae35933e93ce4 = $(`<div id="html_9f73da824eae7798c94ae35933e93ce4" style="width: 100.0%; height: 100.0%;"><b>ООО «ПересечьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,806,064<br>Адрес: ст. Воткинск, ул. 8-е Марта, д. 880, 957947</div>`)[0];
+                popup_ee63c99e8ab548f043e564992492ffb4.setContent(html_9f73da824eae7798c94ae35933e93ce4);
+            
+        
+
+        circle_marker_382a5ff87973ba02ab8f72f118887ed6.bindPopup(popup_ee63c99e8ab548f043e564992492ffb4)
+        ;
+
+        
+    
+    
+            var circle_marker_71f08cd33b66a587fd835c413ba84790 = L.circleMarker(
+                [55.705542, 37.565408],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_4d6735cf7335874bb9b3cae30849312b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_870ce82c1847af211d3d57cb0e046a52 = $(`<div id="html_870ce82c1847af211d3d57cb0e046a52" style="width: 100.0%; height: 100.0%;"><b>ООО «ТесноПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,085,103<br>Адрес: п. Домбай, алл. Советской Армии, д. 826 стр. 98, 744890</div>`)[0];
+                popup_4d6735cf7335874bb9b3cae30849312b.setContent(html_870ce82c1847af211d3d57cb0e046a52);
+            
+        
+
+        circle_marker_71f08cd33b66a587fd835c413ba84790.bindPopup(popup_4d6735cf7335874bb9b3cae30849312b)
+        ;
+
+        
+    
+    
+            var circle_marker_784b335abb0bcebedd271eb65c4b70ba = L.circleMarker(
+                [55.809586, 37.642972],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_3958445a1af5db4d5059315bebe46a1a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cc200bcdfeb2736a8ee76183cefa2677 = $(`<div id="html_cc200bcdfeb2736a8ee76183cefa2677" style="width: 100.0%; height: 100.0%;"><b>ООО «ИюньПром»</b><br>Фонд оплаты труда (тыс. руб.): 881,974<br>Адрес: с. Новый Уренгой, пер. Курчатова, д. 3/3 стр. 523, 326111</div>`)[0];
+                popup_3958445a1af5db4d5059315bebe46a1a.setContent(html_cc200bcdfeb2736a8ee76183cefa2677);
+            
+        
+
+        circle_marker_784b335abb0bcebedd271eb65c4b70ba.bindPopup(popup_3958445a1af5db4d5059315bebe46a1a)
+        ;
+
+        
+    
+    
+            var circle_marker_8de93aa355ff14554a7fc7b3efdf01c2 = L.circleMarker(
+                [55.788637, 37.588535],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_8f03abd4021e64987428ebb42e8dddd9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c8c2dff9ad7b6bd9a313077241fa86c6 = $(`<div id="html_c8c2dff9ad7b6bd9a313077241fa86c6" style="width: 100.0%; height: 100.0%;"><b>ООО «СлишкомПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,970,499<br>Адрес: д. Дербент, наб. Шаумяна, д. 577 к. 464, 853686</div>`)[0];
+                popup_8f03abd4021e64987428ebb42e8dddd9.setContent(html_c8c2dff9ad7b6bd9a313077241fa86c6);
+            
+        
+
+        circle_marker_8de93aa355ff14554a7fc7b3efdf01c2.bindPopup(popup_8f03abd4021e64987428ebb42e8dddd9)
+        ;
+
+        
+    
+    
+            var circle_marker_67a195b0b3d4d1bcf33610067bd4fe81 = L.circleMarker(
+                [55.733457, 37.581755],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_bbb509551e8b9fd88c2fcae137ae7116 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d5fdebf377c335eed0654810d7994e9f = $(`<div id="html_d5fdebf377c335eed0654810d7994e9f" style="width: 100.0%; height: 100.0%;"><b>ООО «ЕврейскийПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,172,825<br>Адрес: г. Урус-Мартан, алл. Хуторская, д. 7 к. 713, 303718</div>`)[0];
+                popup_bbb509551e8b9fd88c2fcae137ae7116.setContent(html_d5fdebf377c335eed0654810d7994e9f);
+            
+        
+
+        circle_marker_67a195b0b3d4d1bcf33610067bd4fe81.bindPopup(popup_bbb509551e8b9fd88c2fcae137ae7116)
+        ;
+
+        
+    
+    
+            var circle_marker_70775685819d0b182a85cb826165bf9f = L.circleMarker(
+                [55.827316, 37.64053],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_58e2cd13229ebefa175f19a3e62bdc6c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d7c1a71aebe541538b22b5ebf84d2d8b = $(`<div id="html_d7c1a71aebe541538b22b5ebf84d2d8b" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Фонд оплаты труда (тыс. руб.): 430,606<br>Адрес: г. Стрежевой, пр. Пушкина, д. 4/3 стр. 6, 498218</div>`)[0];
+                popup_58e2cd13229ebefa175f19a3e62bdc6c.setContent(html_d7c1a71aebe541538b22b5ebf84d2d8b);
+            
+        
+
+        circle_marker_70775685819d0b182a85cb826165bf9f.bindPopup(popup_58e2cd13229ebefa175f19a3e62bdc6c)
+        ;
+
+        
+    
+    
+            var circle_marker_6384565ef113f5f69b38dd56b5f4d575 = L.circleMarker(
+                [55.795983, 37.525188],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_3c3a4ea6c4ac7c38d8abb6f80c7116ab = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b7cef848e5c85d24cdfb3aa6bab3e0de = $(`<div id="html_b7cef848e5c85d24cdfb3aa6bab3e0de" style="width: 100.0%; height: 100.0%;"><b>ООО «СпалитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,828,771<br>Адрес: с. Биробиджан, пер. Карбышева, д. 1 к. 9, 141381</div>`)[0];
+                popup_3c3a4ea6c4ac7c38d8abb6f80c7116ab.setContent(html_b7cef848e5c85d24cdfb3aa6bab3e0de);
+            
+        
+
+        circle_marker_6384565ef113f5f69b38dd56b5f4d575.bindPopup(popup_3c3a4ea6c4ac7c38d8abb6f80c7116ab)
+        ;
+
+        
+    
+    
+            var circle_marker_4a4c6c8091f8c2abd6bd6a453faab705 = L.circleMarker(
+                [55.712791, 37.722661],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_e049f899123c6f42b09dff5c21a19b24 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fe17fdd728adecdf97703d904297104d = $(`<div id="html_fe17fdd728adecdf97703d904297104d" style="width: 100.0%; height: 100.0%;"><b>ООО «ОПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,485,291<br>Адрес: п. Качканар, ул. Томская, д. 11 к. 6/3, 459334</div>`)[0];
+                popup_e049f899123c6f42b09dff5c21a19b24.setContent(html_fe17fdd728adecdf97703d904297104d);
+            
+        
+
+        circle_marker_4a4c6c8091f8c2abd6bd6a453faab705.bindPopup(popup_e049f899123c6f42b09dff5c21a19b24)
+        ;
+
+        
+    
+    
+            var circle_marker_8e0545ea82bbc74e933f45deec46fe19 = L.circleMarker(
+                [55.737441, 37.575311],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_cbfd41cbd21f66783592b2864d56b09b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_36c15f97db46465a1eda96c26b347dc1 = $(`<div id="html_36c15f97db46465a1eda96c26b347dc1" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,887,259<br>Адрес: д. Белгород, пр. Васильковый, д. 768 стр. 82, 769389</div>`)[0];
+                popup_cbfd41cbd21f66783592b2864d56b09b.setContent(html_36c15f97db46465a1eda96c26b347dc1);
+            
+        
+
+        circle_marker_8e0545ea82bbc74e933f45deec46fe19.bindPopup(popup_cbfd41cbd21f66783592b2864d56b09b)
+        ;
+
+        
+    
+    
+            var circle_marker_474f161517bb543522e3ae86abb3778a = L.circleMarker(
+                [55.714395, 37.639672],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_12bd421d69eb4b25c5e0172c894e2034 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a042f72f5e9dc5d026a6aec4a17e1f32 = $(`<div id="html_a042f72f5e9dc5d026a6aec4a17e1f32" style="width: 100.0%; height: 100.0%;"><b>ООО «ОсвободитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,636,890<br>Адрес: к. Зеленоград, наб. Путейская, д. 1, 016451</div>`)[0];
+                popup_12bd421d69eb4b25c5e0172c894e2034.setContent(html_a042f72f5e9dc5d026a6aec4a17e1f32);
+            
+        
+
+        circle_marker_474f161517bb543522e3ae86abb3778a.bindPopup(popup_12bd421d69eb4b25c5e0172c894e2034)
+        ;
+
+        
+    
+    
+            var circle_marker_6af48b22d4aec61ab1d200714bfcad6a = L.circleMarker(
+                [55.790401, 37.711574],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_50ac817b98115b94e87701c84dbc2127 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9922648cb6685d50d8a06b4b5069fd2d = $(`<div id="html_9922648cb6685d50d8a06b4b5069fd2d" style="width: 100.0%; height: 100.0%;"><b>ООО «КидатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,031,391<br>Адрес: клх Джубга, пер. Краснознаменный, д. 94 стр. 36, 518812</div>`)[0];
+                popup_50ac817b98115b94e87701c84dbc2127.setContent(html_9922648cb6685d50d8a06b4b5069fd2d);
+            
+        
+
+        circle_marker_6af48b22d4aec61ab1d200714bfcad6a.bindPopup(popup_50ac817b98115b94e87701c84dbc2127)
+        ;
+
+        
+    
+    
+            var circle_marker_54cc9f88949e4ea6a6de209a5bfcef47 = L.circleMarker(
+                [55.690336, 37.679124],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_4355fa5dafc33def39708f7e5263632d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5baac80c7484384a335be7c376cd0dbc = $(`<div id="html_5baac80c7484384a335be7c376cd0dbc" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗадержатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,541,131<br>Адрес: п. Ростов, ш. Дачное, д. 6/7 к. 881, 038860</div>`)[0];
+                popup_4355fa5dafc33def39708f7e5263632d.setContent(html_5baac80c7484384a335be7c376cd0dbc);
+            
+        
+
+        circle_marker_54cc9f88949e4ea6a6de209a5bfcef47.bindPopup(popup_4355fa5dafc33def39708f7e5263632d)
+        ;
+
+        
+    
+    
+            var circle_marker_acc95702056a76aeaa268f37eeadbc25 = L.circleMarker(
+                [55.663726, 37.690377],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_159fded064adceb5939c98cddf1a1e2d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_79ba1051af20d79b426a595e7836f9c1 = $(`<div id="html_79ba1051af20d79b426a595e7836f9c1" style="width: 100.0%; height: 100.0%;"><b>ООО «ПробоватьПром»</b><br>Фонд оплаты труда (тыс. руб.): 3,541,427<br>Адрес: п. Долинск, ш. Больничное, д. 5/5, 421230</div>`)[0];
+                popup_159fded064adceb5939c98cddf1a1e2d.setContent(html_79ba1051af20d79b426a595e7836f9c1);
+            
+        
+
+        circle_marker_acc95702056a76aeaa268f37eeadbc25.bindPopup(popup_159fded064adceb5939c98cddf1a1e2d)
+        ;
+
+        
+    
+    
+            var circle_marker_d7bf3fb78335aa59d17ab2d44a46beb9 = L.circleMarker(
+                [55.713257, 37.710065],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_a539ce021b54bc0b92fefc78f9e3d1df = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_567ae4c7f3cbb47936d481a63fb781aa = $(`<div id="html_567ae4c7f3cbb47936d481a63fb781aa" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧислоПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,267,293<br>Адрес: ст. Ростов, ул. Гагарина, д. 3/2 стр. 6, 833901</div>`)[0];
+                popup_a539ce021b54bc0b92fefc78f9e3d1df.setContent(html_567ae4c7f3cbb47936d481a63fb781aa);
+            
+        
+
+        circle_marker_d7bf3fb78335aa59d17ab2d44a46beb9.bindPopup(popup_a539ce021b54bc0b92fefc78f9e3d1df)
+        ;
+
+        
+    
+    
+            var circle_marker_2045e3c28f471ece2bd487cd22fced33 = L.circleMarker(
+                [55.716326, 37.622895],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_8f603658ec8511ae6fc337fbb389f203 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4689102f36841300026ea244c22ecfc1 = $(`<div id="html_4689102f36841300026ea244c22ecfc1" style="width: 100.0%; height: 100.0%;"><b>ООО «ПриятельПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,792,048<br>Адрес: к. Находка, пр. Монтажников, д. 327 стр. 9/6, 608495</div>`)[0];
+                popup_8f603658ec8511ae6fc337fbb389f203.setContent(html_4689102f36841300026ea244c22ecfc1);
+            
+        
+
+        circle_marker_2045e3c28f471ece2bd487cd22fced33.bindPopup(popup_8f603658ec8511ae6fc337fbb389f203)
+        ;
+
+        
+    
+    
+            var circle_marker_67e902f3032372c21fe927fe4d7d87fb = L.circleMarker(
+                [55.716042, 37.567458],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_5cd61c6e963e6505e649f64a74b85eaf = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_05d43738aab8070b14215b071de75ccd = $(`<div id="html_05d43738aab8070b14215b071de75ccd" style="width: 100.0%; height: 100.0%;"><b>ООО «НаходитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,021,625<br>Адрес: с. Троицк (Челяб.), ул. Чехова, д. 691, 018409</div>`)[0];
+                popup_5cd61c6e963e6505e649f64a74b85eaf.setContent(html_05d43738aab8070b14215b071de75ccd);
+            
+        
+
+        circle_marker_67e902f3032372c21fe927fe4d7d87fb.bindPopup(popup_5cd61c6e963e6505e649f64a74b85eaf)
+        ;
+
+        
+    
+    
+            var circle_marker_75071753db456320dc30b519c82e8d3b = L.circleMarker(
+                [55.741145, 37.63364],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_9d93dc568f38117a8cb29670148d5e4b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bdf54053cbe49077cf1c86ed2f1ea9f0 = $(`<div id="html_bdf54053cbe49077cf1c86ed2f1ea9f0" style="width: 100.0%; height: 100.0%;"><b>ООО «ПлодПром»</b><br>Фонд оплаты труда (тыс. руб.): 5,197,043<br>Адрес: д. Гусь-Хрустальный, ш. Семашко, д. 874, 332945</div>`)[0];
+                popup_9d93dc568f38117a8cb29670148d5e4b.setContent(html_bdf54053cbe49077cf1c86ed2f1ea9f0);
+            
+        
+
+        circle_marker_75071753db456320dc30b519c82e8d3b.bindPopup(popup_9d93dc568f38117a8cb29670148d5e4b)
+        ;
+
+        
+    
+    
+            var circle_marker_dcd3e15baf3dc41924157d8661dd77b4 = L.circleMarker(
+                [55.796985, 37.700749],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_c80893596fc6f2d8ff20431e052f59b6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4db4c58c8825a85ff76a0e79612c7131 = $(`<div id="html_4db4c58c8825a85ff76a0e79612c7131" style="width: 100.0%; height: 100.0%;"><b>ООО «АкадемикПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,806,886<br>Адрес: к. Плес, пер. Приозерный, д. 6/8, 132902</div>`)[0];
+                popup_c80893596fc6f2d8ff20431e052f59b6.setContent(html_4db4c58c8825a85ff76a0e79612c7131);
+            
+        
+
+        circle_marker_dcd3e15baf3dc41924157d8661dd77b4.bindPopup(popup_c80893596fc6f2d8ff20431e052f59b6)
+        ;
+
+        
+    
+    
+            var circle_marker_56f9107cce285194d22b2ff8c0e5bc7f = L.circleMarker(
+                [55.668512, 37.5462],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_98ddda238b709efbfa8a2d31592fb214 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2f49eeae92c4ae8abcecb89a51ef4869 = $(`<div id="html_2f49eeae92c4ae8abcecb89a51ef4869" style="width: 100.0%; height: 100.0%;"><b>ООО «СлишкомПром»</b><br>Фонд оплаты труда (тыс. руб.): 439,261<br>Адрес: клх Суздаль, пр. Геологический, д. 826 стр. 3/8, 876532</div>`)[0];
+                popup_98ddda238b709efbfa8a2d31592fb214.setContent(html_2f49eeae92c4ae8abcecb89a51ef4869);
+            
+        
+
+        circle_marker_56f9107cce285194d22b2ff8c0e5bc7f.bindPopup(popup_98ddda238b709efbfa8a2d31592fb214)
+        ;
+
+        
+    
+    
+            var circle_marker_5ebfbe966602a684b5358b1fa0427842 = L.circleMarker(
+                [55.715702, 37.431694],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_d6d86abba23bed316e698a4c9a824266 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d3338979b949c63c67d12d711d9e8975 = $(`<div id="html_d3338979b949c63c67d12d711d9e8975" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,943,889<br>Адрес: ст. Якутск, наб. Водников, д. 228, 429444</div>`)[0];
+                popup_d6d86abba23bed316e698a4c9a824266.setContent(html_d3338979b949c63c67d12d711d9e8975);
+            
+        
+
+        circle_marker_5ebfbe966602a684b5358b1fa0427842.bindPopup(popup_d6d86abba23bed316e698a4c9a824266)
+        ;
+
+        
+    
+    
+            var circle_marker_6aa8b8916f0078120970ebf5976f4a86 = L.circleMarker(
+                [55.792313, 37.613065],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_f77cf41ee90cebb84096445cbca81aa0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6d79030a22fd9c024191aa266bbddb3a = $(`<div id="html_6d79030a22fd9c024191aa266bbddb3a" style="width: 100.0%; height: 100.0%;"><b>ООО «СопровождатьсяПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,104,630<br>Адрес: д. Новгород Великий, пер. Абрикосовый, д. 5 к. 2, 967393</div>`)[0];
+                popup_f77cf41ee90cebb84096445cbca81aa0.setContent(html_6d79030a22fd9c024191aa266bbddb3a);
+            
+        
+
+        circle_marker_6aa8b8916f0078120970ebf5976f4a86.bindPopup(popup_f77cf41ee90cebb84096445cbca81aa0)
+        ;
+
+        
+    
+    
+            var circle_marker_ab90ba4cb78f3b85147ca0398d0a919f = L.circleMarker(
+                [55.697227, 37.707451],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_62f80c3747e658ba9a1b603701a4fada = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_462f2d4e7f5be90fbc2d1d3cfe09684b = $(`<div id="html_462f2d4e7f5be90fbc2d1d3cfe09684b" style="width: 100.0%; height: 100.0%;"><b>ООО «ЗаведениеПром»</b><br>Фонд оплаты труда (тыс. руб.): 841,387<br>Адрес: к. Билибино, ш. Кузнецкое, д. 27 к. 4/7, 712863</div>`)[0];
+                popup_62f80c3747e658ba9a1b603701a4fada.setContent(html_462f2d4e7f5be90fbc2d1d3cfe09684b);
+            
+        
+
+        circle_marker_ab90ba4cb78f3b85147ca0398d0a919f.bindPopup(popup_62f80c3747e658ba9a1b603701a4fada)
+        ;
+
+        
+    
+    
+            var circle_marker_57afd6246672e0f3fb207401ad3be721 = L.circleMarker(
+                [55.690602, 37.709015],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_31ac1da8849938b8b70e5ff831817b48 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ade309ca2ddbf4bfc640ad9dcf1a1ffd = $(`<div id="html_ade309ca2ddbf4bfc640ad9dcf1a1ffd" style="width: 100.0%; height: 100.0%;"><b>ООО «КомандованиеПром»</b><br>Фонд оплаты труда (тыс. руб.): 891,255<br>Адрес: с. Калевала, бул. Разина, д. 257 к. 4/3, 309376</div>`)[0];
+                popup_31ac1da8849938b8b70e5ff831817b48.setContent(html_ade309ca2ddbf4bfc640ad9dcf1a1ffd);
+            
+        
+
+        circle_marker_57afd6246672e0f3fb207401ad3be721.bindPopup(popup_31ac1da8849938b8b70e5ff831817b48)
+        ;
+
+        
+    
+    
+            var circle_marker_9f541e85d584f5aea4c734b98bf35303 = L.circleMarker(
+                [55.796279, 37.658838],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_c601cdb36db86f656fa2cd13cd03f628 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_de9a593ca5b0d50ad7267032476af0bd = $(`<div id="html_de9a593ca5b0d50ad7267032476af0bd" style="width: 100.0%; height: 100.0%;"><b>ООО «СходитьПром»</b><br>Фонд оплаты труда (тыс. руб.): 4,002,238<br>Адрес: к. Катайск, пер. Ангарский, д. 2, 426258</div>`)[0];
+                popup_c601cdb36db86f656fa2cd13cd03f628.setContent(html_de9a593ca5b0d50ad7267032476af0bd);
+            
+        
+
+        circle_marker_9f541e85d584f5aea4c734b98bf35303.bindPopup(popup_c601cdb36db86f656fa2cd13cd03f628)
+        ;
+
+        
+    
+    
+            var circle_marker_17163c90c9f3050d8f4220d28ab466cf = L.circleMarker(
+                [55.80327, 37.565156],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_fdd256435390ea76055fd0fc064b7b32 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a784c5257b08733e9181b31a019043d8 = $(`<div id="html_a784c5257b08733e9181b31a019043d8" style="width: 100.0%; height: 100.0%;"><b>ООО «ПрелестьПром»</b><br>Фонд оплаты труда (тыс. руб.): 1,899,206<br>Адрес: ст. Ялуторовск, алл. Энергетическая, д. 331 стр. 8/3, 005436</div>`)[0];
+                popup_fdd256435390ea76055fd0fc064b7b32.setContent(html_a784c5257b08733e9181b31a019043d8);
+            
+        
+
+        circle_marker_17163c90c9f3050d8f4220d28ab466cf.bindPopup(popup_fdd256435390ea76055fd0fc064b7b32)
+        ;
+
+        
+    
+    
+            var circle_marker_0e6157445785c156ab70fe2330dcb89c = L.circleMarker(
+                [55.724491, 37.671859],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_ee15e3768a8c90fe047ce27651f4a323 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_03823c976c41f4931c28397100c6f7ad = $(`<div id="html_03823c976c41f4931c28397100c6f7ad" style="width: 100.0%; height: 100.0%;"><b>ООО «ДругойПром»</b><br>Фонд оплаты труда (тыс. руб.): 271,581<br>Адрес: п. Магнитогорск, алл. Стахановская, д. 71 стр. 4/8, 406335</div>`)[0];
+                popup_ee15e3768a8c90fe047ce27651f4a323.setContent(html_03823c976c41f4931c28397100c6f7ad);
+            
+        
+
+        circle_marker_0e6157445785c156ab70fe2330dcb89c.bindPopup(popup_ee15e3768a8c90fe047ce27651f4a323)
+        ;
+
+        
+    
+    
+            var circle_marker_5ecde499b48ee7f54a1b2b3ce457d4ab = L.circleMarker(
+                [55.743527, 37.481594],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_c065edab3a23e23cefb46416fa0b2a48 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bdd99b0cb21e7474692323b47d76c3ac = $(`<div id="html_bdd99b0cb21e7474692323b47d76c3ac" style="width: 100.0%; height: 100.0%;"><b>ООО «НожПром»</b><br>Фонд оплаты труда (тыс. руб.): 651,351<br>Адрес: д. Нарткала, ул. Жданова, д. 616 стр. 1/6, 281832</div>`)[0];
+                popup_c065edab3a23e23cefb46416fa0b2a48.setContent(html_bdd99b0cb21e7474692323b47d76c3ac);
+            
+        
+
+        circle_marker_5ecde499b48ee7f54a1b2b3ce457d4ab.bindPopup(popup_c065edab3a23e23cefb46416fa0b2a48)
+        ;
+
+        
+    
+    
+            var circle_marker_95e809fcfee13fa2c0d6da4fb216547f = L.circleMarker(
+                [55.722463, 37.4359],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_4c31d370a1522976e3a7f5f719656c17 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b4b69cfba57b2fef31a177c988576ed = $(`<div id="html_2b4b69cfba57b2fef31a177c988576ed" style="width: 100.0%; height: 100.0%;"><b>ООО «НажатьПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,924,063<br>Адрес: п. Благовещенск (Амур.), ш. Инженерное, д. 7, 579887</div>`)[0];
+                popup_4c31d370a1522976e3a7f5f719656c17.setContent(html_2b4b69cfba57b2fef31a177c988576ed);
+            
+        
+
+        circle_marker_95e809fcfee13fa2c0d6da4fb216547f.bindPopup(popup_4c31d370a1522976e3a7f5f719656c17)
+        ;
+
+        
+    
+    
+            var circle_marker_92d207a88b0d6d8514e13c1bd36f1b54 = L.circleMarker(
+                [55.734662, 37.481492],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_a98d39e5bb26de719fdfe243ae1ac632 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_55cb1a15fc8934fe1fde6577d3c9481d = $(`<div id="html_55cb1a15fc8934fe1fde6577d3c9481d" style="width: 100.0%; height: 100.0%;"><b>ООО «ПроходПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,647,899<br>Адрес: п. Адлер, пер. 9 мая, д. 5 стр. 5/3, 517028</div>`)[0];
+                popup_a98d39e5bb26de719fdfe243ae1ac632.setContent(html_55cb1a15fc8934fe1fde6577d3c9481d);
+            
+        
+
+        circle_marker_92d207a88b0d6d8514e13c1bd36f1b54.bindPopup(popup_a98d39e5bb26de719fdfe243ae1ac632)
+        ;
+
+        
+    
+    
+            var circle_marker_5107480ad589131837a53af8b9337dd6 = L.circleMarker(
+                [55.789804, 37.648611],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_67214d0618a32861ce010b350cfde2f3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_da406eeaa9a9f720b34eb652f45d85ad = $(`<div id="html_da406eeaa9a9f720b34eb652f45d85ad" style="width: 100.0%; height: 100.0%;"><b>ООО «ВыраженныйПром»</b><br>Фонд оплаты труда (тыс. руб.): 195,702<br>Адрес: к. Сорочинск, наб. Песчаная, д. 2/1 стр. 5/7, 879232</div>`)[0];
+                popup_67214d0618a32861ce010b350cfde2f3.setContent(html_da406eeaa9a9f720b34eb652f45d85ad);
+            
+        
+
+        circle_marker_5107480ad589131837a53af8b9337dd6.bindPopup(popup_67214d0618a32861ce010b350cfde2f3)
+        ;
+
+        
+    
+    
+            var circle_marker_c8e0a64c477af5c59bd671b02f16c2d5 = L.circleMarker(
+                [55.778797, 37.517879],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_9feff091844ccc4b0021734ae324bc51 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f572658f9b702dd5d2fea69200d55a3a = $(`<div id="html_f572658f9b702dd5d2fea69200d55a3a" style="width: 100.0%; height: 100.0%;"><b>ООО «ЧеткоПром»</b><br>Фонд оплаты труда (тыс. руб.): 429,859<br>Адрес: ст. Яр-Сале, ш. Мирное, д. 68, 445189</div>`)[0];
+                popup_9feff091844ccc4b0021734ae324bc51.setContent(html_f572658f9b702dd5d2fea69200d55a3a);
+            
+        
+
+        circle_marker_c8e0a64c477af5c59bd671b02f16c2d5.bindPopup(popup_9feff091844ccc4b0021734ae324bc51)
+        ;
+
+        
+    
+    
+            var circle_marker_af5befbcab3899d604717981246b6a38 = L.circleMarker(
+                [55.737703, 37.637586],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 1}
+            ).addTo(map_a25c4d90a957bb8bf55ecb7ef22de825);
+        
+    
+        var popup_65c76a18b8f2708d24e42c747d0a9c9e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_70bd2481771bfa3c75b1cc254f544a4b = $(`<div id="html_70bd2481771bfa3c75b1cc254f544a4b" style="width: 100.0%; height: 100.0%;"><b>ООО «РучейПром»</b><br>Фонд оплаты труда (тыс. руб.): 2,259,333<br>Адрес: ст. Рыбинск, алл. Олимпийская, д. 189, 140140</div>`)[0];
+                popup_65c76a18b8f2708d24e42c747d0a9c9e.setContent(html_70bd2481771bfa3c75b1cc254f544a4b);
+            
+        
+
+        circle_marker_af5befbcab3899d604717981246b6a38.bindPopup(popup_65c76a18b8f2708d24e42c747d0a9c9e)
+        ;
+
+        
+    
+</script>
+</html>
